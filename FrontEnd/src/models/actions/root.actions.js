@@ -13,9 +13,10 @@ export const mensInv = inv => dispatch => {
 }
 
 export const Inv = inv => dispatch => {
-  axios.post('http://localhost:3000/invitados/get', { idb: inv.idb} )
+  axios.post('http://localhost:3000/mensajes/postMens', { idb: inv.idb} )
     .then(response => {
       dispatch(Invitados(response.data))
+      console.log(response.data)
     })
     .catch(err=>{
       console.log(err)

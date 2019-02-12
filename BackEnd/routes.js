@@ -49,6 +49,7 @@ app.get('/todo', auth, function (req, res) {
 
 
 app.get('/invitados/get', ProjectControllerinvitados.getInvitados);
+
 app.get('/invitados/getMofificar', ProjectControllerinvitados.getInvitadosModificar);
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
@@ -62,6 +63,8 @@ app.post('/boda', ProjectControllerBodas.postBoda);
 app.get('/boda/novios', ProjectControllerBodas.getNovios);
 
 app.post('/mensajes/getMensajes', ProjectControllerMensaje.getMensajes);
+app.post('/mensajes/postMens', ProjectControllerMensaje.postInvitadosMens);
+
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);
