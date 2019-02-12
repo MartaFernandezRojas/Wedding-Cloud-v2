@@ -1,0 +1,175 @@
+.fondo{
+    background-color: green;
+}
+
+.title{
+  
+}
+
+h2{
+  color:gray;
+  margin-top: 200px;
+  text-align: center;
+}
+
+
+.bloque1{
+    background-attachment: fixed;
+    background-image: no-repeat;
+    background-image: cover;
+    overflow:hidden;
+    padding:0;
+    position: relative;
+    height:900px ;
+    background-size: cover;
+    filter: grayscale(40%);	
+    background-image: url('../../assets/img/portada4.jpg');
+}
+
+.bloque2{
+    background-attachment: fixed;
+    background-image: no-repeat;
+    background-image: cover;
+    overflow:hidden;
+    padding:0;
+    position: relative;
+    height:1000px ;
+    background-size: cover;
+    
+}
+.bloque3{
+    background-attachment: fixed;
+    background-image: no-repeat;
+    background-image: cover;
+    overflow:hidden;
+    padding:0;
+    position: relative;
+    height:900px ;
+      filter: grayscale(40%);
+    background-size: cover;
+    background-image: url('../../assets/img/baile.png')
+}
+
+.bloque4{
+  margin-top:-50px;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+.container {
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #92b6d5 ;
+    margin-top: -50px;
+    /* background-image: url('../../assets/img/fondo.png') */
+  }
+  .informacion{
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .subContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  
+  .button {
+    padding: 10px 10px;
+    border: 3px solid #eeeeee;
+    border-radius: 5px;
+    color: #eeeeee;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0);
+    text-align: center;
+  }
+  
+  .button2 {
+    padding: 10px 10px;
+    border: 3px solid #1095ee;
+    border-radius: 5px;
+    color: #eeeeee;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 45px;
+    align-content: center;
+    text-align: center;
+    color:white;
+    margin-top:-50px;
+  }
+  
+  .image {
+   
+    width:17%;
+    margin: 15px 0;
+    /* max-width:50px; */
+  }
+  
+  .text {
+    font-size: 18px;
+    font-weight: bold;
+    width: 80%;
+    border: 3px solid #2e2e2e;
+    color: #2c2c2c;
+    margin-top: 50px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .linea{
+    width: 1px; 
+    height: 500px; 
+    
+   
+  }
+  
+  
+  h3{
+    color:white;
+  }
+
+  
+
+@media screen and (max-width: 600px) {
+    .bloque1{
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
+    }
+    
+    .bloque2{
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
+       
+    }
+    .bloque3{
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
+    }
+  }

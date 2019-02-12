@@ -1,0 +1,38 @@
+h4{
+    margin-top:30px;
+    color:rgb(85, 84, 84);
+    text-align: center;
+    font-size: 40px;
+}
+
+h5{
+    color:rgb(85, 84, 84);
+}
+
+
+p{
+    color:rgb(20, 24, 26);
+    font-size: 200px;
+}
+
+.label{
+    color:black;
+    font-weight: 400;
+}
+
+.boton{
+    border: 3px blue solid;
+}
+
+/* ul{
+    margin-left: -30px;
+    margin-right: 5px;
+} */
+
+#foto{
+    width: 500
+}
+
+/* li{
+    width: 100px;
+} */

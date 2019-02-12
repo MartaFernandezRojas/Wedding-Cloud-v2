@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Debug FrontEnd",
+			"url": "https://localhost:1234",
+			"webRoot": "${workspaceFolder}/src",
+			"sourceMaps": true
+		}
+	]
+}

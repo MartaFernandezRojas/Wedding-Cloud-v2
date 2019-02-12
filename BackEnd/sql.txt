@@ -1,0 +1,64 @@
+create database clientes;
+
+use clientes;
+
+CREATE TABLE tareas(
+id INT NOT NULL AUTO_INCREMENT,
+nombre_tarea varchar (25) NOT null,
+estado_tarea varchar (25) NOT null,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE cliente(
+id INT NOT NULL AUTO_INCREMENT,
+nombre varchar (25) NOT null,
+Apellido varchar (200) NOT null,
+email varchar (200) NOT null,
+telefono varchar (200) NOT null,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE fotos(
+id INT NOT NULL AUTO_INCREMENT,
+nombre varchar (25) NOT null,
+url varchar (200) NOT null,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE misfotos(
+id INT NOT NULL AUTO_INCREMENT,
+nombre varchar (25) NOT null,
+url varchar (200) NOT null,
+PRIMARY KEY (id)
+);
+
+
+INSERT INTO misfotos (nombre, url) values
+    ('decoracion', 'https://estaticos.marie-claire.es/media/cache/1140x_thumb/uploads/images/gallery/5bbb645d5bafe886703c986f/decoracion-boda-tropical-2019_0.jpg'),
+  ('vestido', 'http://www.fiestadebodas.com/ideas/imagenes/tipos-de-escote-para-vestidos-de-novia-parte-i-el-atuendo-nupcial-ideal-para-ti-1.jpg'),
+   ('decoracion', 'http://www.cristinaandco.com/wp-content/uploads/2017/05/cristinaandco-decoracion-bodas-table-decor_01.jpg'),
+       ('vestido', 'https://www.bayonacatalina.com/wp-content/uploads/2016/11/galeria-catalina-bayona-vestidos-de-novia-en-bogota-157.jpg');
+
+INSERT INTO fotos (nombre, url) values
+    ('decoracion', 'https://estaticos.marie-claire.es/media/cache/1140x_thumb/uploads/images/gallery/5bbb645d5bafe886703c986f/decoracion-boda-tropical-2019_0.jpg'),
+   ('decoracion', 'https://midecoracion.com/wp-content/uploads/2018/07/mesa-boda-jardin.jpg'),
+   ('decoracion', 'http://www.cristinaandco.com/wp-content/uploads/2017/05/cristinaandco-decoracion-bodas-table-decor_01.jpg'),
+    ('decoracion', 'http://lascatalinas.es/wp-content/uploads/2017/01/mesas-largas-para-bodas-decoraci%C3%B3n-y-wedding-planners-badajoz-extremadura-y-sevilla.jpg'),
+   ('decoracion', 'https://cdn1.lauraescan.es/wp-content/uploads/2017/08/Laura-Risto-60-1024x683.jpg'),
+   ('decoracion', 'https://www.hogarmania.com/archivos/201704/boda-industrial-848x477x80xX.jpg'),
+   ('vestido', 'https://www.lachampanera.es/wp-content/uploads/2017/01/la-champanera-blog-de-bodas-3-1.jpg'),
+    ('vestido', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSattxFAZOlffWTPFn-GKEttGQZ6_3D0ZXMsAFp00bMG3MABbH1'),
+   ('vestido', 'http://www.latrastiendafloristeria.com/uploads/imagenes/Espalda-Vestido-de-Novia.jpg'),
+   ('vestido', 'https://inmyteepee.com/wp-content/uploads/2013/10/isoba-800x600.jpg'),
+   ('vestido', 'http://www.fiestadebodas.com/ideas/imagenes/tipos-de-escote-para-vestidos-de-novia-parte-i-el-atuendo-nupcial-ideal-para-ti-1.jpg'),
+   ('vestido', 'http://www.fiestadebodas.com/ideas/imagenes/vestidos-de-novia-rosados-el-rosa-una-alternativa-muy-glam-1.jpg'),
+   ('vestido', 'https://www.bayonacatalina.com/wp-content/uploads/2016/11/galeria-catalina-bayona-vestidos-de-novia-en-bogota-157.jpg'),
+   ('vestido', 'http://berezimoments.com/wp-content/uploads/2017/03/Immacle-Tanger-vestidos-novia-boho-7.jpg'),
+   ('vestido', 'https://alllovelyparty.com/wp-content/uploads/2017/05/Coleccion-Immacle-2018-7-copia.jpg'),
+   ('vestido', 'https://immacle.com/content/uploads/2017/09/immacle-terraimar-main-menu.jpg'),
+   ('vestido', 'https://www.101empresas.com/images/classifieds/11928/11928_original.jpg'),
+   ('vestido', 'http://berezimoments.com/wp-content/uploads/2017/03/Immacle-Tanger-vestidos-novia-boho-20.jpg'),
+   ('vestido', 'http://berezimoments.com/wp-content/uploads/2017/03/Immacle-Tanger-vestidos-novia-boho-1.jpg');

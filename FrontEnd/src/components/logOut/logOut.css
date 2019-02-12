@@ -1,0 +1,19 @@
+h3{
+    color:white;
+}
+
+.background{
+    background-color: #92b6d5;
+    width: 200px;
+}
+
+.button {
+    padding: 10px 10px;
+    border: 3px solid #eeeeee;
+    border-radius: 5px;
+    color: #eeeeee;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0);
+    text-align: center;
+  }
