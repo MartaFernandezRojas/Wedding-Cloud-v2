@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import styles from './mensajeria.css';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
 import { Footer, NavbarInvitados, Mensaje, Invitado } from '@Components';
 import { mensInv, Inv,postMens } from '@Models'
 
@@ -15,18 +15,17 @@ class MensajeriaInv extends Component {
             modal: false,
             titulo: '',
             mensaje: '',
-            inv: {},
+            inv: {}
         }
         this.handleChange = this.handleChange.bind(this);
     };
-
 
     toggle = () => {
         this.setState({
             modal: !this.state.modal
         });
     }
-
+   
     componentDidMount() {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
         this.props.loadmens({ idb: invitado.id_boda })
@@ -42,7 +41,7 @@ class MensajeriaInv extends Component {
         });
        
     }
-    insertMensaje(){
+    insertMensaje =()=> () =>{
         this.props.postMensa({
             id_invitado: this.state.inv.id,
             titulo: this.state.titulo,
@@ -52,7 +51,9 @@ class MensajeriaInv extends Component {
         this.setState({
             titulo: '',
             mensaje: '',
+            modal: !this.state.modal,
         })
+        
     }
     render() {
         return (
@@ -69,13 +70,11 @@ class MensajeriaInv extends Component {
                             </MDBModalBody>
                             <MDBModalFooter className="blue-grey">
                                 <MDBBtn color=" red lighten-3" onClick={this.toggle}>Cerrar</MDBBtn>
-                                <MDBBtn color=" teal darken-1" onClick={() => {
-                                    this.insertMensaje(), this.toggle()}}> Publicar </MDBBtn>
+                                <MDBBtn color=" teal darken-1" onClick={this.insertMensaje()}> Publicar </MDBBtn>
                             </MDBModalFooter>
                         </MDBModal>
                     </MDBContainer>
                     <div className={styles.center}>
-
                         <div className="container">
                             <div className="row">
                                 <div className={styles.center}>
