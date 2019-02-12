@@ -22,11 +22,29 @@ var controller = {
             if (err) {
                 return res.send(err);
             } else {
-              
+
                 return res.send(result);
             }
         });
     },
-};
-
+    postMensaje: function (req, res) {
+        let sql = `INSERT INTO mensajes (id_invitado,titulo,mensaje) VALUES (${req.body.id_invitado},'${req.body.titulo}','${req.body.mensaje}')`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+                console.log(err)
+            }
+            else {
+                let mensaje = {
+                    id: result.insertId,
+                    id_invitado: req.body.id_invitado,
+                    titulo: req.body.titulo,
+                    mensaje: req.body.mensaje,
+                    fecha: req.body.fecha
+                }
+                return res.send(mensaje);
+            }
+        });
+    }
+}
 module.exports = controller;

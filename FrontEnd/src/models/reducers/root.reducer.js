@@ -15,6 +15,12 @@ export function rootReducer(state = initialRootState, action) {
             ...state,
             invitados: action.payload,
         }
+
+        case 'POST_MENS':
+        return{
+            ...state,
+            mensajes: [...state.mensajes, action.payload]
+        }
         default:
             return state;
     }
