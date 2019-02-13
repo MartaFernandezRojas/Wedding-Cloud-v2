@@ -1,6 +1,7 @@
 const initialRootState = {
     mensajes:[],
-    invitados:[]
+    invitados:[],
+    respuestas:[]
 
 }
 export function rootReducer(state = initialRootState, action) {
@@ -20,6 +21,11 @@ export function rootReducer(state = initialRootState, action) {
         return{
             ...state,
             mensajes: [...state.mensajes, action.payload]
+        }
+        case 'POST_RESP':
+        return{
+            ...state,
+            respuestas: [...state.respuestas, action.payload]
         }
         default:
             return state;

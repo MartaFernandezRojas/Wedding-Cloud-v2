@@ -2,14 +2,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './mensaje.css';
+import { connect } from 'react-redux';
 import { avatar } from '../../assets';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard } from 'mdbreact';
-
+import { postResp } from '@Models'
 ///////////// Component ////////////////
-export class Mensaje extends Component {
-    state = {
-        collapseID: "",
-        modal2: false
+class MensajeResp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapseID: "",
+            modal2: false
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
     toggle = () => {
         this.setState({
@@ -22,15 +27,16 @@ export class Mensaje extends Component {
             collapseID: prevState.collapseID !== collapseID ? collapseID : ""
         }));
     }
+    resp(){
+        console.log('Hola');
+    }
     handleChange(event) {
         this.setState({
             [event.target.id]: event.target.value
-
         });
-       
     }
-    contador(){
-            console.log('Hola');
+    contador() {
+        console.log('Hola');
     }
     render() {
         return (
@@ -57,7 +63,7 @@ export class Mensaje extends Component {
                             <MDBContainer>
                                 <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
                                 <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
-                             
+
                                     <MDBModalBody className="blue-grey">
                                         <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Responde al mensaje!" value={this.state.mensaje} onChange={this.handleChange} />
                                     </MDBModalBody>
@@ -71,7 +77,7 @@ export class Mensaje extends Component {
                             </MDBContainer>
 
                             <div className="col l4">
-                                <MDBBtn color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
+                                <MDBBtn color="blue-grey" onClick={()=>{this.toggleCollapse("basicCollapse"), this.resp()}}>
                                     RESPUESTAS
                                 </MDBBtn>
                             </div>
@@ -92,3 +98,20 @@ export class Mensaje extends Component {
     }
 }
 
+const mapStateToProps = (state, props) => {
+    return {
+        ...props,
+        mensajes: state.rootReducer.mensajes,
+        invitados: state.rootReducer.invitados,
+        respuestas: state.rootReducer.respuestas
+    };
+}
+
+const mapDispatchToProps = {
+    loadresp: postResp,
+}
+
+export const ConnectMensajeriaResp = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(MensajeResp);

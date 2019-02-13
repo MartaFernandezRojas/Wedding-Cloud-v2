@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
-import { Footer, NavbarInvitados, Mensaje, Invitado } from '@Components';
+import { Footer, NavbarInvitados, ConnectMensajeriaResp, Invitado } from '@Components';
 import { mensInv, Inv, postMens } from '@Models'
 
 ///////////// Component ////////////////
@@ -82,7 +82,7 @@ class MensajeriaInv extends Component {
                                         <h5>Mensajes novios</h5>
                                         {this.props.mensajes.map(m => {
                                             if (m.rol == 1) {
-                                                return <Mensaje key={m.id_men} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
+                                                return <ConnectMensajeriaResp key={m.id_men} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
                                             }
                                         })}
                                     </div>
@@ -91,7 +91,7 @@ class MensajeriaInv extends Component {
                                         {this.props.mensajes.map(m => {
 
                                             if (m.rol == 0) {
-                                                return <Mensaje key={m.id_men} mensaje={m} />
+                                                return <ConnectMensajeriaResp key={m.id_men} mensaje={m} />
                                             }
                                         })}
                                     </div>
