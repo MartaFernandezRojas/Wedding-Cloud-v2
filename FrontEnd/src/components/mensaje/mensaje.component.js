@@ -27,7 +27,10 @@ export class Mensaje extends Component {
             [event.target.id]: event.target.value
 
         });
-
+       
+    }
+    contador(){
+            console.log('Hola');
     }
     render() {
         return (
@@ -47,14 +50,12 @@ export class Mensaje extends Component {
                         </MDBCardText>
                         <div className="row">
                             <div className="col l4">
-                                <a href="#!"><i className="material-icons">
+                                <a onClick={this.contador} href="#!"><i className="material-icons">
                                     thumb_up_alt
                                     </i></a>
                             </div>
                             <MDBContainer>
-
                                 <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
-
                                 <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
                              
                                     <MDBModalBody className="blue-grey">

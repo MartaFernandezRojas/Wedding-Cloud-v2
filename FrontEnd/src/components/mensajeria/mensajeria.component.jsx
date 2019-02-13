@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
 import { Footer, NavbarInvitados, Mensaje, Invitado } from '@Components';
-import { mensInv, Inv,postMens } from '@Models'
+import { mensInv, Inv, postMens } from '@Models'
 
 ///////////// Component ////////////////
 class MensajeriaInv extends Component {
@@ -25,13 +25,13 @@ class MensajeriaInv extends Component {
             modal: !this.state.modal
         });
     }
-   
+
     componentDidMount() {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
         this.props.loadmens({ idb: invitado.id_boda })
         this.props.loadInv({ idb: invitado.id_boda })
         this.setState({
-            inv:invitado
+            inv: invitado
         })
     }
     handleChange(event) {
@@ -39,9 +39,9 @@ class MensajeriaInv extends Component {
             [event.target.id]: event.target.value
 
         });
-       
+
     }
-    insertMensaje =()=> () =>{
+    insertMensaje = () => () => {
         this.props.postMensa({
             id_invitado: this.state.inv.id,
             titulo: this.state.titulo,
@@ -53,7 +53,7 @@ class MensajeriaInv extends Component {
             mensaje: '',
             modal: !this.state.modal,
         })
-        
+
     }
     render() {
         return (
@@ -98,7 +98,11 @@ class MensajeriaInv extends Component {
                                     <div className="col l3">
                                         <h5>Invitados</h5>
                                         {this.props.invitados.map(m => {
-                                            return <Invitado key={m.id} invitado={m} />
+                                            if (m.rol == 1) {
+                                                return <Invitado key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
+                                            } else {
+                                                return <Invitado key={m.id} invitado={m} />
+                                            }
                                         })}
                                     </div>
                                 </div>
