@@ -42,7 +42,7 @@ export const postResp = m => dispatch => {
 
   axios.post('http://localhost:3000/mensajes/postRespuesta', m )
     .then(response => {
-      dispatch(postRespuesta(response.data))
+      dispatch(postRespuesta({resp:response.data,id: m.id_mensaje }))
       console.log(response.data)
     })
     .catch(err=>{
@@ -53,7 +53,7 @@ export const postResp = m => dispatch => {
 export const getResp = m => dispatch => {
   axios.post('http://localhost:3000/mensajes/getRespuesta', m )
     .then(response => {
-      dispatch(getRespuesta(response.data))
+      dispatch(getRespuesta({resp:response.data,id: m.id_mensaje }))
 
     })
     .catch(err=>{

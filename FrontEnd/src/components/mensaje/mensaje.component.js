@@ -1,10 +1,11 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import styles from './mensaje.css';
 import { connect } from 'react-redux';
 import { avatar } from '../../assets';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard,MDBListGroup,MDBListGroupItem } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard, MDBListGroup, MDBListGroupItem } from 'mdbreact';
 import { postResp, getResp } from '@Models'
 ///////////// Component ////////////////
 class MensajeResp extends Component {
@@ -13,7 +14,6 @@ class MensajeResp extends Component {
         modal2: false,
         mensaje: '',
     }
-
     componentDidMount() {
         this.props.loadResp({ id_mensaje: this.props.mensaje.id_men });
     }
@@ -40,10 +40,12 @@ class MensajeResp extends Component {
             id_invitado: this.props.inv,
             mensaje: this.state.mensaje,
         });
-        this.toggle()
+        this.toggle();
+        this.props.loadResp({ id_mensaje: this.props.mensaje.id_men });
     }
 
     render() {
+        const idM = this.props.mensaje.id_men;
         return (
             <MDBContainer>
                 <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "28rem", marginTop: "1rem" }}>
@@ -72,29 +74,25 @@ class MensajeResp extends Component {
                                     </MDBModalFooter>
                                 </MDBModal>
                             </MDBContainer>
-
                             <div className="col l4">
                                 <MDBBtn color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
                                     RESPUESTAS
                                 </MDBBtn>
                             </div>
-
-                            <MDBCollapse  className ={styles.respuestas} id="basicCollapse" isOpen={this.state.collapseID}>
-                            <MDBListGroup  style={{ width: "25rem"}}>
-                                        {this.props.respuestas.map(e =>
-                                            e.map(m => {
-                                                if (m.id_mensaje === this.props.mensaje.id_men) {
-                                                    return <MDBListGroupItem>{m.mensaje} mensaje de: {m.nombre} {m.apellido}</MDBListGroupItem>
-                                                }
-                                            })
-                                        )}
-                                    </MDBListGroup>
+                            <MDBCollapse className={styles.respuestas} id="basicCollapse" isOpen={this.state.collapseID}>
+                                <MDBListGroup style={{ width: "25rem" }}>
+                                    {this.props.respuestas[idM] && this.props.respuestas[idM].length ?
+                                        this.props.respuestas[idM].map(m =>
+                                            <MDBListGroupItem>{m.mensaje}<p className={styles.tipado}> mensaje de: {m.nombre} {m.apellido} {moment(m.fecha).startOf('minutes').fromNow()}</p></MDBListGroupItem>
+                                        ):null
+                                    }
+                                        }
+                                </MDBListGroup>
                             </MDBCollapse>
                         </div>
                     </div>
                 </MDBCard>
             </MDBContainer >
-
         );
     }
 }

@@ -45,6 +45,7 @@
     "axios": "^0.18.0",
     "bootstrap-css-only": "^4.2.1",
     "mdbreact": "^4.10.0",
+    "moment": "^2.24.0",
     "node-hot": "^4.0.1",
     "react": "^16.8.1",
     "react-beautiful-dnd": "^10.0.4",
