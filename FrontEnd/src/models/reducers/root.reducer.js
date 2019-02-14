@@ -32,6 +32,11 @@ export function rootReducer(state = initialRootState, action) {
             ...state,
             respuestas:{...state.respuestas, [action.payload.id]: action.payload.resp }
         }
+        case 'DEL_MENS':
+        return{
+            ...state,
+            mensajes: state.mensajes.filter(value=>value.id_men !== action.payload.id),
+        }
         default:
             return state;
     }

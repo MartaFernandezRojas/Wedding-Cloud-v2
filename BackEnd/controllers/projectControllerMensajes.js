@@ -83,7 +83,18 @@ var controller = {
 
             }
         });
-    }
+    },
+    mensajeDelete:function (req, res) {
+        console.log(req.body)
+        let sql = `DELETE FROM mensajes where id=${req.body.id_mensaje}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            } else {
+                return res.send(result);
+            }
+        });
+    },
 
 }
 module.exports = controller;

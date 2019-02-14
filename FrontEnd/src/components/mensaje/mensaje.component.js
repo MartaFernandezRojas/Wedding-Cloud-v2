@@ -6,7 +6,7 @@ import styles from './mensaje.css';
 import { connect } from 'react-redux';
 import { avatar } from '../../assets';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard, MDBListGroup, MDBListGroupItem } from 'mdbreact';
-import { postResp, getResp } from '@Models'
+import { postResp, getResp, deleteMensaje } from '@Models'
 ///////////// Component ////////////////
 class MensajeResp extends Component {
     state = {
@@ -43,6 +43,9 @@ class MensajeResp extends Component {
         this.toggle();
         this.props.loadResp({ id_mensaje: this.props.mensaje.id_men });
     }
+    eliminar=()=>{
+        this.props.delete({ id_mensaje: this.props.mensaje.id_men });
+    }
 
     render() {
         const idM = this.props.mensaje.id_men;
@@ -52,6 +55,9 @@ class MensajeResp extends Component {
                     <div className={styles.fondo}>
                         <div className="row">
                             <div className="col l6">
+                            <MDBBtn color="blue-grey" onClick={this.eliminar}>
+                                    eliminar
+                                </MDBBtn>
                                 <img src={avatar} className={styles.img} />
                             </div>
                             <div className="col l6"><h3 className={styles.titulo}>{this.props.mensaje.nombre} {this.props.mensaje.apellido}</h3><p className={styles.mensaje}>{this.props.mensaje.familia} de {this.props.mensaje.parte}</p>
@@ -108,7 +114,9 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = {
     insertResp: postResp,
-    loadResp: getResp
+    loadResp: getResp,
+    delete:deleteMensaje,
+
 }
 
 export const ConnectMensajeriaResp = connect(

@@ -1,10 +1,9 @@
-h3{
-    color:white;
-}
+
 
 .background{
     background-color: #92b6d5;
     width: 200px;
+    padding: 10px;
 }
 
 .button {
@@ -16,4 +15,11 @@ h3{
     font-weight: bold;
     background-color: rgba(128, 128, 128, 0);
     text-align: center;
+    margin-top:10px;
+   
+
+  }
+
+  .salir{
+    font-size:20px;
   }

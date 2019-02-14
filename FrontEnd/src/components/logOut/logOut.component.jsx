@@ -32,7 +32,7 @@ export class LogOut extends Component {
 
         return (
             <div className={styles.background}>
-                <h5>¿Deseas salir de la plataforma?</h5>
+                <h5 className={styles.salir}>¿Deseas salir de la plataforma?</h5>
                 <form >
                     <input type='button' onClick={() => {
                         this.logOut();

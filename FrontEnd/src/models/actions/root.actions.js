@@ -4,6 +4,7 @@ const Invitados = payload => ({ payload, type: 'INV' });
 const postMensaje = payload => ({ payload, type: 'POST_MENS' });
 const postRespuesta = payload => ({ payload, type: 'POST_RESP' });
 const getRespuesta = payload => ({ payload, type: 'GET_RESP' });
+const deleteMens = payload=>({payload, type: 'DEL_MENS'})
 
 
 export const mensInv = inv => dispatch => {
@@ -55,6 +56,16 @@ export const getResp = m => dispatch => {
     .then(response => {
       dispatch(getRespuesta({resp:response.data,id: m.id_mensaje }))
 
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+}
+
+export const deleteMensaje = m => dispatch=> {
+  axios.post('http://localhost:3000/mensajes/mensajeDelete', m )
+    .then(response => {
+      dispatch(deleteMens({id:m.id_mensaje}))
     })
     .catch(err=>{
       console.log(err)
