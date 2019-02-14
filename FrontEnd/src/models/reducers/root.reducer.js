@@ -26,6 +26,11 @@ export function rootReducer(state = initialRootState, action) {
         return{
             ...state,
             respuestas: [...state.respuestas, action.payload]
+        } 
+        case 'GET_RESP':
+        return{
+            ...state,
+            respuestas:[...state.respuestas,action.payload]
         }
         default:
             return state;

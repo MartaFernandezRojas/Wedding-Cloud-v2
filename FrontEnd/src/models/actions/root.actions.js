@@ -3,6 +3,7 @@ const mensajeInvitado = payload => ({ payload, type: 'MENS_INV' });
 const Invitados = payload => ({ payload, type: 'INV' });
 const postMensaje = payload => ({ payload, type: 'POST_MENS' });
 const postRespuesta = payload => ({ payload, type: 'POST_RESP' });
+const getRespuesta = payload => ({ payload, type: 'GET_RESP' });
 
 
 export const mensInv = inv => dispatch => {
@@ -38,10 +39,22 @@ export const postMens = m => dispatch => {
 }
 
 export const postResp = m => dispatch => {
+
   axios.post('http://localhost:3000/mensajes/postRespuesta', m )
     .then(response => {
       dispatch(postRespuesta(response.data))
       console.log(response.data)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+}
+
+export const getResp = m => dispatch => {
+  axios.post('http://localhost:3000/mensajes/getRespuesta', m )
+    .then(response => {
+      dispatch(getRespuesta(response.data))
+
     })
     .catch(err=>{
       console.log(err)

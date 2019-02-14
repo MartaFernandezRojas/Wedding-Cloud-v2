@@ -51,6 +51,7 @@ var controller = {
     },
 
     postRespuesta: function(req,res){
+        console.log(req.body);
         let sql=` insert into respuestas (id_mensaje,id_invitado,mensaje) values (${req.body.id_mensaje},${req.body.id_invitado},'${req.body.mensaje}')`;
         con.query(sql, function (err, result) {
             if (err) {
@@ -69,8 +70,19 @@ var controller = {
             }
         });
 
+    },
+    getRespuestas: function (req, res) {
+        let sql = `select r.id as id_resp,r.id_mensaje,r.id_invitado,r.mensaje,r.fecha, i.id=id_invitado, i.nombre, i.apellido from respuestas r
 
+        inner join invitados i on (i.id=r.id_invitado) where id_mensaje=${req.body.id_mensaje}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
 
+            }
+        });
     }
 
 }

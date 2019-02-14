@@ -4,17 +4,18 @@ import axios from 'axios';
 import styles from './mensaje.css';
 import { connect } from 'react-redux';
 import { avatar } from '../../assets';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard } from 'mdbreact';
-import { postResp } from '@Models'
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCardTitle, MDBCardText, MDBCard,MDBListGroup,MDBListGroupItem } from 'mdbreact';
+import { postResp, getResp } from '@Models'
 ///////////// Component ////////////////
 class MensajeResp extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            collapseID: "",
-            modal2: false
-        }
-        this.handleChange = this.handleChange.bind(this);
+    state = {
+        collapseID: "",
+        modal2: false,
+        mensaje: '',
+    }
+
+    componentDidMount() {
+        this.props.loadResp({ id_mensaje: this.props.mensaje.id_men });
     }
     toggle = () => {
         this.setState({
@@ -27,17 +28,21 @@ class MensajeResp extends Component {
             collapseID: prevState.collapseID !== collapseID ? collapseID : ""
         }));
     }
-    resp(){
-        console.log('Hola');
-    }
-    handleChange(event) {
+
+    handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
         });
     }
-    contador() {
-        console.log('Hola');
+    responder = () => {
+        this.props.insertResp({
+            id_mensaje: this.props.mensaje.id_men,
+            id_invitado: this.props.inv,
+            mensaje: this.state.mensaje,
+        });
+        this.toggle()
     }
+
     render() {
         return (
             <MDBContainer>
@@ -55,39 +60,35 @@ class MensajeResp extends Component {
                             <p className={styles.mensaje}>{this.props.mensaje.mensaje}</p>
                         </MDBCardText>
                         <div className="row">
-                            <div className="col l4">
-                                <a onClick={this.contador} href="#!"><i className="material-icons">
-                                    thumb_up_alt
-                                    </i></a>
-                            </div>
                             <MDBContainer>
                                 <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
                                 <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
-
                                     <MDBModalBody className="blue-grey">
                                         <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Responde al mensaje!" value={this.state.mensaje} onChange={this.handleChange} />
                                     </MDBModalBody>
                                     <MDBModalFooter className="blue-grey">
                                         <MDBBtn color=" red lighten-3" onClick={this.toggle}>Cerrar</MDBBtn>
-                                        <MDBBtn color=" teal darken-1" onClick={() => {
-                                            this.toggle()
-                                        }}> Publicar </MDBBtn>
+                                        <MDBBtn color=" teal darken-1" onClick={this.responder}> Publicar </MDBBtn>
                                     </MDBModalFooter>
                                 </MDBModal>
                             </MDBContainer>
 
                             <div className="col l4">
-                                <MDBBtn color="blue-grey" onClick={()=>{this.toggleCollapse("basicCollapse"), this.resp()}}>
+                                <MDBBtn color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
                                     RESPUESTAS
                                 </MDBBtn>
                             </div>
-                            <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                    accusamus terry richardson ad squid. Nihil anim keffiyeh
-                                    helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                                    ea proident.
-                                    </p>
+
+                            <MDBCollapse  className ={styles.respuestas} id="basicCollapse" isOpen={this.state.collapseID}>
+                            <MDBListGroup  style={{ width: "25rem"}}>
+                                        {this.props.respuestas.map(e =>
+                                            e.map(m => {
+                                                if (m.id_mensaje === this.props.mensaje.id_men) {
+                                                    return <MDBListGroupItem>{m.mensaje} mensaje de: {m.nombre} {m.apellido}</MDBListGroupItem>
+                                                }
+                                            })
+                                        )}
+                                    </MDBListGroup>
                             </MDBCollapse>
                         </div>
                     </div>
@@ -108,7 +109,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = {
-    loadresp: postResp,
+    insertResp: postResp,
+    loadResp: getResp
 }
 
 export const ConnectMensajeriaResp = connect(

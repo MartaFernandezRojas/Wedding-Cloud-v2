@@ -66,6 +66,7 @@ app.post('/mensajes/getMensajes', ProjectControllerMensaje.getMensajes);
 app.post('/mensajes/postMens', ProjectControllerMensaje.postInvitadosMens);
 app.post('/mensajes/postMensaje', ProjectControllerMensaje.postMensaje);
 app.post('/mensajes/postRespuesta', ProjectControllerMensaje.postRespuesta);
+app.post('/mensajes/getRespuesta', ProjectControllerMensaje.getRespuestas);
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);

@@ -80,18 +80,17 @@ class MensajeriaInv extends Component {
                                 <div className={styles.center}>
                                     <div className="col l3">
                                         <h5>Mensajes novios</h5>
-                                        {this.props.mensajes.map(m => {
+                                        {this.props.mensajes.slice(0).reverse().map(m => {
                                             if (m.rol == 1) {
-                                                return <ConnectMensajeriaResp key={m.id_men} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
+                                                return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
                                             }
                                         })}
                                     </div>
                                     <div className="col l6">
                                         <h5>Mensajes Invitados</h5>
-                                        {this.props.mensajes.map(m => {
-
+                                        {this.props.mensajes.slice(0).reverse().map(m => {
                                             if (m.rol == 0) {
-                                                return <ConnectMensajeriaResp key={m.id_men} mensaje={m} />
+                                                return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={m} />
                                             }
                                         })}
                                     </div>
