@@ -55,6 +55,9 @@ class MensajeriaInv extends Component {
         })
 
     }
+    // componentDidUpdate(){
+    //     return true;
+    // }
     render() {
         return (
             <div>

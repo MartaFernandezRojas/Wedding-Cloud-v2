@@ -9,39 +9,26 @@ export class CardInvitado extends Component {
 
   }
 
-  // componentDidMount() {
-  //   var invitado = JSON.parse(localStorage.getItem("invitado"));
-  //   this.setState(invitado);
-  //   axios.get('http://localhost:3000/invitados/getMofificar', { params: { idb: invitado.id_boda, id: invitado.id } })
-  //     .then(response => {
-  //       this.setState(response.data[0])
-  //       console.log(this.state)
-  //     })
-  // }
   insertAvatar() {
-    console.log('hola')
+    var invitado = JSON.parse(localStorage.getItem("invitado"));
+    axios.post('http://localhost:3000/invitados/avatar', { params: { id: invitado.id} })
+      .then(response => {
+        console.log('ok')
+      })
   }
-
   render() {
-
-
     let invitado = this.props;
     return (
       <div>
-
-        {/* <form id="formulario" enctype="multipart/form-data">
-            <h5>Sube un archivo</h5>
-            <input type='text' className="mr-3" id="tareaText" name="nombre">
-              <input type='file' name="foto"/>
-                <button className="waves-effect waves-light btn" type="submit" id="anadirTarea">Añadir Foto</button>
-          </form> */}
-
         <MDBCol>
           <MDBCard style={{ width: "22rem" }}>
+          <form>
             <MDBCardImage className="img-fluid" id="foto" src="http://www.oscarrodriguezvila.com/wp-content/uploads/2013/03/perfil-oscar2.jpg" waves />
             <div className="file-upload-wrapper">
-              <input type="file" id="input-file-now" className="file-upload" />
+              <input type="file" id="input-file-now" className="file-upload" name="foto" />
+              <MDBBtn className="waves-effect waves-light blue btn" id="anadirTarea" onClick={this.insertAvatar} >Añadir Foto</MDBBtn>
             </div>
+            </form>
             <MDBCardBody>
               <MDBCardTitle>{invitado.props.nombre} {invitado.props.apellido}</MDBCardTitle>
               <MDBCardText>
@@ -60,8 +47,6 @@ export class CardInvitado extends Component {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-
-
       </div>
     )
   }

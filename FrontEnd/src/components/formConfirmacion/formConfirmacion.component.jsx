@@ -75,7 +75,6 @@ export class FormularioConfirmacion extends Component {
         this.setState({novio1:response.data[0].novio1})
         this.setState({novio2:response.data[0].novio2})
       })
-    
   }
   render() {
     return (

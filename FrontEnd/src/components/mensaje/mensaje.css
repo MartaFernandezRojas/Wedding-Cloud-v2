@@ -1,5 +1,6 @@
 .titulo{
    color:white;
+   font-size:25px;
 }
 
 .mensaje{
@@ -21,3 +22,13 @@
 .tipado{
     color:blue
 }
+
+.button{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    
+   
+    background-color: rgb(175, 68, 68);
+}
+

@@ -110,32 +110,31 @@ var controller = {
                 return res.send(result);
             }
         });
-    }
+    },
 
-    // avatar:  function (req, res) {
+    avatar:  function (req, res) {
             
-    //     let oldPath = req.files.foto.path;
-    //     let newPath = './public/img/' + req.files.foto.originalFilename;
-    //     let todb = '../img/' + req.files.foto.originalFilename;
-    //     fs.rename(oldPath, newPath, function (err) { 
+        let oldPath = req.files.foto.path;
+        let newPath = './public/img/' + req.files.foto.originalFilename;
+        let todb = '../img/' + req.files.foto.originalFilename;
+        fs.rename(oldPath, newPath, function (err) { 
     
-    //     });
-    //     let sql = `INSERT INTO misfotos (nombre,url) VALUES ('${req.body.nombre}','${todb}')`;
-    //     con.query(sql, function (err, result) {
-    //         if (err) {
-    //             return res.send(err);
-    //         }
-    //         else {
-    //             let mifoto = {
-    //                 id: result.insertId,
-    //                 nombre: req.body.nombre,
-    //                 url: todb
-    //             }
-    //             return res.send(mifoto);
-    //         }
-    //     });
+        });
+        let sql = `INSERT INTO invitados (url) VALUES ('${todb}') where id = ${req.body.id} `;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            }
+            else {
+                let mifoto = {
+
+                    url: todb
+                }
+                return res.send(mifoto);
+            }
+        });
         
-    // }
+    }
 };
 
 module.exports = controller; 
