@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Bootcamp Codespace training",
   "main": "src/index.jsx",
-  "author": "sergio Garcia",
+  "author": "Marta Fernandez",
   "license": "ISC",
   "engines": {
     "node": ">=8.11"
