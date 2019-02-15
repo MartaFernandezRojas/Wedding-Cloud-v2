@@ -113,26 +113,26 @@ var controller = {
     },
 
     avatar:  function (req, res) {
-            
-        let oldPath = req.files.foto.path;
-        let newPath = './public/img/' + req.files.foto.originalFilename;
-        let todb = '../img/' + req.files.foto.originalFilename;
-        fs.rename(oldPath, newPath, function (err) { 
+         console.log(req.files.foto)
+        // let oldPath = req.files.foto.path;
+        // let newPath = './public/img/' + req.files.foto.originalFilename;
+        // let todb = '../img/' + req.files.foto.originalFilename;
+        // fs.rename(oldPath, newPath, function (err) { 
     
-        });
-        let sql = `INSERT INTO invitados (url) VALUES ('${todb}') where id = ${req.body.id} `;
-        con.query(sql, function (err, result) {
-            if (err) {
-                return res.send(err);
-            }
-            else {
-                let mifoto = {
+        // });
+        // let sql = `INSERT INTO invitados (url) VALUES ('${todb}') where id = ${req.body.id} `;
+        // con.query(sql, function (err, result) {
+        //     if (err) {
+        //         return res.send(err);
+        //     }
+        //     else {
+        //         let mifoto = {
 
-                    url: todb
-                }
-                return res.send(mifoto);
-            }
-        });
+        //             url: todb
+        //         }
+        //         return res.send(mifoto);
+        //     }
+        // });
         
     }
 };

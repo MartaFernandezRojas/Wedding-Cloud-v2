@@ -9,9 +9,9 @@ export class CardInvitado extends Component {
 
   }
 
-  insertAvatar() {
+  insertAvatar(event) {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-    axios.post('http://localhost:3000/invitados/avatar', { params: { id: invitado.id} })
+    axios.post('http://localhost:3000/invitados/avatar', event.target.files[0])
       .then(response => {
         console.log('ok')
       })
@@ -25,8 +25,8 @@ export class CardInvitado extends Component {
           <form>
             <MDBCardImage className="img-fluid" id="foto" src="http://www.oscarrodriguezvila.com/wp-content/uploads/2013/03/perfil-oscar2.jpg" waves />
             <div className="file-upload-wrapper">
-              <input type="file" id="input-file-now" className="file-upload" name="foto" />
-              <MDBBtn className="waves-effect waves-light blue btn" id="anadirTarea" onClick={this.insertAvatar} >Añadir Foto</MDBBtn>
+              <input type="file" id="input-file-now" className="file-upload" name="foto"  onChange={this.insertAvatar}/>
+              <MDBBtn className="waves-effect waves-light blue btn" id="anadirTarea" >Añadir Foto</MDBBtn>
             </div>
             </form>
             <MDBCardBody>
