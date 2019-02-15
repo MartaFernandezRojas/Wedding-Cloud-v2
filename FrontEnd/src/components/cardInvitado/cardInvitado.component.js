@@ -6,12 +6,17 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 export class CardInvitado extends Component {
   constructor(props) {
     super(props);
-
   }
 
   insertAvatar(event) {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-    axios.post('http://localhost:3000/invitados/avatar', { params: { foto:event.target.files[0],id: invitado.id} })
+    console.log(event.target.files[0])
+
+const fd=new FormData();
+fd.append('image',event.target.files[0],event.target.files[0].name); 
+fd.append('id', invitado.id);
+
+    axios.post('http://localhost:3000/invitados/avatar',fd)
       .then(response => {
         console.log('ok')
       })

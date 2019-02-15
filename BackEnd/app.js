@@ -17,7 +17,6 @@ app.use(session({
 
 //configuracion de archivos
 app.use(express.static(__dirname + '/public'));
-app.set('views', __dirname + '/public/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 

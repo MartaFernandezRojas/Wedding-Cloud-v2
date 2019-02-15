@@ -17,7 +17,7 @@ var ProjectControllerAdmin = require('./controllers/projectControllerAdmin2');
 
 var app = require('./app');
 var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart({ uploadDir: './public/img' });
+var multipartMiddleware = multipart({ uploadDir: './public' });
 const jwt = require('jsonwebtoken');
 
 app.get('/galeria', function (req, res) {
