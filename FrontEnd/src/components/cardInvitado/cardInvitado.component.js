@@ -11,7 +11,7 @@ export class CardInvitado extends Component {
 
   insertAvatar(event) {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-    axios.post('http://localhost:3000/invitados/avatar', event.target.files[0])
+    axios.post('http://localhost:3000/invitados/avatar', { params: { foto:event.target.files[0],id: invitado.id} })
       .then(response => {
         console.log('ok')
       })
