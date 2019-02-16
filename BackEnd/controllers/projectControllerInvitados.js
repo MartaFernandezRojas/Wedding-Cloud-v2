@@ -13,7 +13,7 @@ var controller = {
             if (err) {
                 return res.send(err);
             } else {
-              
+
                 return res.send(result);
             }
         });
@@ -54,7 +54,7 @@ var controller = {
                             email: req.body.email,
                             rol: req.body.rol,
                             id_boda: req.body.id_boda,
-                            mesa:0
+                            mesa: 0
                         }
                         return res.send(invitado);
                     }
@@ -96,7 +96,7 @@ var controller = {
                     mesa: req.body.mesa
                 }
                 res.send(invitado);
-                
+
             }
         });
     },
@@ -112,29 +112,30 @@ var controller = {
         });
     },
 
-    avatar:  function (req, res) {
-         console.log(req.files.image)
-        let oldPath = req.files.image.path;
-        let newPath = './public' + req.files.image.originalFilename;
-        let todb = './public' + req.files.image.originalFilename;
-        fs.rename(oldPath, newPath, function (err) { 
-        });
-        let sql = `INSERT INTO invitados (url) VALUES ('${todb}') where id = ${req.body.id} `;
+    avatar: function (req, res) {
+
+        // let oldPath = req.files.image.path;
+        // console.log(req.files.image.originalFilename)
+        // let newPath = './public' + req.files.image.originalFilename;
+        // let todb = '../' + req.files.image.originalFilename;
+        // fs.rename(oldPath, newPath, function (err) {
+        // });
+        let sql = `UPDATE invitados set url='${req.files.image.path}' where id = ${req.body.id} `;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
             }
             else {
-                let mifoto = {
-
-                    url: todb
+                let invitado = {
+                    id: result.insertId,
+                    url: req.files.image.path
                 }
-                return res.send(mifoto);
+                return res.send(invitado);
             }
         });
-        
+
     },
-    invitadosMesa: function(req,res){
+    invitadosMesa: function (req, res) {
         let sql = `SELECT * from invitados where id_boda = ${req.query.idb} AND mesa= ${req.query.m}`;
         con.query(sql, function (err, result) {
             if (err) {
@@ -144,7 +145,23 @@ var controller = {
                 return res.send(result);
             }
         });
-    }
+    },
+    getInvFoto: function (req, res) {
+        // jwt.verify(req.token, 'secretkey', (err, authData) => {
+        //     if (err) {
+        //         res.sendStatus(403);
+        //     } else {
+        let sql = `SELECT * from invitados where id = ${req.query.id}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            } else {
+
+                return res.send(result);
+            }
+        });
+    },
+
 };
 
 module.exports = controller; 

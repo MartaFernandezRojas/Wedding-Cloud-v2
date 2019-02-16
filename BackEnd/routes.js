@@ -57,6 +57,7 @@ app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
 app.post('/invitados/updateMesa', ProjectControllerinvitados.invitadoUpdateMesa);
 app.post('/invitados/avatar', multipartMiddleware, ProjectControllerinvitados.avatar);
 app.get('/invitados/invitadoMesa', ProjectControllerinvitados.invitadosMesa);
+app.get('/invitados/getInvFoto', ProjectControllerinvitados.getInvFoto);
 
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
 app.get('/log/logOut', ProjectControllerLogin.logoutUser);

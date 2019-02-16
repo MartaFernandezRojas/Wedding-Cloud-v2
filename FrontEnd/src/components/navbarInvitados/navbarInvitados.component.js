@@ -33,8 +33,10 @@ export class NavbarInvitados extends Component {
                             <MDBNavItem >
                                 <MDBNavLink to="/mensajeriaInvitados">Mensajeria</MDBNavLink>
                             </MDBNavItem>
-                            <MDBNavItem active >
-                                <MDBNavLink to="/FormularioConfirmacion">Confirmacion</MDBNavLink>
+                            <MDBNavItem  >
+                                <MDBNavLink to="/FormularioConfirmacion">Perfil</MDBNavLink>
+                            </MDBNavItem><MDBNavItem  >
+                                <MDBNavLink to="/mensajeriaPrivInv">Privados</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem right>
                                 <MDBDropdown>

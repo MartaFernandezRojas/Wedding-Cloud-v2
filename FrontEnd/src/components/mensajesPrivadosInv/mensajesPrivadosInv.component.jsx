@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import styles from './mensajesPrivados.css';
+import styles from './mensajesPrivadosInv.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
 import { mensInv, Inv, postMens, mensPriv } from '@Models'
+import { NavbarInvitados } from '../navbarInvitados';
 
 ///////////// Component ////////////////
-class MensajeriaPriv extends Component {
+class MensajeriaPrivInv extends Component {
     state = {
         inv: [],
         modal3: false
@@ -40,7 +41,7 @@ class MensajeriaPriv extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <NavbarInvitados />
                 <h4>Mensajes privados</h4>
                 <div className="container-fluid">
                     <div className="row">
@@ -107,8 +108,8 @@ const mapDispatchToProps = {
     loadPriv: mensPriv
 }
 
-export const ConnectMensajeriaPriv = connect(
+export const ConnectMensajeriaPrivInv = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(MensajeriaPriv);
+)(MensajeriaPrivInv);
 

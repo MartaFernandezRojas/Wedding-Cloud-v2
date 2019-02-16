@@ -9,7 +9,8 @@ export class CardInvitado extends Component {
     super(props);
     this.state = {
       invitado: {},
-      invitados: []
+      invitados: [],
+      url:'',
     }
   }
   componentDidMount() {
@@ -18,22 +19,24 @@ export class CardInvitado extends Component {
     axios.get('http://localhost:3000/invitados/invitadoMesa', { params: { idb: invitado.id_boda, m: invitado.mesa } })
       .then(response => {
         this.setState({ invitados: response.data })
-        console.log(this.state.invitados)
       })
   }
 
-  insertAvatar(event) {
+  insertAvatar=(event)=> {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-
-
     const fd = new FormData();
     fd.append('image', event.target.files[0], event.target.files[0].name);
     fd.append('id', invitado.id);
 
     axios.post('http://localhost:3000/invitados/avatar', fd)
       .then(response => {
-        console.log('ok')
       })
+
+    axios.get('http://localhost:3000/invitados/getInvFoto',{ params: {id:invitado.id}})
+      .then(response => {
+        this.setState({url:response.data[0].url})
+      })
+      console.log(this.state.url)
   }
   render() {
     let invitado = this.props;
@@ -42,7 +45,7 @@ export class CardInvitado extends Component {
         <MDBCol>
           <MDBCard style={{ width: "100%" }}>
             <form>
-              <MDBCardImage className="img-fluid" id="foto" src="http://www.oscarrodriguezvila.com/wp-content/uploads/2013/03/perfil-oscar2.jpg" waves />
+              <MDBCardImage className="img-fluid" id="foto" src={this.state.url} waves />
               <div className="file-upload-wrapper">
                 <input type="file" id="input-file-now" className="file-upload" name="foto" onChange={this.insertAvatar} />
                 <MDBBtn className="waves-effect waves-light blue btn" id="anadirTarea" >Añadir Foto</MDBBtn>
@@ -67,10 +70,14 @@ export class CardInvitado extends Component {
               <p>Personas asignadas tu mesa </p>
               <ul>
                 {this.state.invitados.map((e, index) => {
+                  console.log(e.mesa)
+                  if(e.mesa!=0){
                   return (<div>
                     <li style={{ height: "40px" }} className="list-group-item list-group-item-warning">{e.nombre} {e.apellido} - {e.familia} de {e.parte}</li>
                   </div>
-                  )
+                  )}else{
+                    return(<p>Aun no tienes asignada mesa</p>)
+                  }
                 })}
               </ul>
             </MDBCardBody>
