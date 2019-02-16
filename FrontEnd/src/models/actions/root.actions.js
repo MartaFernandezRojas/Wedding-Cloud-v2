@@ -76,7 +76,7 @@ export const deleteMensaje = m => dispatch=> {
 export const mensPriv = mens => dispatch => {
   axios.post('http://localhost:3000/mensajes/getmensajePriv', { id_invReceptor: mens.id_invReceptor} )
     .then(response => {
-      dispatch(mensPriv(response.data))
+      dispatch(postPrivado(response.data))
     })
     .catch(err=>{
       console.log(err)
