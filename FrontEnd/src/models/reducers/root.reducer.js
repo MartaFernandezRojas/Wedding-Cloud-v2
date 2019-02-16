@@ -1,7 +1,8 @@
 const initialRootState = {
     mensajes:[],
     invitados:[],
-    respuestas:{}
+    respuestas:{},
+    privados:[]
 
 }
 export function rootReducer(state = initialRootState, action) {
@@ -36,6 +37,11 @@ export function rootReducer(state = initialRootState, action) {
         return{
             ...state,
             mensajes: state.mensajes.filter(value=>value.id_men !== action.payload.id),
+        }
+        case 'PRIV_MENS':
+        return{
+            ...state,
+            privados: [...state.privados, action.payload]
         }
         default:
             return state;

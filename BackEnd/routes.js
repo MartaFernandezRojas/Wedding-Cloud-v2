@@ -71,7 +71,7 @@ app.post('/mensajes/postRespuesta', ProjectControllerMensaje.postRespuesta);
 app.post('/mensajes/getRespuesta', ProjectControllerMensaje.getRespuestas);
 app.post('/mensajes/mensajeDelete', ProjectControllerMensaje.mensajeDelete);
 app.post('/mensajes/mesajePriv', ProjectControllerMensaje.postMensajePriv);
-
+app.post('/mensajes/getmensajePriv', ProjectControllerMensaje.getMensajePriv);
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);

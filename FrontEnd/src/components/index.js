@@ -22,4 +22,5 @@ export * from './mensaje';
 export * from './invitado';
 export * from './tuMesa';
 export * from './mensajeriaAdmin';
+export * from './mensajesPrivados';
 

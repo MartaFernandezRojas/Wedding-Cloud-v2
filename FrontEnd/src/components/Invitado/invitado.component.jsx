@@ -7,28 +7,46 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer,MDBBtn,MDBModal,MDBMod
 import { avatar } from '../../assets';
 ///////////// Component ////////////////
 export class Invitado extends Component {
-state={
-    modal:false,
-}
+    constructor(props) {
+    super(props);
+    this.state={
+        modal:false,
+        mensaje:'',
+        id_invitado:null,
+        id_receptor:null
+    }
+    this.handleChange = this.handleChange.bind(this);
+    }
 
-toggle = () => {
-  this.setState({
-    modal: !this.state.modal
-  });
-}
-
-
-    componentDidMount() {
-
+    toggle = () => {
+    this.setState({
+        modal: !this.state.modal
+    });
     }
 
     insertMen=()=>{
         this.toggle();
     }   
+    handleChange(event) {
+        this.setState({
+            [event.target.id]: event.target.value
+        });
+
+    }
 
     enviarPriv=()=>{
-      console.log('hola2')
+        var invitado = JSON.parse(localStorage.getItem("invitado"));
 
+        let mensaje={
+            mensaje:this.state.mensaje,
+            id_invReceptor:this.props.invitado.id,
+            id_invitado:invitado.id
+        }
+  
+        axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
+      .then(response => {
+        console.log(response.data)
+      })
 
 
       this.toggle()
@@ -46,7 +64,6 @@ toggle = () => {
                         }
                         } value='Confirmar'>Mensaje Privado</MDBBtn>
                          <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
-                            <MDBModalHeader className="blue-grey" toggle={this.toggle}> <input className="form-control" id="titulo" type="text" name="titulo" placeholder="Titulo mensaje" value={this.state.titulo} onChange={this.handleChange} /></MDBModalHeader>
                             <MDBModalBody className="blue-grey">
                                 <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Que quieres decir!" value={this.state.mensaje} onChange={this.handleChange} />
                             </MDBModalBody>

@@ -32,7 +32,7 @@ var controller = {
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
-                
+
             }
             else {
                 let mensaje = {
@@ -51,12 +51,12 @@ var controller = {
     },
 
     postRespuesta: function (req, res) {
-        
+
         let sql = ` insert into respuestas (id_mensaje,id_invitado,mensaje) values (${req.body.id_mensaje},${req.body.id_invitado},'${req.body.mensaje}')`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
-                
+
             }
             else {
                 let respuesta = {
@@ -85,7 +85,7 @@ var controller = {
         });
     },
     mensajeDelete: function (req, res) {
-        
+
         let sql = `DELETE FROM mensajes where id=${req.body.id_mensaje}`;
         con.query(sql, function (err, result) {
             if (err) {
@@ -99,8 +99,9 @@ var controller = {
         let sql = ` insert into mensajePriv (id_invReceptor,id_invitado,mensaje) values (${req.body.id_invReceptor},${req.body.id_invitado},'${req.body.mensaje}')`;
         con.query(sql, function (err, result) {
             if (err) {
-                return res.send(err);
                 console.log(err)
+
+                return res.send(err);
             }
             else {
                 let privado = {
@@ -113,6 +114,16 @@ var controller = {
                 return res.send(privado);
             }
         });
-    }
+    },
+    getMensajePriv: function (req, res) {
+        let sql = `select * from mensajePriv where id_invReceptor=${req.body.id_invReceptor}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
+    },
 }
 module.exports = controller;
