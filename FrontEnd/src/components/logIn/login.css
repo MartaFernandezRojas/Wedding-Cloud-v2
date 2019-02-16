@@ -5,3 +5,9 @@ h3{
 .modals{
     margin-top: 500px;
 }
+
+.titulo{
+    font-size: 25px;
+    color:white;
+    text-align: center;
+}

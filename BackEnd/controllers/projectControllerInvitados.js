@@ -133,6 +133,17 @@ var controller = {
             }
         });
         
+    },
+    invitadosMesa: function(req,res){
+        let sql = `SELECT * from invitados where id_boda = ${req.query.idb} AND mesa= ${req.query.m}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err)
+                return res.send(err);
+            } else {
+                return res.send(result);
+            }
+        });
     }
 };
 

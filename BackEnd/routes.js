@@ -56,6 +56,8 @@ app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
 app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
 app.post('/invitados/updateMesa', ProjectControllerinvitados.invitadoUpdateMesa);
 app.post('/invitados/avatar', multipartMiddleware, ProjectControllerinvitados.avatar);
+app.get('/invitados/invitadoMesa', ProjectControllerinvitados.invitadosMesa);
+
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
 app.get('/log/logOut', ProjectControllerLogin.logoutUser);
 
@@ -68,6 +70,8 @@ app.post('/mensajes/postMensaje', ProjectControllerMensaje.postMensaje);
 app.post('/mensajes/postRespuesta', ProjectControllerMensaje.postRespuesta);
 app.post('/mensajes/getRespuesta', ProjectControllerMensaje.getRespuestas);
 app.post('/mensajes/mensajeDelete', ProjectControllerMensaje.mensajeDelete);
+app.post('/mensajes/mesajePriv', ProjectControllerMensaje.postMensajePriv);
+
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);

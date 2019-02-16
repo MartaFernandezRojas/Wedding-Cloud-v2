@@ -76,7 +76,7 @@ export class Formulario extends Component {
     const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
     return (
       <div className={stylesform.container}>
-        <h5>Registro de Invitado</h5>
+        <h5 className={stylesform.titulo}>Registro de Invitado</h5>
         <form >
           <label >ID Boda:</label>
           <input className="form-control" id="id_boda" type="text" name="boda" placeholder="ID Boda" value={this.state.id_boda} onChange={this.handleChange} />
@@ -88,7 +88,7 @@ export class Formulario extends Component {
           <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           <label form="password">Passsword:</label>
           <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-          <input type='button' onClick={() => {
+          <input type='button' style={{marginTop:"1rem"}} onClick={() => {
             this.insertUser();
           }
           } className={styles.button} value='Confirmar' />

@@ -58,7 +58,7 @@ class MensajeResp extends Component {
         this.props.delete({ id_mensaje: this.props.mensaje.id_men });
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         return true;
     }
     render() {
@@ -66,7 +66,7 @@ class MensajeResp extends Component {
         return (
 
             <MDBContainer>
-                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "28rem", marginTop: "1rem" }}>
+                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "100%", marginTop: "1rem" }}>
                     <div className={styles.fondo}>
                         <div className="row">
                             <div className="col l6">
@@ -99,39 +99,43 @@ class MensajeResp extends Component {
                             <p className={styles.mensaje}>{this.props.mensaje.mensaje}</p>
                         </MDBCardText>
                         <div className="row">
-                            <MDBContainer>
-                                <div className="col l6">
-                                    <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
-                                    <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
-                                        <MDBModalBody className="blue-grey">
-                                            <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Responde al mensaje!" value={this.state.mensaje} onChange={this.handleChange} />
-                                        </MDBModalBody>
-                                        <MDBModalFooter className="blue-grey">
-                                            <MDBBtn color=" red lighten-3" onClick={this.toggle}>Cerrar</MDBBtn>
-                                            <MDBBtn color=" teal darken-1" onClick={this.responder}> Publicar </MDBBtn>
-                                        </MDBModalFooter>
-                                    </MDBModal>
-                                </div>
-                            </MDBContainer>
-                            <div className="row">
-                                <div className="col l6">
-                                    <MDBBtn className={styles.botones} color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
-                                        RESPUESTAS
+
+                            <div className="col l6">
+                                <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
+                                <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
+                                    <MDBModalBody className="blue-grey">
+                                        <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Responde al mensaje!" value={this.state.mensaje} onChange={this.handleChange} />
+                                    </MDBModalBody>
+                                    <MDBModalFooter className="blue-grey">
+                                        <MDBBtn color=" red lighten-3" onClick={this.toggle}>Cerrar</MDBBtn>
+                                        <MDBBtn color=" teal darken-1" onClick={this.responder}> Publicar </MDBBtn>
+                                    </MDBModalFooter>
+                                </MDBModal>
+                            </div>
+
+                            <div className="col l6">
+                                <MDBBtn className={styles.botones} color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
+                                    Respuestas
                                 </MDBBtn>
-                                </div>
-                                <MDBCollapse className={styles.respuestas} id="basicCollapse" isOpen={this.state.collapseID}>
-                                    <MDBListGroup style={{ width: "25rem" }}>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col l12">
+                                <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
+                                    <MDBListGroup className="list-group-item list-group-item-info" style={{ width: "100%" }}>
                                         {this.props.respuestas[idM] && this.props.respuestas[idM].length ?
                                             this.props.respuestas[idM].map(m =>
-                                                <MDBListGroupItem>{m.mensaje}<p className={styles.tipado}> mensaje de: {m.nombre} {m.apellido} {moment(m.fecha).startOf('minutes').fromNow()}</p></MDBListGroupItem>
+                                                <MDBListGroupItem  className="list-group-item list-group-item-info">{m.mensaje}<p className={styles.tipado}> mensaje de: {m.nombre} {m.apellido} {moment(m.fecha).startOf('minutes').fromNow()}</p></MDBListGroupItem>
                                             ) : null
                                         }
-                                        
-                                </MDBListGroup>
+                                    </MDBListGroup>
                                 </MDBCollapse>
-                            </div></div>
+                            </div>
+
+                        </div>
                     </div>
                 </MDBCard>
+
             </MDBContainer >
         );
     }

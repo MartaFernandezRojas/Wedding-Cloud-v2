@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import styles from './mensajeria.css';
+import styles from './mensajeriaAdmin.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
-import { Footer, NavbarInvitados, ConnectMensajeriaResp, Invitado } from '@Components';
+import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
 import { mensInv, Inv, postMens } from '@Models'
 
 ///////////// Component ////////////////
@@ -59,7 +59,7 @@ class MensajeriaInv extends Component {
     render() {
         return (
             <div>
-                <NavbarInvitados />
+                <Navbar />
                 <div className={styles.fondo}>
                     <h1 className={styles.rotulo}>Mensajeria</h1>
                     <MDBContainer>
@@ -129,7 +129,7 @@ const mapDispatchToProps = {
     postMensa: postMens
 }
 
-export const ConnectMensajeriaInv = connect(
+export const ConnectMensajeriaInv2 = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(MensajeriaInv);

@@ -7,7 +7,7 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-  background-color: #92b6d5cb ;
+  background-color: #92b6d5ee ;
   margin-top: -50px;
   margin-bottom:-20px;
   border-radius: 20px;
@@ -48,16 +48,16 @@
 }
 
 .title {
-  font-size: 45px;
+  font-size: 40px;
   align-content: center;
   text-align: center;
   color:white;
-  margin-top:-50px;
+  margin-top:-35px;
 }
 
 .image {
  
-  width:17%;
+  width:16%;
   margin: 15px 0;
   /* max-width:50px; */
 }
@@ -77,10 +77,12 @@
   width: 1px; 
   height: 500px; 
   
- 
 }
-
 
 h3{
   color:white;
+}
+
+.enlace{
+  margin-top: -200px;
 }

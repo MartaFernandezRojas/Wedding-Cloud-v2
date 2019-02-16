@@ -20,3 +20,6 @@ export * from './footer';
 export * from './mensajeria';
 export * from './mensaje';
 export * from './invitado';
+export * from './tuMesa';
+export * from './mensajeriaAdmin';
+

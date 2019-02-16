@@ -37,7 +37,7 @@ export class PaginaResgisLog extends Component {
                         </div>
                         :    <div className="col-l6 mx-5">
                         <LogIn />
-                        <a onClick={this.change}>Registrarse</a>
+                        <a className={Styles.enlace} onClick={this.change}>Registrarse</a>
                     </div>}
 
             </div>

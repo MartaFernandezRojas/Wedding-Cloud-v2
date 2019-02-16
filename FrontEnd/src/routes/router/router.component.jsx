@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import { Store } from '@Models';
 // Import global resources
 import { cloud } from '../../assets';
-import { FormularioConfirmacion,  GestionInvitados, Mesas, PaginaResgisLog,PaginaInicio,FormularioConfirmacionAdmin,ConnectMensajeriaInv } from '../../components';
+import { FormularioConfirmacion,  GestionInvitados, Mesas, PaginaResgisLog,PaginaInicio,FormularioConfirmacionAdmin,ConnectMensajeriaInv,ConnectMensajeriaInv2 } from '../../components';
+
 import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
 
 // Import local resources
@@ -50,6 +51,7 @@ export class Router extends Component {
             <Route path="/gestionInvitados" exact component={GestionInvitados} />
             <Route path="/mesas" exact component={Mesas} />
             <Route path="/mensajeriaInvitados" exact component={ConnectMensajeriaInv} />
+            <Route path="/mensajeriaAdmin" exact component={ConnectMensajeriaInv2} />
           </Switch>
         </Provider>
       </BrowserRouter >

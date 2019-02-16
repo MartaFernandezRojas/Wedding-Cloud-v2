@@ -33,6 +33,9 @@ p{
     width: 500
 }
 
-/* li{
-    width: 100px;
-} */
+.fondo{
+    background-color: rgb(192, 209, 219);
+}
+.titulos{
+    size:30px;
+}

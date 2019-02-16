@@ -29,7 +29,7 @@ export class Navbar extends Component {
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar >
                         <MDBNavbarNav right>
                             <MDBNavItem >
-                                <MDBNavLink to="/mensajeriaInvitados">Mensajeria</MDBNavLink>
+                                <MDBNavLink to="/mensajeriaAdmin">Mensajeria</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem >
                                 <MDBNavLink to="/gestionInvitados">Invitados</MDBNavLink>

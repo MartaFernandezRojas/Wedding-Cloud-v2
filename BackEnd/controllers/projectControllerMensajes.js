@@ -32,7 +32,7 @@ var controller = {
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
-                console.log(err)
+                
             }
             else {
                 let mensaje = {
@@ -46,22 +46,22 @@ var controller = {
             }
         });
     },
-    postLike:function(req, res) {
+    postLike: function (req, res) {
 
     },
 
-    postRespuesta: function(req,res){
-        console.log(req.body);
-        let sql=` insert into respuestas (id_mensaje,id_invitado,mensaje) values (${req.body.id_mensaje},${req.body.id_invitado},'${req.body.mensaje}')`;
+    postRespuesta: function (req, res) {
+        
+        let sql = ` insert into respuestas (id_mensaje,id_invitado,mensaje) values (${req.body.id_mensaje},${req.body.id_invitado},'${req.body.mensaje}')`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
-                console.log(err)
+                
             }
             else {
                 let respuesta = {
                     id: result.insertId,
-                    id_mensaje:req.body.id_mensaje,
+                    id_mensaje: req.body.id_mensaje,
                     id_invitado: req.body.id_invitado,
                     mensaje: req.body.mensaje,
                     fecha: req.body.fecha
@@ -84,8 +84,8 @@ var controller = {
             }
         });
     },
-    mensajeDelete:function (req, res) {
-        console.log(req.body)
+    mensajeDelete: function (req, res) {
+        
         let sql = `DELETE FROM mensajes where id=${req.body.id_mensaje}`;
         con.query(sql, function (err, result) {
             if (err) {
@@ -95,6 +95,24 @@ var controller = {
             }
         });
     },
-
+    postMensajePriv: function (req, res) {
+        let sql = ` insert into mensajePriv (id_invReceptor,id_invitado,mensaje) values (${req.body.id_invReceptor},${req.body.id_invitado},'${req.body.mensaje}')`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+                console.log(err)
+            }
+            else {
+                let privado = {
+                    id: result.insertId,
+                    id_invReceptor: req.body.id_invReceptor,
+                    id_invitado: req.body.id_invitado,
+                    mensaje: req.body.mensaje,
+                    fecha: req.body.fecha
+                }
+                return res.send(privado);
+            }
+        });
+    }
 }
 module.exports = controller;

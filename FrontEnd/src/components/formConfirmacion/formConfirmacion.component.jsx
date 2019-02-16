@@ -24,8 +24,9 @@ export class FormularioConfirmacion extends Component {
       familia: '',
       fiestapreboda: '',
       comentarios: ' ',
-      novio1:'',
-      novio2:''
+      novio1: '',
+      novio2: '',
+      mesa:''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -48,7 +49,7 @@ export class FormularioConfirmacion extends Component {
       familia: this.state.familia,
       fiestapreboda: this.state.fiestapreboda,
       comentarios: this.state.comentarios
-      
+
     }
     axios.post('http://localhost:3000/invitados/update', user)
       .then(response => {
@@ -70,19 +71,19 @@ export class FormularioConfirmacion extends Component {
         this.setState(response.data[0])
 
       })
-      axios.get('http://localhost:3000/boda/novios', { params: { idb: invitado.id_boda } })
+    axios.get('http://localhost:3000/boda/novios', { params: { idb: invitado.id_boda } })
       .then(response => {
-        this.setState({novio1:response.data[0].novio1})
-        this.setState({novio2:response.data[0].novio2})
+        this.setState({ novio1: response.data[0].novio1 })
+        this.setState({ novio2: response.data[0].novio2 })
       })
   }
   render() {
     return (
-      <div>
+      <div className={styles2.fondo}>
         <NavbarInvitados />
         <div className="container">
-        <h4>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
-          <h4> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</h4>
+          <h4  className={styles2.titulos}>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
+          <h4 className={styles2.titulos}> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</h4>
           <h6>Rellena el formulario de confirmación</h6>
           <div className="row">
             <div className="col l6 mx-5">
@@ -162,6 +163,7 @@ export class FormularioConfirmacion extends Component {
           </div>
         </div>
       </div >
+
     );
   }
 }

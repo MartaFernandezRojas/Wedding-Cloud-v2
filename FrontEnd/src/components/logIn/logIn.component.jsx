@@ -66,13 +66,13 @@ export class LogIn extends Component {
         const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
         return (
             <div>
-                <h5>Log In</h5>
+                <h5 className={stylesform.titulo}>Log In</h5>
                 <form >
                     <label form="email">Email:</label>
                     <input className="form-control validate" id="emailregistro" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                     <label form="password">Passsword:</label>
                     <input className="form-control" id="passwordregistro" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                    <input type='button' onClick={() => {
+                    <input type='button' style={{marginTop:"1rem"}}onClick={() => {
                         this.logInUser();
                     }
                     } className={styles.button} value='Confirmar' />

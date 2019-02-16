@@ -1,0 +1,13 @@
+.fondo{
+    margin-top:-20px;
+    background-color: rgb(192, 209, 219);
+}
+
+.rotulo{
+    color:white;
+}
+
+.center{
+    display: flex;
+    align-content: center;
+}
