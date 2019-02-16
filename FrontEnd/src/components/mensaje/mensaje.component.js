@@ -94,7 +94,7 @@ class MensajeResp extends Component {
                                 </div>
                                 : null}
                         </div>
-                        <MDBCardTitle><h3 className={styles.titulo}>{this.props.mensaje.titulo} </h3></MDBCardTitle>
+                        <MDBCardTitle><h5 className={styles.titulo} style={{fontSize:"15px",marginTop:"-40px"}}>{this.props.mensaje.titulo} </h5></MDBCardTitle>
                         <MDBCardText>
                             <p className={styles.mensaje}>{this.props.mensaje.mensaje}</p>
                         </MDBCardText>

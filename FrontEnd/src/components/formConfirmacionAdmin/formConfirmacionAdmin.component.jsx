@@ -7,7 +7,7 @@ import axios from 'axios';
 import styles2 from './formConfirmacionAdmin.styles.css';
 import styles from '../../routes/router/router.styles.css';
 import { NavbarInvitados } from '../navbarInvitados/navbarInvitados.component'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter  } from 'mdbreact';
 import { style } from 'react-toastify';
 import { CardInvitado, Navbar } from '@Components';
 import Card from '../../../node_modules/react-materialize/lib/Card';
@@ -25,7 +25,8 @@ export class FormularioConfirmacionAdmin extends Component {
       fiestapreboda: '',
       comentarios: ' ',
       novio1: '',
-      novio2: ''
+      novio2: '',
+      modal: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -53,8 +54,13 @@ export class FormularioConfirmacionAdmin extends Component {
       .then(response => {
 
       })
+      this.toggle();
   }
-
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value
@@ -81,11 +87,12 @@ export class FormularioConfirmacionAdmin extends Component {
         <div className={styles2.fondo}>
           <Navbar />
           <div className="container">
-            <h4>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
-            <h4> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</h4>
-            <h6>Rellena el formulario de confirmación</h6>
-            <div className="row">
+          <div className="row">
               <div className="col l6 mx-5">
+            <p style={{fontSize:"30px"}}>Bienvenid@ {this.state.nombre}  {this.state.apellido}</p>
+            <p style={{fontSize:"20px"}}> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</p>
+            <h6>Rellena el formulario de confirmación</h6>
+           
                 <form >
                   <label className={styles2.label} form="nombre">Nombre</label>
                   <input className="form-control" id="nombre" type="text" name="nombre" placeholder={this.state.invitados ? this.state.invitados.nombre : 'null'} value={this.state.nombre} onChange={this.handleChange} />
@@ -150,10 +157,18 @@ export class FormularioConfirmacionAdmin extends Component {
                       <textarea className="form-control" id="comentarios" value={this.state.comentarios} onChange={this.handleChange} rows="4"></textarea>
                     </div>
                   </div>
-                  <MDBBtn outline color="info" type='button' onClick={() => {
+                  <MDBBtn color ="blue-grey"className="waves-effect waves-light btn"  type='button' onClick={() => {
                     this.insertUser();
                   }
                   } value='Confirmar'>Confirmar</MDBBtn>
+                     <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+                    <MDBModalBody>
+                      Formulario Enviado
+                    </MDBModalBody>
+                    <MDBModalFooter>
+                      <MDBBtn color="secondary" onClick={this.toggle}>Cerrar</MDBBtn>
+                    </MDBModalFooter>
+                  </MDBModal>
                 </form>
               </div>
               <div className="col l6" >

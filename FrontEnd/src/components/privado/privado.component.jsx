@@ -56,16 +56,17 @@ class Priv extends Component {
             id_invReceptor: this.props.inv.id,
             id_invitado: invitado.id
         }
-        console.log(mensaje);
 
         axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
             .then(response => {
-                console.log(response.data)
+                console.log(response.data);
+                this.props.deleteMens({ id: this.props.priv.id });
             })
-            this.props.loadPriv({ id_invReceptor: invitado.id })
-            this.setState({
-                modal: !this.state.modal
-            });
+        this.props.loadPriv({ id_invReceptor: invitado.id })
+        this.setState({
+            modal: !this.state.modal
+        });
+
     }
     handleChange(event) {
         this.setState({
@@ -80,17 +81,16 @@ class Priv extends Component {
             <div className={styles.fondo}>
 
                 <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "22rem", marginBottom: "10px" }}>
-                    <MDBCardBody>
+                    <MDBCardBody><button className={styles.button} style={{fontSize:"15px"}} onClick={this.toggle2}>
+                        <b>x</b> </button>
                         <div className="row">
-                            <button className={styles.button} onClick={this.toggle2}>
-                                <b>x</b> </button>
                             <div className="col l12">
-                                <p style={{ color: "white" }}>{this.props.inv.nombre} {this.props.inv.apellido} - ( {this.props.inv.familia} de {this.props.inv.parte} )</p>
+                                <p style={{ color: "white", fontSize: "18px" }}>{this.props.inv.nombre} {this.props.inv.apellido} - ( {this.props.inv.familia} de {this.props.inv.parte} )</p>
                             </div></div>
                         < MDBCardText >
-                            <p style={{ color: "white", fontSize: "20px" }}>{privado.mensaje}</p>
+                            <p style={{ color: "white", fontSize: "15px" }}>{privado.mensaje}</p>
                         </MDBCardText>
-                        <MDBBtn color="pink" onClick={this.toggle} href="#">Contestar</MDBBtn>
+                        <MDBBtn color="blue-grey" onClick={this.toggle} href="#">Contestar</MDBBtn>
                     </MDBCardBody>
                     <MDBContainer>
                         <MDBModal isOpen={this.state.modal3} toggle={this.toggle2}>

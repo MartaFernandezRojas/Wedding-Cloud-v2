@@ -41,13 +41,13 @@ class MensajeriaPrivInv extends Component {
     }
     render() {
         return (
-            <div>
+            <div className={styles.fondo}>
                 <NavbarInvitados />
-                <h4>Mensajes privados</h4>
-                <div className="container-fluid">
+                <div className="container-fluid" style={{marginTop:"30px"}}>
+                {/* <h5 style={{color:"black", marginTop:"20px"}}>Mensajes recibidos</h5> */}
                     <div className="row">
-                        <div className="col l6">
-                            <h1>Mensajes recibidos</h1>
+                        {/* <div className="col l6"> */}
+                           
                             {this.props.privados.map(m => {
                                 return (
                                     m.map(i => {
@@ -65,7 +65,7 @@ class MensajeriaPrivInv extends Component {
                             })}
                         </div>
 
-                        <div className="row">
+                        {/* <div className="row">
                             <div className="col l6">
                                 <h1>Mensajes Enviados</h1>
                                 {this.props.privados2.map(m => {
@@ -85,10 +85,10 @@ class MensajeriaPrivInv extends Component {
                                     )
                                 })}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
-            </div>
+            // </div>
         )
     }
 }

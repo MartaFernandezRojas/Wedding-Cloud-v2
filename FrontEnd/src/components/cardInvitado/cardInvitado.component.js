@@ -42,19 +42,19 @@ export class CardInvitado extends Component {
     let invitado = this.props;
     return (
       <div>
-        <MDBCol>
-          <MDBCard style={{ width: "100%" }}>
+        <MDBCol style={{marginTop:"50px"}}>
+          <MDBCard  color="blue-grey darken-1" style={{ width: "100%" }}>
             <form>
-              <MDBCardImage className="img-fluid" id="foto" src={this.state.url} waves />
+              <MDBCardImage  className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
               <div className="file-upload-wrapper">
                 <input type="file" id="input-file-now" className="file-upload" name="foto" onChange={this.insertAvatar} />
-                <MDBBtn className="waves-effect waves-light blue btn" id="anadirTarea" >Añadir Foto</MDBBtn>
+                <MDBBtn color ="blue-grey"className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
               </div>
             </form>
             <MDBCardBody>
-              <h4>{invitado.props.nombre} {invitado.props.apellido}</h4>
+              <p style={{fontSize:"35px", color:"white"}}>{invitado.props.nombre} {invitado.props.apellido}</p>
               <MDBCardText>
-                <p>Estos son tus datos de confirmación:</p>
+                <p style={{color:"white"}}>Estos son tus datos de confirmación:</p>
                 <ul>
                   <li style={{ height: "40px" }} className="list-group-item list-group-item-info">Email: {invitado.props.email}</li>
                   <li style={{ height: "40px" }} className="list-group-item list-group-item-info">Parte: {invitado.props.parte}</li>
@@ -66,8 +66,8 @@ export class CardInvitado extends Component {
                 </ul>
               </MDBCardText>
               {/* { <TuMesa props={this.state.invitado}/> } */}
-              <p>*Si quieres modificar cualquier dato, vuelve a rellenar el formulario</p>
-              <p>Personas asignadas tu mesa </p>
+              <p style={{color:"white"}}>*Si quieres modificar cualquier dato, vuelve a rellenar el formulario</p>
+              <p style={{fontSize:"20px",color:"white"}}>Personas asignadas tu mesa </p>
               <ul>
                 {this.state.invitados.map((e, index) => {
                   console.log(e.mesa)
@@ -76,7 +76,7 @@ export class CardInvitado extends Component {
                     <li style={{ height: "40px" }} className="list-group-item list-group-item-warning">{e.nombre} {e.apellido} - {e.familia} de {e.parte}</li>
                   </div>
                   )}else{
-                    return(<p>Aun no tienes asignada mesa</p>)
+                    return(<p style={{color:"white"}}>Aun no tienes asignada mesa</p>)
                   }
                 })}
               </ul>

@@ -55,13 +55,13 @@ class MensajeriaInv extends Component {
         })
 
     }
- 
+
     render() {
         return (
             <div>
                 <Navbar />
                 <div className={styles.fondo}>
-                    <h1 className={styles.rotulo}>Mensajeria</h1>
+                    {/* <h1 className={styles.rotulo}>Mensajeria</h1> */}
                     <MDBContainer>
                         <MDBBtn color="blue-grey" onClick={this.toggle}>Nuevo Mensaje</MDBBtn>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
@@ -78,32 +78,34 @@ class MensajeriaInv extends Component {
                     <div className={styles.center}>
                         <div className="container-fluid">
                             <div className="row">
-                                    <div className="col l4 s12">
-                                        <h5>Mensajes novios</h5>
-                                        {this.props.mensajes.slice(0).reverse().map(m => {
-                                            if (m.rol == 1) {
-                                                return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
-                                            }
-                                        })}
-                                    </div>
-                                    <div className="col l4 s12">
-                                        <h5>Mensajes Invitados</h5>
-                                        {this.props.mensajes.slice(0).reverse().map(m => {
-                                            if (m.rol == 0) {
-                                                return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={m} />
-                                            }
-                                        })}
-                                    </div>
-                                    <div className="col l4 s12">
-                                        <h5>Invitados</h5>
-                                        {this.props.invitados.map(m => {
+                                <div className="col l4 s12">
+                                    <h5>Mensajes novios</h5>
+                                    {this.props.mensajes.slice(0).reverse().map(m => {
+                                        if (m.rol == 1) {
+                                            return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
+                                        }
+                                    })}
+                                </div>
+                                <div className="col l4 s12">
+                                    <h5>Mensajes Invitados</h5>
+                                    {this.props.mensajes.slice(0).reverse().map(m => {
+                                        if (m.rol == 0) {
+                                            return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={m} />
+                                        }
+                                    })}
+                                </div>
+                                <div className="col l4 s12">
+                                    <h5>Invitados</h5>
+                                    {this.props.invitados.map(m => {
+                                        if (m.id != this.state.inv.id) {
                                             if (m.rol == 1) {
                                                 return <Invitado key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
                                             } else {
                                                 return <Invitado key={m.id} invitado={m} />
                                             }
-                                        })}
-                                    </div>
+                                        }
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
