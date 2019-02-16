@@ -125,5 +125,16 @@ var controller = {
             }
         });
     },
+    getInvPriv: function (req, res) {
+        let sql = `SELECT nombre,apellido,parte,familia,mesa from invitados where id = ${req.body.id}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            } else {
+              
+                return res.send(result);
+            }
+        });
+    },
 }
 module.exports = controller;

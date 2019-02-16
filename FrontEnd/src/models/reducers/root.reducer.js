@@ -41,7 +41,7 @@ export function rootReducer(state = initialRootState, action) {
         case 'PRIV_MENS':
         return{
             ...state,
-            privados: [...state.privados, action.payload]
+            privados: [action.payload]
         }
         default:
             return state;
