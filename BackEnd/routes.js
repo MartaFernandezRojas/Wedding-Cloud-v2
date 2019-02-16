@@ -73,6 +73,7 @@ app.post('/mensajes/getRespuesta', ProjectControllerMensaje.getRespuestas);
 app.post('/mensajes/mensajeDelete', ProjectControllerMensaje.mensajeDelete);
 app.post('/mensajes/mesajePriv', ProjectControllerMensaje.postMensajePriv);
 app.post('/mensajes/getmensajePriv', ProjectControllerMensaje.getMensajePriv);
+app.post('/mensajes/getmensajePriv2', ProjectControllerMensaje.getMensajePriv2);
 app.post('/mensajes/getInvPriv', ProjectControllerMensaje.getInvPriv);
 app.post('/mensajes/privadoDelete', ProjectControllerMensaje.PrivadoDelete);
 

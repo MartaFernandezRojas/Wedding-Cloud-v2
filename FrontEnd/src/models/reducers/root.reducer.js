@@ -2,7 +2,8 @@ const initialRootState = {
     mensajes:[],
     invitados:[],
     respuestas:{},
-    privados:[]
+    privados:[],
+    privados2:[]
 
 }
 export function rootReducer(state = initialRootState, action) {
@@ -42,6 +43,11 @@ export function rootReducer(state = initialRootState, action) {
         return{
             ...state,
             privados: [action.payload]
+        }
+        case 'PRIV_MENS2':
+        return{
+            ...state,
+            privados2: [action.payload]
         }
         case 'DEL_PRIV':
         return{

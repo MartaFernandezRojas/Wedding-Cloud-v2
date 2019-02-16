@@ -7,6 +7,7 @@ const getRespuesta = payload => ({ payload, type: 'GET_RESP' });
 const deleteMens = payload=>({payload, type: 'DEL_MENS'})
 const postPrivado=payload=>({payload, type: 'PRIV_MENS'})
 const borrarPriv = payload=>({payload, type: 'DEL_PRIV'})
+const postPrivado2=payload=>({payload, type: 'PRIV_MENS2'})
 
 export const mensInv = inv => dispatch => {
     axios.post('http://localhost:3000/mensajes/getMensajes', { idb: inv.idb} )
@@ -77,6 +78,15 @@ export const mensPriv = mens => dispatch => {
   axios.post('http://localhost:3000/mensajes/getmensajePriv', { id_invReceptor: mens.id_invReceptor} )
     .then(response => {
       dispatch(postPrivado(response.data))
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+}
+export const mensPriv2 = mens => dispatch => {
+  axios.post('http://localhost:3000/mensajes/getmensajePriv2', { id_invitado: mens.id_invitado} )
+    .then(response => {
+      dispatch(postPrivado2(response.data))
     })
     .catch(err=>{
       console.log(err)

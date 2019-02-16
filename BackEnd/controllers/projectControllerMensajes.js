@@ -125,6 +125,16 @@ var controller = {
             }
         });
     },
+    getMensajePriv2: function (req, res) {
+        let sql = `select * from mensajePriv where id_invitado=${req.body.id_invitado}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        });
+    },
     getInvPriv: function (req, res) {
         let sql = `SELECT nombre,apellido,parte,familia,mesa from invitados where id = ${req.body.id}`;
         con.query(sql, function (err, result) {

@@ -22,10 +22,9 @@ class MensajeriaPriv extends Component {
         this.props.loadInv({ idb: invitado.id_boda })
         // this.setState({
         //     inv: invitado
-
         // })
-        console.log(this.state.inv)
-        this.props.loadPriv({ id_invReceptor: invitado.id })
+
+        this.props.loadPriv(  { id_invReceptor: invitado.id })
     }
     componentDidUpdate() {
         return true;
@@ -36,7 +35,7 @@ class MensajeriaPriv extends Component {
         });
     }
     eliminar=()=> {
-        console.log(this.props.privados)
+       
         // this.props.deleteMens({ id: this.props.id});
     }
     render() {
@@ -47,6 +46,7 @@ class MensajeriaPriv extends Component {
                 <div className="container-fluid" style={{marginTop:"30px"}}>
                     <div className="row">
                         {this.props.privados.map(m => {
+                            console.log(m)
                             return (
                                 m.map(i => {
                                     return (
