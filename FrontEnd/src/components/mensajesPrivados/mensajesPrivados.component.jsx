@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import styles from './mensajesPrivados.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
-import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
-import { mensInv, Inv, postMens, mensPriv } from '@Models'
+import { Footer, Navbar, ConnectMensajeriaResp, Invitado,ConnectPriv} from '@Components';
+import { mensInv, Inv, postMens, mensPriv,borrarPriva } from '@Models'
+import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
 class MensajeriaPriv extends Component {
@@ -34,15 +35,16 @@ class MensajeriaPriv extends Component {
             modal3: !this.state.modal3
         });
     }
-    eliminar() {
-
+    eliminar=()=> {
+        console.log(this.props.privados)
+        // this.props.deleteMens({ id: this.props.id});
     }
     render() {
         return (
-            <div>
+            <div className={styles.fondo}>
                 <Navbar />
-                <h4>Mensajes privados</h4>
-                <div className="container-fluid">
+                {/* <h4>Mensajes privados</h4> */}
+                <div className="container-fluid" style={{marginTop:"30px"}}>
                     <div className="row">
                         {this.props.privados.map(m => {
                             return (
@@ -51,32 +53,8 @@ class MensajeriaPriv extends Component {
                                         <div className="col l3">
                                             {this.props.invitados.map(b => {
                                                 if (b.id == i.id_invitado) {
-                                                    return (<MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "22rem", marginBottom: "10px" }}>
-                                                        <MDBCardBody>
-                                                            <div className="row">
-                                                            <button className={styles.button} onClick={this.toggle2}>
-                                                                        <b>x</b> </button>
-                                                                <div className="col l12">
-                                                                    <p style={{ color: "white" }}>{b.nombre} {b.apellido} - ( {b.familia} de {b.parte} )</p>
-                                                                    
-                                                                </div></div>
-                                                            < MDBCardText >
-                                                                <p style={{ color: "white", fontSize: "20px" }}>{i.mensaje}</p>
-                                                            </MDBCardText>
-                                                            <MDBBtn href="#">Contestar</MDBBtn>
-                                                        </MDBCardBody>
-                                                        <MDBContainer>
-                                                            <MDBModal isOpen={this.state.modal3} toggle={this.toggle2}>
-                                                                <MDBModalBody>
-                                                                    ¿Estas seguro que quieres borrar el mensaje?
-                                                                </MDBModalBody>
-                                                                <MDBModalFooter>
-                                                                    <MDBBtn color="secondary" onClick={this.toggle2}>Cerrar</MDBBtn>
-                                                                    <MDBBtn color="primary" onClick={this.eliminar}>Borrar</MDBBtn>
-                                                                </MDBModalFooter>
-                                                            </MDBModal>
-                                                        </MDBContainer>
-                                                    </MDBCard>
+                                                    return (
+                                                        <ConnectPriv key={i.id} priv={i} inv={b}/>
                                                     )
                                                 }
                                             })}
@@ -104,7 +82,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = {
     loadInv: Inv,
-    loadPriv: mensPriv
+    loadPriv: mensPriv,
+    deleteMens:borrarPriva
 }
 
 export const ConnectMensajeriaPriv = connect(

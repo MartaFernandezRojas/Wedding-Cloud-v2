@@ -43,6 +43,11 @@ export function rootReducer(state = initialRootState, action) {
             ...state,
             privados: [action.payload]
         }
+        case 'DEL_PRIV':
+        return{
+            ...state,
+            privados: state.privados.filter(value=>value.id!== action.payload.id)
+        }
         default:
             return state;
     }

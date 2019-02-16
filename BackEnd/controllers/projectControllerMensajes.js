@@ -136,5 +136,16 @@ var controller = {
             }
         });
     },
+    PrivadoDelete: function (req, res) {
+        let sql = `DELETE FROM mensajePriv where id=${req.body.id}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            } else {
+                return res.send(result);
+            }
+        });
+    },
+
 }
 module.exports = controller;
