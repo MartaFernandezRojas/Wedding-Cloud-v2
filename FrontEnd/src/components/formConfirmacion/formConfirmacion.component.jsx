@@ -9,7 +9,7 @@ import styles from '../../routes/router/router.styles.css';
 import { NavbarInvitados } from '../navbarInvitados/navbarInvitados.component'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import { style } from 'react-toastify';
-import { CardInvitado } from '../cardInvitado/cardInvitado.component';
+import { CardInvitado, CardInvitadoMesa } from '@Components';
 import Card from '../../../node_modules/react-materialize/lib/Card';
 
 
@@ -177,6 +177,9 @@ export class FormularioConfirmacion extends Component {
             <div className="col l6" >
               <CardInvitado props={this.state} />
             </div>
+            <div className="col l6" >
+                <CardInvitadoMesa props={this.state} />
+              </div>
           </div>
         </div>
       </div >

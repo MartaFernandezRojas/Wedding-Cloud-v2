@@ -3,7 +3,8 @@ const initialRootState = {
     invitados:[],
     respuestas:{},
     privados:[],
-    privados2:[]
+    privados2:[],
+    respuestasPriv:{},
 
 }
 export function rootReducer(state = initialRootState, action) {
@@ -54,6 +55,11 @@ export function rootReducer(state = initialRootState, action) {
             ...state,
             privados: state.privados.filter(value=>value.id!== action.payload.id)
         }
+        case 'POST_RESP_PRIV':
+        return{
+            ...state,
+            respuestasPriv:{...state.respuestasPriv, [action.payload.id]: [...state.respuestasPriv[action.payload.id],action.payload.resp]}
+        } 
         default:
             return state;
     }

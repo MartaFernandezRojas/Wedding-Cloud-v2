@@ -156,6 +156,37 @@ var controller = {
             }
         });
     },
+    postRespuestaPriv: function (req, res) {
+        let sql = ` insert into respuestasPriv (id_mensajePriv,id_invitado,mensaje) values (${req.body.id_mensajePriv},${req.body.id_invitado},'${req.body.mensaje}')`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            }
+            else {
+                let respuesta = {
+                    id: result.insertId,
+                    id_mensajePriv: req.body.id_mensajePriv,
+                    id_invitado: req.body.id_invitado,
+                    mensaje: req.body.mensaje,
+                    fecha: req.body.fecha
+                }
+                return res.send(respuesta);
+            }
+        });
+
+    },
+    getRespuestasPriv: function (req, res) {
+        let sql = `select r.id as id_resp,r.id_mensajePriv,r.id_invitado,r.mensaje,r.fecha, i.id=id_invitado, i.nombre, i.apellido from respuestasPriv r
+        inner join invitados i on (i.id=r.id_invitado) where id_mensajePriv=${req.body.id_mensajePriv}`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+
+            }
+        });
+    },
 
 }
 module.exports = controller;

@@ -6,7 +6,7 @@ import styles from './privado.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
-import { mensInv, Inv, postMens, mensPriv, borrarPriva } from '@Models'
+import { mensInv, Inv, postMens, mensPriv, borrarPriva,postRespPriv } from '@Models'
 import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
@@ -32,7 +32,8 @@ class Priv extends Component {
         this.props.loadPriv({ id_invReceptor: invitado.id })
     }
     componentDidUpdate() {
-        return true;
+        // var invitado = JSON.parse(localStorage.getItem("invitado"));
+        // this.props.loadPriv({ id_invReceptor: invitado.id })
     }
     toggle2 = () => {
         this.setState({
@@ -50,18 +51,18 @@ class Priv extends Component {
     insertMensaje = () => {
 
         var invitado = JSON.parse(localStorage.getItem("invitado"));
-
         let mensaje = {
             mensaje: this.state.mensaje,
-            id_invReceptor: this.props.inv.id,
-            id_invitado: invitado.id
+            id_mensajePriv: this.props.priv.id,
+            id_invitado: this.props.inv.id,
         }
+        console.log(mensaje);
+        this.props.postRespPriv({mensaje})
+        // axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
+        //     .then(response => {
+        //     })
 
-        axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
-            .then(response => {
-                console.log(response.data);
-                this.props.deleteMens({ id: this.props.priv.id });
-            })
+        // this.props.deleteMens({ id: this.props.priv.id });
         this.props.loadPriv({ id_invReceptor: invitado.id })
         this.setState({
             modal: !this.state.modal
@@ -86,12 +87,15 @@ class Priv extends Component {
                         <b>x</b> </button> */}
                         <div className="row">
                             <div className="col l6">
-                                <p style={{ color: "white", fontSize: "15px" }}>{this.props.inv.nombre} {this.props.inv.apellido} - ( {this.props.inv.familia} de {this.props.inv.parte} )</p>
+                                <p style={{ color: "white", fontSize: "15px" }}>{this.props.inv.nombre} {this.props.inv.apellido} -  {this.props.inv.familia} de {this.props.inv.parte} </p>
                             </div></div>
                         < MDBCardText >
-                            <p style={{ color: "white", fontSize: "15px" }}>{privado.mensaje}</p>
+                            <ul>
+                                <li className="list-group-item list-group-item-info">{this.props.inv.nombre}: {privado.mensaje}</li>
+                            </ul>
+
                         </MDBCardText>
-                        <MDBBtn color="blue-grey" onClick={this.toggle} size ="sm">Contestar</MDBBtn>
+                        <MDBBtn color="blue-grey" onClick={this.toggle} size="sm">Contestar</MDBBtn>
                     </MDBCardBody>
                     <MDBContainer>
                         <MDBModal isOpen={this.state.modal3} toggle={this.toggle2}>
@@ -124,13 +128,15 @@ const mapStateToProps = (state, props) => {
         ...props,
         invitados: state.rootReducer.invitados,
         privados: state.rootReducer.privados,
+        respuestasPriv:state.rootReducer.respuestasPriv
     };
 }
 
 const mapDispatchToProps = {
     loadInv: Inv,
     loadPriv: mensPriv,
-    deleteMens: borrarPriva
+    deleteMens: borrarPriva,
+    postRespPriv:postRespPriv
 }
 
 export const ConnectPriv = connect(

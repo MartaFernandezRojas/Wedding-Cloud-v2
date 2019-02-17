@@ -76,35 +76,65 @@ export class Mesas extends PureComponent {
             <div className={styles.fondo}>
                 <ConnectNavbar />
                 <div className="container-fluid">
-                    <h1>Planificador de mesas de {this.state.nombre}</h1>
+                    <h1 style={{ fontSize: "20px", color: "grey" }}>Planificador de mesas de {this.state.nombre}</h1>
                     <div className="row">
-                        <div className="col l12 s12">
-                            
-                                <Droppable
-                                    types={['invitado']} // <= allowed drop types
-                                    onDrop={this.onDrop.bind(this, 99)}>
-                                    <div className={styles.circlePres}><div><h3>PRESIDENCIAL</h3><ul className={styles.listaPres}>
 
-                                        {this.state.invitados.map((e, index) => {
-                                            if (e.mesa == 99 && e.id_alergia != 'null') {
+                        <div className="col l6 s12">
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 99)}>
 
-                                                return (
+                                <div className={styles.circlePres}><div><ul className={styles.listaPres}>
+                                    <h3 style={{ fontSize: "15px" }}>PRESIDENCIAL</h3>
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                            return (
 
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
-                                                )
-                                            } else if (e.mesa == 99) {
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        } else if (e.mesa == 99 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
-                                                return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
-                                                )
-                                            }
-                                            <h1>cont1</h1>
-                                        })}
-                                    </ul>
-                                    </div>
-                                    </div>
-                                </Droppable>
-                        
+                                            return (
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                        <h1>cont1</h1>
+                                    })}
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+
+                        </div>
+                        <div className="col l6 s12">
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 98)}>
+
+                                <div className={styles.desasignados}><div><ul className={styles.listaPres}>
+                                    <h3 style={{ fontSize: "15px" }}>Limbo</h3>
+                                    {this.state.invitados.map((e, index) => {
+
+
+                                        if (e.mesa == 98 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+
+                                            return (
+
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        } else if (e.mesa == 98 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+
+                                            return (
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+
+                                        <h1>cont1</h1>
+                                    })}
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
                         </div>
                     </div>
                     <div className="row">
@@ -112,16 +142,17 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 1)}>
-                                <div className={styles.circle}><div><h3>1</h3><ul className={styles.lista}>
+
+                                <div className={styles.circle}>  <h3>1</h3><div><ul className={styles.lista}>
 
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 1 && e.id_alergia != 'null') {
+                                        if (e.mesa == 1 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             cont1++;
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 1) {
+                                        } else if (e.mesa == 1 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             cont1++;
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
@@ -137,15 +168,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 5)}>
-                                <div className={styles.circle}><div><h3>5</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>5</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 5 && e.id_alergia != 'null') {
+                                        if (e.mesa == 5 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 5) {
+                                        } else if (e.mesa == 5 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -158,17 +189,17 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 9)}>
-                                <div className={styles.circle}><div><h3>9</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>9</h3><div><ul className={styles.lista}>
 
 
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 9 && e.id_alergia != 'null') {
+                                        if (e.mesa == 9 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 9) {
+                                        } else if (e.mesa == 9 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -184,16 +215,16 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 2)}>
-                                <div className={styles.circle}><div><h3>2</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>2</h3><div><ul className={styles.lista}>
                                     <div className="col l6">
                                         {this.state.invitados.map((e, index) => {
-                                            if (e.mesa == 2 && e.id_alergia != 'null') {
+                                            if (e.mesa == 2 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
 
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
-                                            } else if (e.mesa == 2) {
+                                            } else if (e.mesa == 2 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
@@ -207,15 +238,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 6)}>
-                                <div className={styles.circle}><div><h3>6</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>6</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 6 && e.id_alergia != 'null') {
+                                        if (e.mesa == 6 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 6) {
+                                        } else if (e.mesa == 6 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -228,15 +259,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 10)}>
-                                <div className={styles.circle}><div><h3>10</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>10</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 10 && e.id_alergia != 'null') {
+                                        if (e.mesa == 10 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 10) {
+                                        } else if (e.mesa == 10 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -251,15 +282,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 3)}>
-                                <div className={styles.circle}><div><h3>3</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>3</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 3 && e.id_alergia != 'null') {
+                                        if (e.mesa == 3 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 3) {
+                                        } else if (e.mesa == 3 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -273,15 +304,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 7)}>
-                                <div className={styles.circle}><div><h3>7</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>7</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 7 && e.id_alergia != 'null') {
+                                        if (e.mesa == 7 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 7) {
+                                        } else if (e.mesa == 7 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -294,14 +325,14 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 11)}>
-                                <div className={styles.circle}><div><h3>11</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>11</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 11 && e.id_alergia != 'null') {
+                                        if (e.mesa == 11 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 11) {
+                                        } else if (e.mesa == 11 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -317,15 +348,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 4)}>
-                                <div className={styles.circle}><div><h3>4</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>4</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 4 && e.id_alergia != 'null') {
+                                        if (e.mesa == 4 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 4) {
+                                        } else if (e.mesa == 4 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -339,15 +370,15 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 8)}>
-                                <div className={styles.circle}><div><h3>8</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>8</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 8 && e.id_alergia != 'null') {
+                                        if (e.mesa == 8 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 8) {
+                                        } else if (e.mesa == 8 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -360,14 +391,14 @@ export class Mesas extends PureComponent {
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 12)}>
-                                <div className={styles.circle}><div><h3>12</h3><ul className={styles.lista}>
+                                <div className={styles.circle}><h3>12</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 12 && e.id_alergia != 'null') {
+                                        if (e.mesa == 12 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
-                                        } else if (e.mesa == 12) {
+                                        } else if (e.mesa == 12 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
@@ -385,12 +416,16 @@ export class Mesas extends PureComponent {
                                     <p>Familia de {this.state.novio1}</p>
                                     <ul className={styles.lista}>
                                         {this.state.familiaNovio.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null') {
+
+
+
+
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
-                                            } else if (e.mesa == 0) {
+                                            } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
@@ -402,13 +437,13 @@ export class Mesas extends PureComponent {
                                     <p>Familia {this.state.novio2}</p>
                                     <ul className={styles.lista}>
                                         {this.state.familiaNovia.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null') {
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
 
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
-                                            } else if (e.mesa == 0) {
+                                            } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
@@ -420,12 +455,12 @@ export class Mesas extends PureComponent {
                                     <p>Amigos de {this.state.novio1}</p>
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovio.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null') {
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
-                                            } else if (e.mesa == 0) {
+                                            } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
@@ -437,16 +472,32 @@ export class Mesas extends PureComponent {
                                     <p>Amigos de {this.state.novio2}</p>
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovia.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null') {
+
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
-                                            } else if (e.mesa == 0) {
+                                            } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
+                                        })}
+                                    </ul>
+                                </div>
+                                <div className="col l3">
+                                    <p>Limbo</p>
+                                    <ul className={styles.lista}>
+                                        {this.state.invitados.map((e, index) => {
+                                              if (e.mesa==0 && e.confirmacion == "Confirmado" && e.id_alergia != 'null' && (e.parte == "null" || e.familia == "null")) {
+                                                  return(
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                )
+                                            }else if(e.mesa==0 && e.confirmacion == "Confirmado" && (e.parte == "null" || e.familia == "null")){
+                                               return( <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>)
+                                            }
+    
                                         })}
                                     </ul>
                                 </div>

@@ -10,6 +10,7 @@ export * from './gestionInvitados';
 export * from './navbar';
 export * from './navbarInvitados';
 export * from './cardInvitado';
+export * from './cardInvitadoMesa';
 export * from './mesas';
 export * from './paginaInicio';
 export * from './paginaRegisLog';

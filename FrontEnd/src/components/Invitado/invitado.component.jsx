@@ -36,7 +36,6 @@ export class Invitado extends Component {
 
     enviarPriv = () => {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
-
         let mensaje = {
             mensaje: this.state.mensaje,
             id_invReceptor: this.props.invitado.id,
@@ -47,12 +46,8 @@ export class Invitado extends Component {
             .then(response => {
                 console.log(response.data)
             })
-
-
         this.toggle()
     }
-
-
     render() {
         return (
             <MDBContainer>

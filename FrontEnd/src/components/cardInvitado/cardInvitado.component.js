@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBFileInput } from 'mdbreact';
-import { TuMesa, } from '@Components';
+import { TuMesa, Invitado } from '@Components';
 
 
 export class CardInvitado extends Component {
@@ -10,7 +10,7 @@ export class CardInvitado extends Component {
     this.state = {
       invitado: {},
       invitados: [],
-      url:'',
+      url: '',
     }
   }
   componentDidMount() {
@@ -22,7 +22,10 @@ export class CardInvitado extends Component {
       })
   }
 
-  insertAvatar=(event)=> {
+  mensaje = (mesa) => {
+    console.log(mesa)
+  }
+  insertAvatar = (event) => {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     const fd = new FormData();
     fd.append('image', event.target.files[0], event.target.files[0].name);
@@ -32,29 +35,29 @@ export class CardInvitado extends Component {
       .then(response => {
       })
 
-    axios.get('http://localhost:3000/invitados/getInvFoto',{ params: {id:invitado.id}})
+    axios.get('http://localhost:3000/invitados/getInvFoto', { params: { id: invitado.id } })
       .then(response => {
-        this.setState({url:response.data[0].url})
+        this.setState({ url: response.data[0].url })
       })
-      console.log(this.state.url)
+    console.log(this.state.url)
   }
   render() {
     let invitado = this.props;
     return (
       <div>
-        <MDBCol style={{marginTop:"50px",display:"flex"}}>
-          <MDBCard  color="blue-grey darken-1" style={{ width: "82%" }}>
+        <MDBCol style={{ marginTop: "50px", display: "flex" }}>
+          <MDBCard color="blue-grey darken-1" style={{ width: "82%" }}>
             <form>
-              <MDBCardImage  className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
+              <MDBCardImage className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
               <div className="file-upload-wrapper">
                 <input type="file" id="input-file-now" className="file-upload" name="foto" onChange={this.insertAvatar} />
-                <MDBBtn color ="blue-grey" size="sm" className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
+                <MDBBtn color="blue-grey" size="sm" className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
               </div>
             </form>
             <MDBCardBody>
-              <p style={{fontSize:"25px", color:"white"}}>{invitado.props.nombre} {invitado.props.apellido}</p>
+              <p style={{ fontSize: "25px", color: "white" }}>{invitado.props.nombre} {invitado.props.apellido}</p>
               <MDBCardText>
-                <p style={{color:"white"}}>Estos son tus datos de confirmación:</p>
+                <p style={{ color: "white" }}>Estos son tus datos de confirmación:</p>
                 <ul>
                   <li style={{ height: "40px" }} className="list-group-item list-group-item-info">Email: {invitado.props.email}</li>
                   <li style={{ height: "40px" }} className="list-group-item list-group-item-info">Parte: {invitado.props.parte}</li>
@@ -66,24 +69,28 @@ export class CardInvitado extends Component {
                 </ul>
               </MDBCardText>
               {/* { <TuMesa props={this.state.invitado}/> } */}
-              <p style={{color:"white"}}>*Si quieres modificar cualquier dato, vuelve a rellenar el formulario</p>
-              <p style={{fontSize:"20px",color:"white"}}>Personas asignadas tu mesa </p>
-              <ul>
-                {this.state.invitados.map((e, index) => {
-                  console.log(e.mesa)
-                  if(e.mesa!=0){
-                  return (<div>
-                    <li style={{ height: "40px" }} className="list-group-item list-group-item-warning">{e.nombre} {e.apellido} - {e.familia} de {e.parte}</li>
-                  </div>
-                  )}else{
-                    return(<p style={{color:"white"}}>Aun no tienes asignada mesa</p>)
-                  }
-                })}
-              </ul>
+              <p style={{ color: "white" }}>*Si quieres modificar cualquier dato, vuelve a rellenar el formulario</p>
             </MDBCardBody>
           </MDBCard>
 
         </MDBCol>
+        {/* <MDBCol style={{ marginTop: "50px", display: "flex" }}>
+          <MDBCard color="blue-grey" style={{ width: "82%" }}>
+            <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa </p>
+
+            {this.state.invitados.map(m => {
+              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado") {
+                return <Invitado style={{ width: "5px" }} key={m.id} invitado={m} />
+              } else if (invitado.props.mesa == 0 || invitado.props.mesa == 98) {
+                return (<p>Aun no tienes mesa asignada</p>)
+              }
+            }
+            )}
+
+          </MDBCard>
+
+        </MDBCol> */}
+
       </div>
     )
   }

@@ -60,6 +60,20 @@ class MensajeriaPrivInv extends Component {
                                 </div>
                             )
                         })}
+                         {this.props.privados2.map(m => {
+                            return (
+                                <div className="col l3">
+                                    {this.props.invitados.map(b => {
+                                        if (b.id == m.id_invReceptor) {
+                                            return (
+                                                <ConnectPriv key={m.id} priv={m} inv={b} />
+                                            )
+                                        }
+                                    })}
+
+                                </div>
+                            )
+                        })}
 
                     </div>
                 </div>

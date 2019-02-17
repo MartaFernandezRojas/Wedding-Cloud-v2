@@ -6,7 +6,7 @@ import styles from './mensajesPrivados.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import { Footer, ConnectNavbar, ConnectMensajeriaResp, Invitado, ConnectPriv } from '@Components';
-import { mensInv, Inv, postMens, mensPriv, borrarPriva } from '@Models'
+import { mensInv, Inv, postMens, mensPriv, borrarPriva,postRespPriv } from '@Models'
 import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
@@ -76,13 +76,16 @@ const mapStateToProps = (state, props) => {
         ...props,
         invitados: state.rootReducer.invitados,
         privados: state.rootReducer.privados,
+        respuestasPriv:state.roorReducer.respuestasPriv
     };
 }
 
 const mapDispatchToProps = {
     loadInv: Inv,
     loadPriv: mensPriv,
-    deleteMens: borrarPriva
+    deleteMens: borrarPriva,
+    insertRespPriv: postRespPriv
+
 }
 
 export const ConnectMensajeriaPriv = connect(

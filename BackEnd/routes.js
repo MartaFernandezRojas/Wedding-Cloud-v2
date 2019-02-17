@@ -76,6 +76,8 @@ app.post('/mensajes/getmensajePriv', ProjectControllerMensaje.getMensajePriv);
 app.post('/mensajes/getmensajePriv2', ProjectControllerMensaje.getMensajePriv2);
 app.post('/mensajes/getInvPriv', ProjectControllerMensaje.getInvPriv);
 app.post('/mensajes/privadoDelete', ProjectControllerMensaje.PrivadoDelete);
+app.post('/mensajes/postRespuestaPriv', ProjectControllerMensaje.postRespuestaPriv);
+app.post('/mensajes/getRespuestasPriv', ProjectControllerMensaje.getRespuestasPriv);
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);
