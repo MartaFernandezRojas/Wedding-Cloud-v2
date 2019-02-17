@@ -6,10 +6,9 @@ import axios from 'axios';
 //Import Stilos
 import styles2 from './formConfirmacionAdmin.styles.css';
 import styles from '../../routes/router/router.styles.css';
-import { NavbarInvitados } from '../navbarInvitados/navbarInvitados.component'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from 'mdbreact';
 import { style } from 'react-toastify';
-import { CardInvitado, ConnectNavbar,CardInvitadoMesa } from '@Components';
+import { CardInvitado, ConnectNavbar, CardInvitadoMesa } from '@Components';
 import Card from '../../../node_modules/react-materialize/lib/Card';
 
 
@@ -30,13 +29,8 @@ export class FormularioConfirmacionAdmin extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-  show() {
-    // console.log(this.state);
-  }
 
   insertUser() {
-
-    // console.log(document.getElementById(confirmacion).value);
     let user = {
       id: this.state.id,
       id_boda: this.state.id_boda,
@@ -66,7 +60,6 @@ export class FormularioConfirmacionAdmin extends Component {
       [event.target.id]: event.target.value
 
     });
-    console.log(event.target.value);
   }
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
@@ -88,7 +81,7 @@ export class FormularioConfirmacionAdmin extends Component {
           <ConnectNavbar />
           <div className="container-fluid">
             <div className="row">
-            
+
               <div className="col l6 mx-5">
                 <p className={styles2.titulos} style={{ fontSize: "25px", marginTop: "20px", color: "white" }}>Bienvenid@ {this.state.nombre} {this.state.apellido}</p>
                 <p className={styles2.titulos} style={{ fontSize: "15px", color: "white" }}> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</p>

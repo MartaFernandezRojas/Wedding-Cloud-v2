@@ -1,31 +1,28 @@
+////////// CONTROLLERS WEDDINGCLOUD//////
 
-var ProjectControllerGaleria = require('./controllers/projectControllerGaleria');
-var ProjectControllerTodo = require('./controllers/projectControllerTodo');
 var ProjectControllerForm = require('./controllers/projectControllerForm');
-var ProjectControllerAdmin = require('./controllers/projectControllerAdmin');
-var ProjectControllerExample = require('./controllers/projectControllerExample');
+// var ProjectControllerAdmin = require('./controllers/projectControllerAdmin');
 var ProjectControllerLogin= require('./controllers/ProjectControllerLogIn');
 var ProjectControllerBodas= require('./controllers/ProjectControllerBoda');
 var ProjectControllerMensaje= require('./controllers/projectControllerMensajes');
-
-////////// CONTROLERS WEDDINGCLOUD//////
-
 var ProjectControllerinvitados = require('./controllers/projectControllerInvitados');
 var ProjectControllerAdmin = require('./controllers/projectControllerAdmin2');
 
 
+
+//JWT Y RUTA DE IMAGENES
 
 var app = require('./app');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart({ uploadDir: './public' });
 const jwt = require('jsonwebtoken');
 
-app.get('/galeria', function (req, res) {
-    res.render('galeria');
-});
+// app.get('/galeria', function (req, res) {
+//     res.render('galeria');
+// });
 
 var UsersController = require('./controllers/projectControllerForm');
-app.post('/users/register', ProjectControllerForm.clienteAdd);
+// app.post('/users/register', ProjectControllerForm.clienteAdd);
 
 //rutas
 
@@ -49,7 +46,6 @@ app.get('/todo', auth, function (req, res) {
 
 
 app.get('/invitados/get', ProjectControllerinvitados.getInvitados);
-
 app.get('/invitados/getMofificar', ProjectControllerinvitados.getInvitadosModificar);
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
@@ -100,39 +96,5 @@ function veryfyToken(req,res,next){
         res.sendStatus(403);
     }
 }
-
-// app.get('/galeria/get', ProjectControllerGaleria.getFotos);
-
-// app.get('/galeria/get2', ProjectControllerGaleria.getFotos2);
-
-// app.post('/galeria/add', ProjectControllerGaleria.galeriaAdd);
-
-// app.post('/galeria/delete', ProjectControllerGaleria.galeriaDelete);
-
-// app.post('/galeria/add2', multipartMiddleware, ProjectControllerGaleria.galeriaAdd2);
-
-// app.get('/todo/get', ProjectControllerTodo.getTareasUser);
-
-// app.post('/todo/add', ProjectControllerTodo.todoAdd);
-
-// app.post('/todo/update', ProjectControllerTodo.todoUpdate);
-
-// app.post('/cliente/add', ProjectControllerForm.clienteAdd);
-
-// app.post('/cliente/login', ProjectControllerForm.loginUser);
-
-// app.get('/cliente/logout', ProjectControllerForm.logoutUser);
-
-// app.get('/cliente/get', ProjectControllerForm.clienteGet);
-
-// app.post('/cliente/delete', ProjectControllerForm.clienteDelete);
-
-// app.post('/cliente/update', ProjectControllerForm.clienteUpdate);
-
-// app.get('/example', ProjectControllerExample.example);
-
-// app.get('/admin/get', ProjectControllerAdmin.adminGet);
-
-// app.post('/admin/update', ProjectControllerAdmin.adminUpdate);
 
 module.exports = app;

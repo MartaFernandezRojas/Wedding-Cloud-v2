@@ -1,12 +1,11 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
-
-import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from './logOut.css';
-import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
-import stylesform from './logOut.css';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import {Redirect} from 'react-router-dom';
+import {MDBBtn} from 'mdbreact';
+
+
 ///////////// Component ////////////////
 export class LogOut extends Component {
 
@@ -14,7 +13,6 @@ export class LogOut extends Component {
         redirect: false
     };
     logOut() {
-
         axios.get('http://localhost:3000/log/logOut')
         .then(response => {
             console.log(response)
@@ -27,9 +25,7 @@ export class LogOut extends Component {
     }
 
     render() {
-
         const redireccion = this.state.redirect ? <Redirect to="/" /> : null
-
         return (
             <div className={styles.background}>
                 <h5 className={styles.salir} style={{fontSize:"15px",color:"grey"}}>¿Deseas salir de la plataforma?</h5>

@@ -1,17 +1,13 @@
+//////////////IMPORTS//////////////////
+
+
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
-import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component'
+import { Redirect } from 'react-router-dom';
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './boda.css';
 import { style } from 'react-toastify';
-// Import global resources
 
-// Import local resources
-// import styles from './galeria.styles.css';
-
-//import componenet react-materialize
-// import {Button} from 'react-materialize';
 
 ///////////// Component ////////////////
 export class Boda extends Component {
@@ -24,7 +20,7 @@ export class Boda extends Component {
             email: '',
             password: '',
             rol: 0,
-            mesa:0,
+            mesa: 0,
             redirect: false,
             redirect2: false,
             novio1: '',
@@ -39,6 +35,8 @@ export class Boda extends Component {
         });
 
     }
+
+    //METODO PARA CREAR LA BODA
 
     crear() {
         let boda = {

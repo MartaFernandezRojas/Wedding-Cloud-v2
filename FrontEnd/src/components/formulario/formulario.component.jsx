@@ -1,18 +1,12 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component'
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './formulario.styles.css';
 import { style } from 'react-toastify';
-// Import global resources
 
-// Import local resources
-// import styles from './galeria.styles.css';
-
-//import componenet react-materialize
-// import {Button} from 'react-materialize';
 
 ///////////// Component ////////////////
 export class Formulario extends Component {
@@ -41,16 +35,16 @@ export class Formulario extends Component {
 
     axios.post('http://localhost:3000/invitados/post', this.state)
       .then(response => {
-        
+
         if (response.data.rol == 1 || response.data.rol == 0) {
-          
+
           let user = {
             email: this.state.email,
             password: this.state.password
           }
           axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-                console.log('hola')
+              console.log('hola')
               if (response.status === 200) {
                 if (response.data.rol == 0) {
                   localStorage.setItem('invitado', JSON.stringify(response.data));
@@ -59,17 +53,12 @@ export class Formulario extends Component {
                 else if (response.data.rol == 1) {
                   localStorage.setItem('invitado', JSON.stringify(response.data));
                   this.setState({ redirect2: true })
-                } else {
-                  // this.setState({
-                  //     modal: !this.state.modal
-                  // });
                 }
               }
 
             })
         }
       })
-
   }
   render() {
     const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
@@ -88,7 +77,7 @@ export class Formulario extends Component {
           <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           <label form="password">Passsword:</label>
           <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-          <input type='button' style={{marginTop:"1rem"}} onClick={() => {
+          <input type='button' style={{ marginTop: "1rem" }} onClick={() => {
             this.insertUser();
           }
           } className={styles.button} value='Confirmar' />

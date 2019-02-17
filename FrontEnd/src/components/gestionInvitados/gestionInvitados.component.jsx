@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBDataTable } from 'mdbreact';
-import { Pie } from "react-chartjs-2";
 import styles from './gestionInvitados.styles.css';
-import { MDBContainer } from "mdbreact";
 import { ConnectNavbar } from '@Components'
 import { style } from 'react-toastify';
 //Import Stilos
@@ -52,9 +50,7 @@ export class GestionInvitados extends Component {
       })
 
   }
-  borrar=()=>{
-    console.log(this.state.invitados)
-  }
+  
   render() {
 
     const data = {
@@ -134,13 +130,13 @@ export class GestionInvitados extends Component {
         <div className="container">
           <div className="row">
             <div className="col l12">
-              <h1 style={{fontSize:"20px"}}> Registro de invitados {this.state.nombre}</h1>
+              <h1 style={{ fontSize: "20px" }}> Registro de invitados {this.state.nombre}</h1>
             </div>
           </div>
           <div className="row">
             <div className="col l12">
               <ul>
-                <MDBDataTable onClick={this.borrar}
+                <MDBDataTable 
                   striped
                   bordered
                   hover

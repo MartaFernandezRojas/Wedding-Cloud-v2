@@ -1,9 +1,12 @@
+////////////IMPORTS////////////////
+
 import React, { Component } from 'react';
 import axios from 'axios';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBFileInput } from 'mdbreact';
-import { TuMesa, Invitado } from '@Components';
-import styles from './carInvitadoMesa.css'
+import { MDBCard, MDBCol } from 'mdbreact';
+import { Invitado } from '@Components';
+import styles from './cardInvitadoMesa.css'
 
+/////////COMPONENTE///////////////
 
 export class CardInvitadoMesa extends Component {
   constructor(props) {
@@ -14,6 +17,7 @@ export class CardInvitadoMesa extends Component {
       url: '',
     }
   }
+
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     this.state.invitado = invitado;
@@ -23,9 +27,7 @@ export class CardInvitadoMesa extends Component {
       })
   }
 
-  mensaje = (mesa) => {
-    console.log(mesa)
-  }
+
   insertAvatar = (event) => {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     const fd = new FormData();
@@ -40,22 +42,23 @@ export class CardInvitadoMesa extends Component {
       .then(response => {
         this.setState({ url: response.data[0].url })
       })
-    console.log(this.state.url)
   }
+
+
   render() {
     let invitado = this.props;
-    var escrito=false;
+    var escrito = false;
     return (
       <div>
         <MDBCol style={{ marginTop: "50px", display: "flex" }}>
-          <MDBCard className={styles.fondo} style={{ width: "100%",margin: "auto" }}>
+          <MDBCard className={styles.fondo} style={{ width: "100%", margin: "auto" }}>
             <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa</p>
             {this.state.invitados.map(m => {
-              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.mesa != m.mesa ) {
+              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.mesa != m.mesa) {
                 return <Invitado style={{ width: "5px" }} key={m.id} invitado={m} />
-              } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98 )&& escrito==false) {
-                escrito=true
-                return (<p>Aun no tienes mesa asignada</p> )
+              } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98) && escrito == false) {
+                escrito = true
+                return (<p>Aun no tienes mesa asignada</p>)
               }
             }
             )}

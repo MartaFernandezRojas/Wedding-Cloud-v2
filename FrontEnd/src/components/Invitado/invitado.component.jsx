@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './invitado.css';
-import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter } from "mdbreact";
+import { MDBCard, MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from "mdbreact";
 import { avatar } from '../../assets';
+
+
+
 ///////////// Component ////////////////
 export class Invitado extends Component {
     constructor(props) {
@@ -54,7 +57,7 @@ export class Invitado extends Component {
                 <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "80%", marginBottom: "0.5rem" }}>
                     <div className="row"><div className="col l6">
                         <img src={avatar} className={styles.ima} /></div><div className="col l6"><h3 className={styles.nombre}>{this.props.invitado.nombre} {this.props.invitado.apellido}</h3><p className={styles.mensaje}>{this.props.invitado.familia} {this.props.invitado.parte}</p></div>
-                        <MDBBtn style={{  fontSize:"8px" }} size="sm" color="blue-grey" type='button' onClick={() => {
+                        <MDBBtn style={{ fontSize: "8px" }} size="sm" color="blue-grey" type='button' onClick={() => {
                             this.insertMen();
                         }
                         } value='Confirmar'>Mensaje</MDBBtn>

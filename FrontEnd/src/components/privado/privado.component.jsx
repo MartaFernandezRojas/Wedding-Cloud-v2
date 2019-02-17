@@ -58,11 +58,14 @@ class Priv extends Component {
         }
         console.log(mensaje);
         this.props.postRespPriv({mensaje})
+
+
         // axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
         //     .then(response => {
         //     })
-
         // this.props.deleteMens({ id: this.props.priv.id });
+
+
         this.props.loadPriv({ id_invReceptor: invitado.id })
         this.setState({
             modal: !this.state.modal

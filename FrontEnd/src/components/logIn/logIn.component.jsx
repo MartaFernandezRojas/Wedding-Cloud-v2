@@ -2,9 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from '../../routes/router/router.styles.css';
-import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import stylesform from './login.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import { style } from 'react-toastify';
@@ -39,10 +38,10 @@ export class LogIn extends Component {
             password: this.state.passwordregistro
 
         }
-       
+
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-               
+
                 if (response.status === 200) {
                     if (response.data.rol == 0) {
                         localStorage.setItem('invitado', JSON.stringify(response.data));
@@ -55,12 +54,14 @@ export class LogIn extends Component {
                         this.setState({
                             modal: !this.state.modal
                         });
-                       
+
                     }
                 }
 
             })
     }
+
+    
     render() {
         const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
         const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
@@ -72,12 +73,12 @@ export class LogIn extends Component {
                     <input className="form-control validate" id="emailregistro" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                     <label form="password">Passsword:</label>
                     <input className="form-control" id="passwordregistro" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                    <input type='button' style={{marginTop:"1rem"}}onClick={() => {
+                    <input type='button' style={{ marginTop: "1rem" }} onClick={() => {
                         this.logInUser();
                     }
                     } className={styles.button} value='Confirmar' />
                 </form>
-                  {redireccion}
+                {redireccion}
                 {redireccion2}
                 <MDBContainer className={stylesform.modals}>
                     <MDBModal isOpen={this.state.modal}>
@@ -90,8 +91,6 @@ export class LogIn extends Component {
                         </MDBModalFooter>
                     </MDBModal>
                 </MDBContainer>
-
-              
             </div>
         );
     }

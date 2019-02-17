@@ -24,10 +24,6 @@ p{
     border: 3px blue solid;
 }
 
-/* ul{
-    margin-left: -30px;
-    margin-right: 5px;
-} */
 
 #foto{
     width: 500
@@ -36,7 +32,3 @@ p{
 .fondo{
     background-color: rgb(182, 201, 212);
 }
-
-/* li{
-    width: 100px;
-} */

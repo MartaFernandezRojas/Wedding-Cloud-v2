@@ -1,8 +1,6 @@
 // Import libraries
 import React, { Component } from  'react';
 
-// Import global resources
-
 // Import local resources
 import styles from './button.styles.css';
 
