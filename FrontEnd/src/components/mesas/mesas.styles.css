@@ -2,6 +2,11 @@
     background-color: grey;
 }
 
+.fondo{
+    background-color: rgb(226, 234, 240);
+    min-height: 1200px;
+}
+
 p{
     font-size:12px;
 }

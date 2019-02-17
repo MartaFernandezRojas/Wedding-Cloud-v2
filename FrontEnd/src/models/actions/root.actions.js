@@ -46,7 +46,6 @@ export const postResp = m => dispatch => {
   axios.post('http://localhost:3000/mensajes/postRespuesta', m )
     .then(response => {
       dispatch(postRespuesta({resp:response.data,id: m.id_mensaje }))
-      console.log(response.data)
     })
     .catch(err=>{
       console.log(err)

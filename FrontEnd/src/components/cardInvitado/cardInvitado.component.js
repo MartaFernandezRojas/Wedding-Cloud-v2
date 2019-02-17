@@ -42,17 +42,17 @@ export class CardInvitado extends Component {
     let invitado = this.props;
     return (
       <div>
-        <MDBCol style={{marginTop:"50px"}}>
-          <MDBCard  color="blue-grey darken-1" style={{ width: "100%" }}>
+        <MDBCol style={{marginTop:"50px",display:"flex"}}>
+          <MDBCard  color="blue-grey darken-1" style={{ width: "82%" }}>
             <form>
               <MDBCardImage  className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
               <div className="file-upload-wrapper">
                 <input type="file" id="input-file-now" className="file-upload" name="foto" onChange={this.insertAvatar} />
-                <MDBBtn color ="blue-grey"className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
+                <MDBBtn color ="blue-grey" size="sm" className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
               </div>
             </form>
             <MDBCardBody>
-              <p style={{fontSize:"35px", color:"white"}}>{invitado.props.nombre} {invitado.props.apellido}</p>
+              <p style={{fontSize:"25px", color:"white"}}>{invitado.props.nombre} {invitado.props.apellido}</p>
               <MDBCardText>
                 <p style={{color:"white"}}>Estos son tus datos de confirmación:</p>
                 <ul>

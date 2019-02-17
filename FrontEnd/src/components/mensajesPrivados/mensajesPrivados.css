@@ -2,10 +2,11 @@
     width: 25px;
     height: 25px;
     text-align: center;
-    background-color: rgb(175, 68, 68);
+    background-color: rgb(218, 170, 170);
 }
 
 .fondo{
 
-    
+    background-color: rgb(213, 222, 228);
+    min-height: 1200px;
 }

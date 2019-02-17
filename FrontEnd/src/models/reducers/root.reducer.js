@@ -42,7 +42,7 @@ export function rootReducer(state = initialRootState, action) {
         case 'PRIV_MENS':
         return{
             ...state,
-            privados: [action.payload]
+            privados: action.payload
         }
         case 'PRIV_MENS2':
         return{

@@ -2,3 +2,8 @@ h1{
     text-align: center;
     margin-top: 20px;
 }
+
+.fondo{
+    background-color: rgb(226, 234, 240);
+    min-height: 1200px;
+}

@@ -5,7 +5,8 @@ import { MDBDataTable } from 'mdbreact';
 import { Pie } from "react-chartjs-2";
 import styles from './gestionInvitados.styles.css';
 import { MDBContainer } from "mdbreact";
-import { Navbar } from '@Components'
+import { ConnectNavbar } from '@Components'
+import { style } from 'react-toastify';
 //Import Stilos
 
 
@@ -50,6 +51,9 @@ export class GestionInvitados extends Component {
         this.setState({ invitados: response.data })
       })
 
+  }
+  borrar=()=>{
+    console.log(this.state.invitados)
   }
   render() {
 
@@ -124,28 +128,29 @@ export class GestionInvitados extends Component {
       ],
       rows: this.state.invitados,
     }
-    return (<div>
-      <Navbar />
-      <div className="container">
-        <div className="row">
-          <div className="col l12">
-            <h1> Panel de administrador de {this.state.nombre}</h1>
+    return (
+      <div className={styles.fondo}>
+        <ConnectNavbar />
+        <div className="container">
+          <div className="row">
+            <div className="col l12">
+              <h1 style={{fontSize:"20px"}}> Registro de invitados {this.state.nombre}</h1>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col l12">
-            <ul>
-              <MDBDataTable
-                striped
-                bordered
-                hover
-                data={data}
-              />
-            </ul>
+          <div className="row">
+            <div className="col l12">
+              <ul>
+                <MDBDataTable onClick={this.borrar}
+                  striped
+                  bordered
+                  hover
+                  data={data}
+                />
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     )
   }
 }

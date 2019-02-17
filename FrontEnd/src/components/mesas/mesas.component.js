@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import axios from 'axios';
 
-import { Navbar } from '../navbar/navbar.component';
+import { ConnectNavbar } from '../navbar/navbar.component';
 import styles from './mesas.styles.css';
 import { Draggable, Droppable } from 'react-drag-and-drop'
 
@@ -73,8 +73,8 @@ export class Mesas extends PureComponent {
     render() {
         var cont1 = 0;
         return (
-            <div>
-                <Navbar />
+            <div className={styles.fondo}>
+                <ConnectNavbar />
                 <div className="container-fluid">
                     <h1>Planificador de mesas de {this.state.nombre}</h1>
                     <div className="row">

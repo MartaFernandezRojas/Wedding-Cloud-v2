@@ -42,53 +42,29 @@ class MensajeriaPrivInv extends Component {
     render() {
         return (
             <div className={styles.fondo}>
-                <NavbarInvitados />
-                <div className="container-fluid" style={{marginTop:"30px"}}>
-                {/* <h5 style={{color:"black", marginTop:"20px"}}>Mensajes recibidos</h5> */}
+                <NavbarInvitados props={this.props.privados.length} />
+                {/* <h4>Mensajes privados</h4> */}
+                <div className="container" style={{ marginTop: "30px" }}>
                     <div className="row">
-                        {/* <div className="col l6"> */}
-                           
-                            {this.props.privados.map(m => {
-                                return (
-                                    m.map(i => {
-                                        return (
-                                            <div className="col l3">
-                                                {this.props.invitados.map(b => {
-                                                    if (b.id == i.id_invitado) {
-                                                        return (<ConnectPriv key={i.id} priv={i} inv={b} />)
-                                                    }
-                                                })}
-                                            </div>
-                                        )
-                                    })
-                                )
-                            })}
-                        </div>
-
-                        {/* <div className="row">
-                            <div className="col l6">
-                                <h1>Mensajes Enviados</h1>
-                                {this.props.privados2.map(m => {
-                                    return (
-                                        m.map(i => {
+                        {this.props.privados.map(m => {
+                            return (
+                                <div className="col l3">
+                                    {this.props.invitados.map(b => {
+                                        if (b.id == m.id_invitado) {
                                             return (
-                                                <div className="col l3">
-                                                    {this.props.invitados.map(b => {
-                                                        if (b.id == i.id_invReceptor) {
-                                                            return (<ConnectPriv key={i.id} priv={i} inv={b} />)
-                                                        }
-                                                    })}
-
-                                                </div>
+                                                <ConnectPriv key={m.id} priv={m} inv={b} />
                                             )
-                                        })
-                                    )
-                                })}
-                            </div>
-                        </div> */}
+                                        }
+                                    })}
+
+                                </div>
+                            )
+                        })}
+
                     </div>
                 </div>
-            // </div>
+            </div>
+
         )
     }
 }

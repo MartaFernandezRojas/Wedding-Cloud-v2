@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import styles from './mensajesPrivados.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
-import { Footer, Navbar, ConnectMensajeriaResp, Invitado,ConnectPriv} from '@Components';
-import { mensInv, Inv, postMens, mensPriv,borrarPriva } from '@Models'
+import { Footer, ConnectNavbar, ConnectMensajeriaResp, Invitado, ConnectPriv } from '@Components';
+import { mensInv, Inv, postMens, mensPriv, borrarPriva } from '@Models'
 import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
@@ -24,7 +24,7 @@ class MensajeriaPriv extends Component {
         //     inv: invitado
         // })
 
-        this.props.loadPriv(  { id_invReceptor: invitado.id })
+        this.props.loadPriv({ id_invReceptor: invitado.id })
     }
     componentDidUpdate() {
         return true;
@@ -34,40 +34,39 @@ class MensajeriaPriv extends Component {
             modal3: !this.state.modal3
         });
     }
-    eliminar=()=> {
-       
+    eliminar = () => {
+
         // this.props.deleteMens({ id: this.props.id});
     }
+
+
     render() {
+        // console.log(this.props.privados.length)
         return (
             <div className={styles.fondo}>
-                <Navbar />
+                <ConnectNavbar />
                 {/* <h4>Mensajes privados</h4> */}
-                <div className="container-fluid" style={{marginTop:"30px"}}>
+                <div className="container" style={{ marginTop: "30px" }}>
                     <div className="row">
                         {this.props.privados.map(m => {
-                            console.log(m)
-                            return (
-                                m.map(i => {
                                     return (
                                         <div className="col l3">
                                             {this.props.invitados.map(b => {
-                                                if (b.id == i.id_invitado) {
+                                                if (b.id == m.id_invitado) {
                                                     return (
-                                                        <ConnectPriv key={i.id} priv={i} inv={b}/>
+                                                        <ConnectPriv key={m.id} priv={m} inv={b}/>
                                                     )
                                                 }
                                             })}
 
                                         </div>
                                     )
-                                })
-                            )
                         })}
 
                     </div>
                 </div>
             </div>
+
         )
     }
 }
@@ -83,7 +82,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = {
     loadInv: Inv,
     loadPriv: mensPriv,
-    deleteMens:borrarPriva
+    deleteMens: borrarPriva
 }
 
 export const ConnectMensajeriaPriv = connect(

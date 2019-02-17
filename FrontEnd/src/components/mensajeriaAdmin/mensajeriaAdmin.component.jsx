@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import styles from './mensajeriaAdmin.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
-import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
+import { Footer, ConnectNavbar, ConnectMensajeriaResp, Invitado } from '@Components';
 import { mensInv, Inv, postMens } from '@Models'
 
 ///////////// Component ////////////////
@@ -59,7 +59,7 @@ class MensajeriaInv extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <ConnectNavbar />
                 <div className={styles.fondo}>
                     {/* <h1 className={styles.rotulo}>Mensajeria</h1> */}
                     <MDBContainer>

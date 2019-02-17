@@ -32,12 +32,12 @@ export class LogOut extends Component {
 
         return (
             <div className={styles.background}>
-                <h5 className={styles.salir}>¿Deseas salir de la plataforma?</h5>
+                <h5 className={styles.salir} style={{fontSize:"15px",color:"grey"}}>¿Deseas salir de la plataforma?</h5>
                 <form >
-                    <input type='button' onClick={() => {
+                <MDBBtn outline color="grey" onClick={() => {
                         this.logOut();
                     }
-                    } className={styles.button} value='Salir' />
+                    } className={styles.button} size="sm" value='Salir'>Salir</MDBBtn>
 
                 </form>
                 {redireccion}

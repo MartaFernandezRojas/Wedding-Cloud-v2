@@ -18,6 +18,7 @@ export class NavbarInicio extends Component {
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
+  
 
     render() {
         return (

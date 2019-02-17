@@ -80,17 +80,18 @@ class Priv extends Component {
         return (
             <div className={styles.fondo}>
 
-                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "22rem", marginBottom: "10px" }}>
-                    <MDBCardBody><button className={styles.button} style={{fontSize:"15px"}} onClick={this.toggle2}>
-                        <b>x</b> </button>
+                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "18rem", marginBottom: "10px" }}>
+                    <MDBCardBody>
+                        {/* <button className={styles.button} style={{fontSize:"15px"}} onClick={this.toggle2}>
+                        <b>x</b> </button> */}
                         <div className="row">
-                            <div className="col l12">
-                                <p style={{ color: "white", fontSize: "18px" }}>{this.props.inv.nombre} {this.props.inv.apellido} - ( {this.props.inv.familia} de {this.props.inv.parte} )</p>
+                            <div className="col l6">
+                                <p style={{ color: "white", fontSize: "15px" }}>{this.props.inv.nombre} {this.props.inv.apellido} - ( {this.props.inv.familia} de {this.props.inv.parte} )</p>
                             </div></div>
                         < MDBCardText >
                             <p style={{ color: "white", fontSize: "15px" }}>{privado.mensaje}</p>
                         </MDBCardText>
-                        <MDBBtn color="blue-grey" onClick={this.toggle} href="#">Contestar</MDBBtn>
+                        <MDBBtn color="blue-grey" onClick={this.toggle} size ="sm">Contestar</MDBBtn>
                     </MDBCardBody>
                     <MDBContainer>
                         <MDBModal isOpen={this.state.modal3} toggle={this.toggle2}>

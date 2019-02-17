@@ -13,14 +13,19 @@ import { LogOut } from '@Components';
 
 export class NavbarInvitados extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+        mensajes:[]
     };
 
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
+    componentDidMount(){
+        
+    }
 
     render() {
+        var men= (this.props.props)
         return (
             <div className={Style.navbar}>
                 <MDBNavbar color="#90caf9 lighten-3" dark expand="md">
@@ -36,6 +41,7 @@ export class NavbarInvitados extends Component {
                            <MDBNavItem  >
                                 <MDBNavLink to="/mensajeriaPrivInv">Privados</MDBNavLink>
                             </MDBNavItem>
+                            <span style={{color:"red"}} className="counter">{men}</span>
                             <MDBNavItem  >
                                 <MDBNavLink to="/FormularioConfirmacion">Perfil</MDBNavLink>
                             </MDBNavItem>
