@@ -9,8 +9,8 @@
 }
 
 .img{
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     border-radius: 100%;
 }
 
@@ -19,16 +19,14 @@
 }
 
 .tipado{
-    color:blue
+    color:rgb(0, 84, 209)
 }
 
 .button{
     width: 25px;
     height: 25px;
     text-align: center;
-    
-   
-    background-color: rgb(175, 68, 68);
+    background-color: rgb(202, 195, 195);
 }
 
 

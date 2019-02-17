@@ -29,7 +29,7 @@ export class NavbarInvitados extends Component {
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-                        <MDBNavbarNav right>
+                        <MDBNavbarNav style={{fontSize:"14px"}} right>
                             <MDBNavItem >
                                 <MDBNavLink to="/mensajeriaInvitados">Mensajeria</MDBNavLink>
                             </MDBNavItem>

@@ -56,13 +56,13 @@ export class Invitado extends Component {
     render() {
         return (
             <MDBContainer>
-                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "100%", marginBottom: "0.5rem" }}>
+                <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "80%", marginBottom: "0.5rem" }}>
                     <div className="row"><div className="col l6">
                         <img src={avatar} className={styles.ima} /></div><div className="col l6"><h3 className={styles.nombre}>{this.props.invitado.nombre} {this.props.invitado.apellido}</h3><p className={styles.mensaje}>{this.props.invitado.familia} {this.props.invitado.parte}</p></div>
-                        <MDBBtn style={{ height: "40px" }} outline color="light" type='button' onClick={() => {
+                        <MDBBtn style={{  fontSize:"8px" }} size="sm" color="blue-grey" type='button' onClick={() => {
                             this.insertMen();
                         }
-                        } value='Confirmar'>Mensaje Privado</MDBBtn>
+                        } value='Confirmar'>Mensaje</MDBBtn>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
                             <MDBModalBody className="blue-grey">
                                 <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Que quieres decir!" value={this.state.mensaje} onChange={this.handleChange} />

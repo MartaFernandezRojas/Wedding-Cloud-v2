@@ -63,7 +63,7 @@ class MensajeriaInv extends Component {
                 <div className={styles.fondo}>
                     <MDBContainer>
                     {/* <h1 className={styles.rotulo}>Mensajeria</h1> */}
-                        <MDBBtn color="blue-grey" style={{marginTop:"50px"}} onClick={this.toggle}>Nuevo Mensaje</MDBBtn>
+                        <MDBBtn color="blue-grey" style={{marginTop:"30px", fontSize:"10px"}} onClick={this.toggle}>Nuevo Mensaje</MDBBtn>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
                             <MDBModalHeader className="blue-grey" toggle={this.toggle}> <input className="form-control" id="titulo" type="text" name="titulo" placeholder="Titulo mensaje" value={this.state.titulo} onChange={this.handleChange} /></MDBModalHeader>
                             <MDBModalBody className="blue-grey">
@@ -76,10 +76,10 @@ class MensajeriaInv extends Component {
                         </MDBModal>
                     </MDBContainer>
                     <div className={styles.center}>
-                        <div className="container-fluid">
+                        <div className="container">
                             <div className="row">
                                 <div className="col l4 s12">
-                                    <h5>Mensajes novios</h5>
+                                    <h5 style={{fontSize:"15px"}} >Mensajes novios</h5>
                                     {this.props.mensajes.slice(0).reverse().map(m => {
                                         if (m.rol == 1) {
                                             return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
@@ -87,7 +87,7 @@ class MensajeriaInv extends Component {
                                     })}
                                 </div>
                                 <div className="col l4 s12">
-                                    <h5>Mensajes Invitados</h5>
+                                    <h5 style={{fontSize:"15px"}}>Mensajes Invitados</h5>
                                     {this.props.mensajes.slice(0).reverse().map(m => {
                                         if (m.rol == 0) {
                                             return <ConnectMensajeriaResp key={m.id_men} inv={this.state.inv.id} mensaje={m} />
@@ -95,7 +95,7 @@ class MensajeriaInv extends Component {
                                     })}
                                 </div>
                                 <div className="col l4 s12">
-                                    <h5>Invitados</h5>
+                                    <h5 style={{fontSize:"15px"}}>Invitados</h5>
                                     {this.props.invitados.map(m => {
                                         if (m.id!=this.state.inv.id) {
                                             if (m.rol == 1) {

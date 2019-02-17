@@ -69,12 +69,12 @@ class MensajeResp extends Component {
                 <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "100%", marginTop: "1rem" }}>
                     <div className={styles.fondo}>
                         <div className="row">
-                            <div className="col l6">
+                            <div className="col l3">
                                 <img src={avatar} className={styles.img} />
                             </div>
-                            <div className="col l6"><h3 className={styles.titulo}>{this.props.mensaje.nombre} {this.props.mensaje.apellido}</h3><p className={styles.mensaje}>{this.props.mensaje.familia} de {this.props.mensaje.parte}</p>
+                            <div className="col l12"><h3 style={{ fontSize: "15px", marginLeft: "-20px" }}>{this.props.mensaje.nombre} {this.props.mensaje.apellido}</h3><p style={{ fontSize: "10px", marginLeft: "-20px" }} className={styles.mensaje}>{this.props.mensaje.familia} de {this.props.mensaje.parte}</p>
                             </div>
-
+                           
                             {this.state.rol == 1 || this.state.id == this.props.mensaje.id_inv ?
                                 <div>
                                     <button className={styles.button} onClick={this.toggle2}>
@@ -94,14 +94,14 @@ class MensajeResp extends Component {
                                 </div>
                                 : null}
                         </div>
-                        <MDBCardTitle><h5 className={styles.titulo} style={{fontSize:"15px",marginTop:"-40px"}}>{this.props.mensaje.titulo} </h5></MDBCardTitle>
+                        <MDBCardTitle><h5 className={styles.titulo} style={{ fontSize: "15px", marginTop: "-40px" }}>{this.props.mensaje.titulo} </h5></MDBCardTitle>
                         <MDBCardText>
-                            <p className={styles.mensaje}>{this.props.mensaje.mensaje}</p>
+                            <p style={{ fontSize: "13px", color: "white" }}>{this.props.mensaje.mensaje}</p>
                         </MDBCardText>
                         <div className="row">
 
                             <div className="col l6">
-                                <MDBBtn color="blue-grey" onClick={this.toggle}>Responder</MDBBtn>
+                                <MDBBtn color="blue-grey" style={{ fontSize: "8px" }} size="sm" onClick={this.toggle}>Responder</MDBBtn>
                                 <MDBModal isOpen={this.state.modal2} toggle={this.toggle}>
                                     <MDBModalBody className="blue-grey">
                                         <input className="form-control" id="mensaje" type="text" name="mensaje" placeholder="Responde al mensaje!" value={this.state.mensaje} onChange={this.handleChange} />
@@ -114,7 +114,7 @@ class MensajeResp extends Component {
                             </div>
 
                             <div className="col l6">
-                                <MDBBtn className={styles.botones} color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
+                                <MDBBtn className={styles.botones} style={{ fontSize: "8px" }} size="sm" color="blue-grey" onClick={this.toggleCollapse("basicCollapse")}>
                                     Respuestas
                                 </MDBBtn>
                             </div>
@@ -122,10 +122,10 @@ class MensajeResp extends Component {
                         <div className="row">
                             <div className="col l12">
                                 <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
-                                    <MDBListGroup className="list-group-item list-group-item-info" style={{ width: "100%" }}>
+                                    <MDBListGroup   className="list-group-item list-group-item-info" style={{ width: "100%" }}>
                                         {this.props.respuestas[idM] && this.props.respuestas[idM].length ?
                                             this.props.respuestas[idM].map(m =>
-                                                <MDBListGroupItem  className="list-group-item list-group-item-info">{m.mensaje}<p className={styles.tipado}> mensaje de: {m.nombre} {m.apellido} {moment(m.fecha).startOf('minutes').fromNow()}</p></MDBListGroupItem>
+                                                <MDBListGroupItem style={{ fontSize: "13px" }} size="sm" className="list-group-item list-group-item-info">{m.mensaje}<p className={styles.tipado} style={{ fontSize: "10px" }}> mensaje de: {m.nombre} {m.apellido} {moment(m.fecha).startOf('minutes').fromNow()}</p></MDBListGroupItem>
                                             ) : null
                                         }
                                     </MDBListGroup>
