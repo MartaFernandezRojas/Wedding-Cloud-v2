@@ -25,6 +25,7 @@ class MensajeriaPriv extends Component {
         // })
 
         this.props.loadPriv({ id_invReceptor: invitado.id })
+
     }
     componentDidUpdate() {
         return true;
@@ -76,7 +77,7 @@ const mapStateToProps = (state, props) => {
         ...props,
         invitados: state.rootReducer.invitados,
         privados: state.rootReducer.privados,
-        respuestasPriv:state.roorReducer.respuestasPriv
+        respuestasPriv:state.rootReducer.respuestasPriv
     };
 }
 
@@ -85,7 +86,6 @@ const mapDispatchToProps = {
     loadPriv: mensPriv,
     deleteMens: borrarPriva,
     insertRespPriv: postRespPriv
-
 }
 
 export const ConnectMensajeriaPriv = connect(

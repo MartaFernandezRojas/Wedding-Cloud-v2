@@ -27,7 +27,6 @@ export class CardInvitadoMesa extends Component {
       })
   }
 
-
   insertAvatar = (event) => {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     const fd = new FormData();
@@ -51,10 +50,10 @@ export class CardInvitadoMesa extends Component {
     return (
       <div>
         <MDBCol style={{ marginTop: "50px", display: "flex" }}>
-          <MDBCard className={styles.fondo} style={{ width: "100%", margin: "auto" }}>
+          <MDBCard className={styles.fondo} style={{ width: "100%", padding: "10px" }}>
             <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa</p>
             {this.state.invitados.map(m => {
-              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.mesa != m.mesa) {
+              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado") {
                 return <Invitado style={{ width: "5px" }} key={m.id} invitado={m} />
               } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98) && escrito == false) {
                 escrito = true

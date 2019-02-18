@@ -1,4 +1,5 @@
 import axios from'axios';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 const mensajeInvitado = payload => ({ payload, type: 'MENS_INV' });
 const Invitados = payload => ({ payload, type: 'INV' });
 const postMensaje = payload => ({ payload, type: 'POST_MENS' });
@@ -9,7 +10,7 @@ const postPrivado=payload=>({payload, type: 'PRIV_MENS'})
 const borrarPriv = payload=>({payload, type: 'DEL_PRIV'})
 const postPrivado2=payload=>({payload, type: 'PRIV_MENS2'})
 const postRespPri = payload => ({ payload, type: 'POST_RESP_PRIV' });
-
+const getRespuestaPriv = payload => ({ payload, type: 'GET_RESP_PRIV' });
 
 export const mensInv = inv => dispatch => {
     axios.post('http://localhost:3000/mensajes/getMensajes', { idb: inv.idb} )
@@ -33,6 +34,7 @@ export const Inv = inv => dispatch => {
 }
 
 export const postMens = m => dispatch => {
+  console.log(m)
   axios.post('http://localhost:3000/mensajes/postMensaje', m )
     .then(response => {
       dispatch(postMensaje(response.data))
@@ -108,7 +110,19 @@ export const postRespPriv = m => dispatch => {
 
   axios.post('http://localhost:3000/mensajes/postRespuestaPriv', m )
     .then(response => {
-      dispatch(postRespPri({resp:response.data,id: m.id_mensajePriv }))
+      console.log(response)
+      dispatch(postRespPri({resp:response.data,id: response.data.id_mensajePriv }))
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+}
+
+export const getRespPriv = m => dispatch => {
+  axios.post('http://localhost:3000/mensajes/getRespuestasPriv', m )
+    .then(response => {
+      dispatch(getRespuestaPriv({resp:response.data,id: m.id_mensajePriv  }))
+
     })
     .catch(err=>{
       console.log(err)

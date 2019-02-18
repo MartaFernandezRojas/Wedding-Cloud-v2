@@ -60,6 +60,11 @@ export function rootReducer(state = initialRootState, action) {
             ...state,
             respuestasPriv:{...state.respuestasPriv, [action.payload.id]: [...state.respuestasPriv[action.payload.id],action.payload.resp]}
         } 
+        case 'GET_RESP_PRIV':
+        return{
+            ...state,
+            respuestasPriv:{...state.respuestasPriv, [action.payload.id]: action.payload.resp }
+        }
         default:
             return state;
     }

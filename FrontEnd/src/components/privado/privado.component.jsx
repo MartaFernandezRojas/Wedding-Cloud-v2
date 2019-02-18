@@ -6,7 +6,7 @@ import styles from './privado.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import { Footer, Navbar, ConnectMensajeriaResp, Invitado } from '@Components';
-import { mensInv, Inv, postMens, mensPriv, borrarPriva,postRespPriv } from '@Models'
+import { mensInv, Inv, postMens, mensPriv, borrarPriva, postRespPriv, getRespPriv } from '@Models'
 import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
@@ -30,6 +30,7 @@ class Priv extends Component {
         //     inv: invitado
         // })
         this.props.loadPriv({ id_invReceptor: invitado.id })
+        this.props.getRespPriv({ id_mensajePriv: this.props.priv.id });
     }
     componentDidUpdate() {
         // var invitado = JSON.parse(localStorage.getItem("invitado"));
@@ -56,15 +57,14 @@ class Priv extends Component {
             id_mensajePriv: this.props.priv.id,
             id_invitado: this.props.inv.id,
         }
-        console.log(mensaje);
-        this.props.postRespPriv({mensaje})
 
+        this.props.postRespPriv(mensaje)
+        this.props.getRespPriv({ id_mensajePriv: mensaje.id_mensajePriv });
 
         // axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
         //     .then(response => {
         //     })
         // this.props.deleteMens({ id: this.props.priv.id });
-
 
         this.props.loadPriv({ id_invReceptor: invitado.id })
         this.setState({
@@ -95,6 +95,11 @@ class Priv extends Component {
                         < MDBCardText >
                             <ul>
                                 <li className="list-group-item list-group-item-info">{this.props.inv.nombre}: {privado.mensaje}</li>
+
+                                {this.props.respuestasPriv[privado.id]?this.props.respuestasPriv[privado.id].map(m =>
+                                    <li className="list-group-item list-group-item-info">{m.mensaje}</li>
+                                ):null
+                                }
                             </ul>
 
                         </MDBCardText>
@@ -131,7 +136,7 @@ const mapStateToProps = (state, props) => {
         ...props,
         invitados: state.rootReducer.invitados,
         privados: state.rootReducer.privados,
-        respuestasPriv:state.rootReducer.respuestasPriv
+        respuestasPriv: state.rootReducer.respuestasPriv
     };
 }
 
@@ -139,7 +144,8 @@ const mapDispatchToProps = {
     loadInv: Inv,
     loadPriv: mensPriv,
     deleteMens: borrarPriva,
-    postRespPriv:postRespPriv
+    postRespPriv: postRespPriv,
+    getRespPriv: getRespPriv
 }
 
 export const ConnectPriv = connect(

@@ -41,6 +41,7 @@ export class CardInvitado extends Component {
     axios.get('http://localhost:3000/invitados/getInvFoto', { params: { id: invitado.id } })
       .then(response => {
         this.setState({ url: response.data[0].url })
+        console.log(response.data[0].url)
       })
   }
 
@@ -50,7 +51,7 @@ export class CardInvitado extends Component {
     return (
       <div>
         <MDBCol style={{ marginTop: "50px", display: "flex" }}>
-          <MDBCard color="blue-grey darken-1" style={{ width: "82%" }}>
+          <MDBCard color="blue-grey darken-1" style={{ width: "100%" }}>
             <form>
               <MDBCardImage className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
               <div className="file-upload-wrapper">
