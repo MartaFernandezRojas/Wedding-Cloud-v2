@@ -41,7 +41,7 @@ export class NavbarInvitados extends Component {
                            <MDBNavItem  >
                                 <MDBNavLink to="/mensajeriaPrivInv">Privados</MDBNavLink>
                             </MDBNavItem>
-                            <span style={{color:"red"}} className="counter">{men}</span>
+                            <span style={{color:"red"}} className="counter"></span>
                             <MDBNavItem  >
                                 <MDBNavLink to="/FormularioConfirmacion">Perfil</MDBNavLink>
                             </MDBNavItem>

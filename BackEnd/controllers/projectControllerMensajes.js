@@ -17,7 +17,7 @@ var controller = {
         //     if (err) {
         //         res.sendStatus(403);
         //     } else {
-        let sql = `SELECT id,nombre,apellido,email,confirmacion,parte,familia,id_alergia,fiestapreboda,mesa,comentarios,rol from invitados where id_boda = ${req.body.idb}`;
+        let sql = `SELECT id,nombre,apellido,email,confirmacion,parte,familia,id_alergia,fiestapreboda,mesa,comentarios,rol,url from invitados where id_boda = ${req.body.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);

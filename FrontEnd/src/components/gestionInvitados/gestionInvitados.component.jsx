@@ -120,6 +120,12 @@ export class GestionInvitados extends Component {
           field: 'Comentarios',
           sort: 'asc',
           width: 100
+        },
+        {
+          label: 'Foto',
+          field: 'Foto',
+          sort: 'asc',
+          width: 100
         }
       ],
       rows: this.state.invitados,

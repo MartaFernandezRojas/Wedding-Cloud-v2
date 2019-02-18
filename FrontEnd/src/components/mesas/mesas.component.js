@@ -90,12 +90,12 @@ export class Mesas extends PureComponent {
                                         if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 99 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                         <h1>cont1</h1>
@@ -120,12 +120,12 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 98 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
 
@@ -150,12 +150,12 @@ export class Mesas extends PureComponent {
                                             cont1++;
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 1 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             cont1++;
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                         <h1>cont1</h1>
@@ -174,11 +174,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 5 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -197,11 +197,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 9 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -222,11 +222,11 @@ export class Mesas extends PureComponent {
 
                                                 return (
 
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 2 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -244,11 +244,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 6 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -265,11 +265,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 10 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -288,11 +288,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 3 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -310,11 +310,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 7 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -330,11 +330,11 @@ export class Mesas extends PureComponent {
                                         if (e.mesa == 11 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 11 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -354,11 +354,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 4 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -376,11 +376,11 @@ export class Mesas extends PureComponent {
 
                                             return (
 
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 8 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -396,11 +396,11 @@ export class Mesas extends PureComponent {
                                         if (e.mesa == 12 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         } else if (e.mesa == 12 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                             return (
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-warning"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
@@ -423,11 +423,11 @@ export class Mesas extends PureComponent {
                                             if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -441,11 +441,11 @@ export class Mesas extends PureComponent {
 
                                                 return (
 
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -458,11 +458,11 @@ export class Mesas extends PureComponent {
                                             if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -476,11 +476,11 @@ export class Mesas extends PureComponent {
                                             if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
 
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 0 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-light"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -492,10 +492,10 @@ export class Mesas extends PureComponent {
                                         {this.state.invitados.map((e, index) => {
                                               if (e.mesa==0 && e.confirmacion == "Confirmado" && e.id_alergia != 'null' && (e.parte == "null" || e.familia == "null")) {
                                                   return(
-                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }else if(e.mesa==0 && e.confirmacion == "Confirmado" && (e.parte == "null" || e.familia == "null")){
-                                               return( <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>)
+                                               return( <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`}/> {e.nombre} {e.apellido}</p></li></Draggable>)
                                             }
     
                                         })}

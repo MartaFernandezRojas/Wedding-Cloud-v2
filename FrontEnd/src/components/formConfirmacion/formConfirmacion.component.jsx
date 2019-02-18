@@ -87,7 +87,7 @@ export class FormularioConfirmacion extends Component {
     return (
       <div className={styles2.fondo}>
         <NavbarInvitados />
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col l6 mx-5">
               <p className={styles2.titulos} style={{ fontSize: "25px", marginTop: "20px", color: "white" }}>Bienvenid@ {this.state.nombre} {this.state.apellido}</p>

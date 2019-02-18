@@ -97,6 +97,7 @@ class MensajeriaInv extends Component {
                                 <div className="col l4 s12">
                                     <h5 style={{fontSize:"15px"}}>Invitados</h5>
                                     {this.props.invitados.map(m => {
+                                        console.log(m)
                                         if (m.id!=this.state.inv.id) {
                                             if (m.rol == 1) {
                                                 return <Invitado key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' ' }} />

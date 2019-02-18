@@ -13,7 +13,7 @@ p{
 .circle{  
     background-image:url('../../assets/img/madera.jpg');
     min-height: 350px;
-    min-width: 100px;
+    min-width: 130px;
     border-radius: 200px;
     display: flex;
     flex-direction: column;
@@ -52,8 +52,8 @@ h5{
    margin-bottom: "10px";
 }
 .lista li{
-    width: 140px;
-    height:30px ;
+    width: 150px;
+    height:40px ;
     align-content: center;
     list-style: none;
     margin-bottom: 5px;
@@ -62,13 +62,21 @@ h5{
 
 
 .listaPres li{
-    width: 140px;
-    height:30px ;
+    width: 150px;
+    height:40px ;
     align-content: center;
     list-style: none;
     margin-bottom: 5px;
     
     
+}
+
+.foto{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin-top:-8px;
+    margin-left: -19px;
 }
 
 @media only screen and (max-width: 600px) {
