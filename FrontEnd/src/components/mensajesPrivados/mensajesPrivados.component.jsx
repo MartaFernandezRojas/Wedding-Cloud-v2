@@ -6,7 +6,7 @@ import styles from './mensajesPrivados.css';
 // import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import { Footer, ConnectNavbar, ConnectMensajeriaResp, Invitado, ConnectPriv } from '@Components';
-import { mensInv, Inv, postMens, mensPriv, borrarPriva,postRespPriv } from '@Models'
+import { mensInv, Inv, postMens, mensPriv, borrarPriva, postRespPriv, mensPriv2 } from '@Models'
 import { style } from 'react-toastify';
 
 ///////////// Component ////////////////
@@ -50,24 +50,36 @@ class MensajeriaPriv extends Component {
                 <div className="container" style={{ marginTop: "30px" }}>
                     <div className="row">
                         {this.props.privados.map(m => {
-                                    return (
-                                        <div className="col l3">
-                                            {this.props.invitados.map(b => {
-                                                if (b.id == m.id_invitado) {
-                                                    return (
-                                                        <ConnectPriv key={m.id} priv={m} inv={b}/>
-                                                    )
-                                                }
-                                            })}
+                            return (
+                                <div className="col l6">
+                                    {this.props.invitados.map(b => {
+                                        if (b.id == m.id_invitado) {
+                                            return (
+                                                <ConnectPriv key={m.id} priv={m} inv={b} />
+                                            )
+                                        }
+                                    })}
 
-                                        </div>
-                                    )
+                                </div>
+                            )
                         })}
+                        {this.props.privados2[0] ? this.props.privados2[0].map(m => {
+                            return (
+                                <div className="col l6">
+                                    {this.props.invitados.map(b => {
+                                        if (b.id == m.id_invReceptor) {
+                                            return (
+                                                <ConnectPriv key={m.id} priv={m} inv={b} />
+                                            )
+                                        }
+                                    })}
 
+                                </div>
+                            )
+                        }) : null}
                     </div>
                 </div>
             </div>
-
         )
     }
 }
@@ -77,15 +89,14 @@ const mapStateToProps = (state, props) => {
         ...props,
         invitados: state.rootReducer.invitados,
         privados: state.rootReducer.privados,
-        respuestasPriv:state.rootReducer.respuestasPriv
+        privados2: state.rootReducer.privados2,
     };
 }
 
 const mapDispatchToProps = {
     loadInv: Inv,
     loadPriv: mensPriv,
-    deleteMens: borrarPriva,
-    insertRespPriv: postRespPriv
+    loadPriv2: mensPriv2
 }
 
 export const ConnectMensajeriaPriv = connect(

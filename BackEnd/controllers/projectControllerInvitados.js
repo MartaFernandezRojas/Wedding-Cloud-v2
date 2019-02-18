@@ -1,6 +1,7 @@
 var con = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
+const fs = require ('fs');
 
 var controller = {
     getInvitados: function (req, res) {
@@ -114,13 +115,13 @@ var controller = {
 
     avatar: function (req, res) {
 
-        // let oldPath = req.files.image.path;
-        // console.log(req.files.image.originalFilename)
-        // let newPath = './public' + req.files.image.originalFilename;
-        // let todb = '../' + req.files.image.originalFilename;
-        // fs.rename(oldPath, newPath, function (err) {
-        // });
-        let sql = `UPDATE invitados set url='${req.files.image.path}' where id = ${req.body.id} `;
+        let oldPath = req.files.image.path;
+        console.log(req.files.image.originalFilename)
+        let newPath = './public/img/' + req.files.image.originalFilename;
+        let todb = 'img/'+ req.files.image.originalFilename;
+        fs.rename(oldPath, newPath, function (err) {
+        });
+        let sql = `UPDATE invitados set url='${todb}' where id = ${req.body.id} `;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
@@ -128,7 +129,7 @@ var controller = {
             else {
                 let invitado = {
                     id: result.insertId,
-                    url: req.files.image.path
+                    url: todb
                 }
                 return res.send(invitado);
             }

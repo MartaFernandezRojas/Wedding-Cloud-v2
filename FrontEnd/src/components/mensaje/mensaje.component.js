@@ -70,7 +70,7 @@ class MensajeResp extends Component {
                     <div className={styles.fondo}>
                         <div className="row">
                             <div className="col l3">
-                                <img src={avatar} className={styles.img} />
+                                <img src={`http://localhost:3000/${this.props.mensaje.url}`} className={styles.img} />
                             </div>
                             <div className="col l12"><h3 style={{ fontSize: "15px", marginLeft: "-20px" }}>{this.props.mensaje.nombre} {this.props.mensaje.apellido}</h3><p style={{ fontSize: "10px", marginLeft: "-20px" }} className={styles.mensaje}>{this.props.mensaje.familia} de {this.props.mensaje.parte}</p>
                             </div>

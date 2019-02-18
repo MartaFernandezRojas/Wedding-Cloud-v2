@@ -60,7 +60,7 @@ class MensajeriaPrivInv extends Component {
                                 </div>
                             )
                         })}
-                         {this.props.privados2.map(m => {
+                         {this.props.privados2[0]?this.props.privados2[0].map(m => {
                             return (
                                 <div className="col l3">
                                     {this.props.invitados.map(b => {
@@ -73,12 +73,10 @@ class MensajeriaPrivInv extends Component {
 
                                 </div>
                             )
-                        })}
-
+                        }):null}
                     </div>
                 </div>
             </div>
-
         )
     }
 }

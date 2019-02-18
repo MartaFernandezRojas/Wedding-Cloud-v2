@@ -24,11 +24,12 @@ class Priv extends Component {
 
     componentDidMount() {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
-
+        console.log(invitado)
+        this.setState({
+            inv: invitado
+        })
         this.props.loadInv({ idb: invitado.id_boda })
-        // this.setState({
-        //     inv: invitado
-        // })
+        
         this.props.loadPriv({ id_invReceptor: invitado.id })
         this.props.getRespPriv({ id_mensajePriv: this.props.priv.id });
     }
@@ -55,9 +56,8 @@ class Priv extends Component {
         let mensaje = {
             mensaje: this.state.mensaje,
             id_mensajePriv: this.props.priv.id,
-            id_invitado: this.props.inv.id,
+            id_invitado: invitado.id,
         }
-
         this.props.postRespPriv(mensaje)
         this.props.getRespPriv({ id_mensajePriv: mensaje.id_mensajePriv });
 
@@ -97,7 +97,7 @@ class Priv extends Component {
                                 <li className="list-group-item list-group-item-info">{this.props.inv.nombre}: {privado.mensaje}</li>
 
                                 {this.props.respuestasPriv[privado.id]?this.props.respuestasPriv[privado.id].map(m =>
-                                    <li className="list-group-item list-group-item-info">{m.mensaje}</li>
+                                    <li className="list-group-item list-group-item-info">{m.nombre}: {m.mensaje}</li>
                                 ):null
                                 }
                             </ul>

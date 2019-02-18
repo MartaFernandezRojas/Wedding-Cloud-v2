@@ -20,11 +20,16 @@ export class CardInvitado extends Component {
 
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-    this.state.invitado = invitado;
+    console.log(invitado);
+    this.setState({
+      invitado
+    })
+    
     axios.get('http://localhost:3000/invitados/invitadoMesa', { params: { idb: invitado.id_boda, m: invitado.mesa } })
       .then(response => {
         this.setState({ invitados: response.data })
       })
+  
   }
 
 
@@ -36,13 +41,16 @@ export class CardInvitado extends Component {
 
     axios.post('http://localhost:3000/invitados/avatar', fd)
       .then(response => {
+        this.setState({invitado:{...this.state.invitado,url:response.data.url}})
+        invitado.url=response.data.url;
+        localStorage.setItem('invitado', JSON.stringify(invitado));
       })
 
-    axios.get('http://localhost:3000/invitados/getInvFoto', { params: { id: invitado.id } })
-      .then(response => {
-        this.setState({ url: response.data[0].url })
-        console.log(response.data[0].url)
-      })
+    // axios.get('http://localhost:3000/invitados/getInvFoto', { params: { id: invitado.id } })
+    //   .then(response => {
+    //     this.setState({ url: response.data[0].url })
+    //     console.log(response.data[0].url)
+    //   })
   }
 
 
@@ -53,7 +61,7 @@ export class CardInvitado extends Component {
         <MDBCol style={{ marginTop: "50px", display: "flex" }}>
           <MDBCard color="blue-grey darken-1" style={{ width: "100%" }}>
             <form>
-              <MDBCardImage className="img-fluid" id="foto" src="https://www.websa100.com/wp-content/uploads/2016/05/foto-de-perfil-adecuada.jpg" waves />
+              <MDBCardImage className="img-fluid" id="foto" src={`http://localhost:3000/${this.state.invitado.url}`} waves />
               <div className="file-upload-wrapper">
                 <input type="file" id="input-file-now" className="file-upload" name="foto" onChange={this.insertAvatar} />
                 <MDBBtn color="blue-grey" size="sm" className="waves-effect waves-light btn" id="anadirTarea" >Añadir Foto</MDBBtn>
