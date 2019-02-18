@@ -69,6 +69,9 @@ export class Mesas extends PureComponent {
             .then(response => {
                 this.start();
             })
+            var invitado = JSON.parse(localStorage.getItem("invitado"));
+            invitado.mesa=user.mesa;
+            localStorage.setItem('invitado', JSON.stringify(invitado));
     }
     render() {
         var cont1 = 0;

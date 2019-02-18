@@ -53,7 +53,7 @@ export class CardInvitadoMesa extends Component {
           <MDBCard className={styles.fondo} style={{ width: "100%", padding: "10px"}}>
             <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa</p>
             {this.state.invitados.map(m => {
-              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado") {
+              if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.id!=m.id) {
                 return <Invitado style={{ width: "5px" }} key={m.id} invitado={m} />
               } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98) && escrito == false) {
                 escrito = true

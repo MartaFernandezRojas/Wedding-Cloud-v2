@@ -95,8 +95,8 @@ class MensajeriaInv extends Component {
                                     })}
                                 </div>
                                 <div className="col l4 s12">
+                                <h5 style={{ fontSize: "15px" }}>Invitados</h5>
                                     <div className={styles.emojis}>
-                                        <h5 style={{ fontSize: "15px" }}>Invitados</h5>
                                         {this.props.invitados.map(m => {
                                             console.log(m)
                                             if (m.id != this.state.inv.id) {

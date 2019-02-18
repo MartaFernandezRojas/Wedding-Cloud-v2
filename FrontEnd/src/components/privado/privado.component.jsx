@@ -87,9 +87,10 @@ class Priv extends Component {
                     {/* <button className={styles.button} style={{fontSize:"15px"}} onClick={this.toggle2}>
                         <b>x</b> </button> */}
                     <div className="row">
+                    <img src={`http://localhost:3000/${this.props.inv.url}`} className={styles.img} />
                         <div className="col l6">
                         
-                            <p style={{ color: "white", fontSize: "15px" }}><p style={{ fontSize: "20px", color: "white" }}> Mensaje de:<img src={`http://localhost:3000/${this.props.inv.url}`} className={styles.img} /> </p> {this.props.inv.nombre} {this.props.inv.apellido} -  {this.props.inv.familia} de {this.props.inv.parte} </p>
+                            <p style={{ color: "white", fontSize: "15px" }}><p style={{ fontSize: "15px", color: "white" }}> Mensaje de: </p> {this.props.inv.nombre} {this.props.inv.apellido} -  {this.props.inv.familia} de {this.props.inv.parte} </p>
                         </div></div>
                     < MDBCardText >
                         <div className={styles.emojis}>

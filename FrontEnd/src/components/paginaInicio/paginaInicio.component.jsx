@@ -20,8 +20,8 @@ export class PaginaInicio extends Component {
 
                     <div className={style2.wrapper}>
                         <section className={style2.bloque1}>
-                        <p style={{color:"white"}}>Weddding Cloud</p>
-                        <p style={{color:"white"}}>Deja a tu invitados en la nube</p>
+                        <p className={style2.letrero} style={{color:"white", fontSize:"40px", marginTop:"30px", marginLeft:"60px"}}>Weddding Cloud</p>
+                        <p style={{color:"white",fontSize:"30px", marginTop:"20px", marginLeft:"75px"}}>Deja a tu invitados en la nube</p>
                         </section>
                         <section className={style2.bloque2}>
                             <div className="row">
