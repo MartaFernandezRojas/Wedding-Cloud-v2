@@ -82,7 +82,7 @@ export class LogIn extends Component {
                 {redireccion2}
                 <MDBContainer className={stylesform.modals}>
                     <MDBModal isOpen={this.state.modal}>
-                        <MDBModalHeader >MDBModal title</MDBModalHeader>
+                        <MDBModalHeader >Error en el Login</MDBModalHeader>
                         <MDBModalBody>
                             Revisa tu email y tu password
                             </MDBModalBody>

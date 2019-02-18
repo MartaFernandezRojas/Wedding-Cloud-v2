@@ -49,6 +49,7 @@ class MensajeriaPrivInv extends Component {
                         {this.props.privados.map(m => {
                             return (
                                 <div className="col l3">
+
                                     {this.props.invitados.map(b => {
                                         if (b.id == m.id_invitado) {
                                             return (
@@ -60,11 +61,12 @@ class MensajeriaPrivInv extends Component {
                                 </div>
                             )
                         })}
-                         {this.props.privados2[0]?this.props.privados2[0].map(m => {
+                         {this.props.privados2[0] ? this.props.privados2[0].map(m => {
                             return (
                                 <div className="col l3">
+
                                     {this.props.invitados.map(b => {
-                                        if (b.id == m.id_invReceptor) {
+                                        if (b.id == m.id_invitado) {
                                             return (
                                                 <ConnectPriv key={m.id} priv={m} inv={b} />
                                             )
@@ -73,7 +75,7 @@ class MensajeriaPrivInv extends Component {
 
                                 </div>
                             )
-                        }):null}
+                        }) : null}
                     </div>
                 </div>
             </div>

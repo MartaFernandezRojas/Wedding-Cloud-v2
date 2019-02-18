@@ -11,3 +11,13 @@
     display: flex;
     align-content: center;
 }
+
+.emojis::-webkit-scrollbar{
+    display: none;
+  }
+
+.emojis{
+    max-height: 90vh;
+    min-height: 87vh;
+      overflow: scroll;
+    }

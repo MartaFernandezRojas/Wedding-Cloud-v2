@@ -4,3 +4,20 @@
     text-align: center;
     background-color: rgb(192, 177, 177);
 }
+
+
+.emojis::-webkit-scrollbar{
+    display: none;
+  }
+.emojis{
+    max-height: 25vh;
+    min-height: 25vh;
+      overflow: scroll;
+}
+
+.img{
+    width: 70px;
+    height: 70px;
+    border-radius:100%;
+}
+

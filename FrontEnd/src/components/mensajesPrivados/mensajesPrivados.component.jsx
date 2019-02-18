@@ -45,13 +45,14 @@ class MensajeriaPriv extends Component {
         // console.log(this.props.privados.length)
         return (
             <div className={styles.fondo}>
-                <ConnectNavbar />
+                <ConnectNavbar props={this.props.privados.length} />
                 {/* <h4>Mensajes privados</h4> */}
                 <div className="container" style={{ marginTop: "30px" }}>
                     <div className="row">
                         {this.props.privados.map(m => {
                             return (
                                 <div className="col l6">
+
                                     {this.props.invitados.map(b => {
                                         if (b.id == m.id_invitado) {
                                             return (
@@ -63,11 +64,13 @@ class MensajeriaPriv extends Component {
                                 </div>
                             )
                         })}
+
                         {this.props.privados2[0] ? this.props.privados2[0].map(m => {
                             return (
                                 <div className="col l6">
+
                                     {this.props.invitados.map(b => {
-                                        if (b.id == m.id_invReceptor) {
+                                        if (b.id == m.id_invitado) {
                                             return (
                                                 <ConnectPriv key={m.id} priv={m} inv={b} />
                                             )
