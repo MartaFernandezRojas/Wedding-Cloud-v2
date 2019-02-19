@@ -77,9 +77,9 @@ class MensajeResp extends Component {
                            
                             {this.state.rol == 1 || this.state.id == this.props.mensaje.id_inv ?
                                 <div>
-                                    <button className={styles.button} onClick={this.toggle2}>
-                                        <b>x</b>
-                                    </button>
+                                    <a onClick={this.toggle2}>
+                                        <b style={{color:"white"}}>X</b>
+                                    </a>
                                     <MDBContainer>
                                         <MDBModal isOpen={this.state.modal3} toggle={this.toggle2}>
                                             <MDBModalBody>
