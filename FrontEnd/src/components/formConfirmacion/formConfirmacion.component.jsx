@@ -102,7 +102,7 @@ export class FormularioConfirmacion extends Component {
                     <input className="form-control" id="apellido" type="text" name="apellido" placeholder={this.state.invitados ? this.state.invitados.apellido : 'null'} value={this.state.apellido} onChange={this.handleChange} />
                     <label className={styles2.label} style={{ color: "white" }} form="email">Email</label>
                     <input className="form-control validate" id="email" type="email" name="Email" placeholder={this.state.invitados ? this.state.invitados.email : 'null'} value={this.state.email} onChange={this.handleChange} />
-                    <p style={{ fontSize: "20px", color: "white" }} >Confirmación de asistencia:</p>
+                    <p style={{ fontSize: "18px", color: "white" }} >Confirmación de asistencia:</p>
                     <div className="form-check">
                       <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Confirmado'} value='Confirmado' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Si</label>
@@ -111,7 +111,7 @@ export class FormularioConfirmacion extends Component {
                       <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Ausente'} value='Ausente' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">No</label>
                     </div>
-                    <p style={{ fontSize: "20px", color: "white" }}>Alergia o intolerancia</p>
+                    <p style={{ fontSize: "18px", color: "white" }}>Alergia o intolerancia</p>
                     <div className="form-check">
                       <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'Celiaco'} value='Celiaco' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Celiaco</label>
@@ -120,7 +120,7 @@ export class FormularioConfirmacion extends Component {
                       <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'Lactosa'} value='Lactosa' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Lactosa</label>
                     </div>
-                    <p style={{ fontSize: "20px", color: "white" }}>Vienes de parte de:</p>
+                    <p style={{ fontSize: "18px", color: "white" }}>Vienes de parte de:</p>
                     <div className="form-check">
                       <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === this.state.novio1} value={this.state.novio1} onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">{this.state.novio1}</label>
@@ -129,7 +129,7 @@ export class FormularioConfirmacion extends Component {
                       <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === this.state.novio2} value={this.state.novio2} onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">{this.state.novio2}</label>
                     </div>
-                    <p style={{ fontSize: "20px", color: "white" }}>Familia o Amigo</p>
+                    <p style={{ fontSize: "18px", color: "white" }}>Familia o Amigo</p>
                     <div className="form-check">
                       <input className="form-check-input validate" id="familia" type="radio" name="familia" checked={this.state.familia === 'Familia'} value='Familia' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Familia</label>
@@ -138,7 +138,7 @@ export class FormularioConfirmacion extends Component {
                       <input className="form-check-input validate" id="familia" type="radio" name="familia" checked={this.state.familia === 'Amigo'} value='Amigo' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Amigo</label>
                     </div>
-                    <p style={{ fontSize: "20px", color: "white" }}>Asistiras a nuestra gran fiesta preboda</p>
+                    <p style={{ fontSize: "18px", color: "white" }}>Asistiras a nuestra gran fiesta preboda</p>
                     <div className="form-check">
                       <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'Fiesta'} value='Fiesta' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Si, a darlo todo</label>
@@ -148,7 +148,7 @@ export class FormularioConfirmacion extends Component {
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">No, me reservo para la fiesta</label>
                     </div>
                     <div>
-                      <p style={{ fontSize: "20px", color: "white" }}>DEJANOS TUS COMENTARIOS, EMOCIONES, PETICIONES DE CANCIONES....</p>
+                      <p style={{ fontSize: "18px", color: "white" }}>Esperamos tus comentarios</p>
 
                       <div className="input-group">
                         <div className="input-group-prepend">
@@ -156,7 +156,7 @@ export class FormularioConfirmacion extends Component {
                             <i className="fas fa-pencil-alt prefix"></i>
                           </span>
                         </div>
-                        <textarea className="form-control" id="comentarios" value={this.state.comentarios} onChange={this.handleChange} rows="4"></textarea>
+                        <textarea className="form-control" id="comentarios" placeholder="Música, deseos....." value={this.state.comentarios} onChange={this.handleChange} rows="4"></textarea>
                       </div>
                     </div>
                     <MDBBtn color="blue-grey" className="waves-effect waves-light btn" type='button' onClick={() => {

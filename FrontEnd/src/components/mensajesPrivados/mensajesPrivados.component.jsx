@@ -25,7 +25,7 @@ class MensajeriaPriv extends Component {
         // })
 
         this.props.loadPriv({ id_invReceptor: invitado.id })
-
+        this.props.loadPriv2({ id_invitado: invitado.id })
     }
     componentDidUpdate() {
         return true;
@@ -51,7 +51,7 @@ class MensajeriaPriv extends Component {
                     <div className="row">
                         {this.props.privados.map(m => {
                             return (
-                                <div className="col l6">
+                                <div className="col l3">
 
                                     {this.props.invitados.map(b => {
                                         if (b.id == m.id_invitado) {
@@ -67,7 +67,7 @@ class MensajeriaPriv extends Component {
 
                         {this.props.privados2[0] ? this.props.privados2[0].map(m => {
                             return (
-                                <div className="col l6">
+                                <div className="col l3">
 
                                     {this.props.invitados.map(b => {
                                         if (b.id == m.id_invitado) {

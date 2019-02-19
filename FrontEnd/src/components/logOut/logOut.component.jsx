@@ -23,7 +23,6 @@ export class LogOut extends Component {
 
         })
     }
-
     render() {
         const redireccion = this.state.redirect ? <Redirect to="/" /> : null
         return (

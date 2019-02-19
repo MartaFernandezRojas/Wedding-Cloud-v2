@@ -90,7 +90,7 @@ class Priv extends Component {
                     <img src={`http://localhost:3000/${this.props.inv.url}`} className={styles.img} />
                         <div className="col l6">
                         
-                            <p style={{ color: "white", fontSize: "15px" }}><p style={{ fontSize: "15px", color: "white" }}> Mensaje de: </p> {this.props.inv.nombre} {this.props.inv.apellido} -  {this.props.inv.familia} de {this.props.inv.parte} </p>
+                            <p style={{ color: "white", fontSize: "15px" }}><p style={{ fontSize: "15px", color: "white" }}> Inicio el hilo: </p> {this.props.inv.nombre} {this.props.inv.apellido} </p>
                         </div></div>
                     < MDBCardText >
                         <div className={styles.emojis}>
@@ -132,8 +132,6 @@ class Priv extends Component {
                     </MDBModalFooter>
                 </MDBModal>
             </MDBCard>
-
-
         )
     }
 }
