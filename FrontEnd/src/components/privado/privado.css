@@ -10,14 +10,14 @@
     display: none;
   }
 .emojis{
-    max-height: 25vh;
-    min-height: 25vh;
+    max-height: 35vh;
+    min-height: 35vh;
       overflow: scroll;
 }
 
 .img{
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     border-radius:100%;
 }
 

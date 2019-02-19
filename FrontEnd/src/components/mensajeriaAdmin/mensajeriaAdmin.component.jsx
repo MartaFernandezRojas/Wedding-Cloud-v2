@@ -46,8 +46,9 @@ class MensajeriaInv extends Component {
             id_invitado: this.state.inv.id,
             titulo: this.state.titulo,
             mensaje: this.state.mensaje,
+            idb: this.state.inv.id_boda
         })
-        this.props.loadmens({ idb: this.state.inv.id_boda });
+       
         this.setState({
             titulo: '',
             mensaje: '',

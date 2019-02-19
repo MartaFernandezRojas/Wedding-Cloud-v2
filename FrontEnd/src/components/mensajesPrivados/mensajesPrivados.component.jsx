@@ -49,26 +49,25 @@ class MensajeriaPriv extends Component {
                 {/* <h4>Mensajes privados</h4> */}
                 <div className="container" style={{ marginTop: "30px" }}>
                     <div className="row">
-                        {this.props.privados.map(m => {
-                            return (
-                                <div className="col l3">
+                        <div className="col l4">
+                            {this.props.privados.map(m => {
+                                return (
+                                    
+                                        this.props.invitados.map(b => {
+                                            if (b.id == m.id_invitado) {
+                                                return (
+                                                    <ConnectPriv key={m.id} priv={m} inv={b} />
+                                                )
+                                            }
+                                        })
+                                
+                                )
 
-                                    {this.props.invitados.map(b => {
-                                        if (b.id == m.id_invitado) {
-                                            return (
-                                                <ConnectPriv key={m.id} priv={m} inv={b} />
-                                            )
-                                        }
-                                    })}
-
-                                </div>
-                            )
-                        })}
-
+                            })}
+                        </div>
                         {this.props.privados2[0] ? this.props.privados2[0].map(m => {
                             return (
-                                <div className="col l3">
-
+                                <div className="col l4">
                                     {this.props.invitados.map(b => {
                                         if (b.id == m.id_invitado) {
                                             return (

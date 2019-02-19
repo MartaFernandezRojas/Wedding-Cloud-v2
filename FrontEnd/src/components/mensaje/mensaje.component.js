@@ -52,7 +52,7 @@ class MensajeResp extends Component {
             mensaje: this.state.mensaje,
         });
         this.toggle();
-        this.props.loadResp({ id_mensaje: this.props.mensaje.id_men });
+        
     }
     eliminar = () => {
         this.props.delete({ id_mensaje: this.props.mensaje.id_men });

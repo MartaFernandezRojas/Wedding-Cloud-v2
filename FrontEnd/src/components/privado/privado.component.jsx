@@ -58,8 +58,7 @@ class Priv extends Component {
             id_mensajePriv: this.props.priv.id,
             id_invitado: invitado.id,
         }
-        this.props.postRespPriv(mensaje)
-        this.props.getRespPriv({ id_mensajePriv: mensaje.id_mensajePriv });
+        this.props.postRespPriv(mensaje);
 
         // axios.post('http://localhost:3000/mensajes/mesajePriv', mensaje)
         //     .then(response => {
@@ -82,7 +81,7 @@ class Priv extends Component {
         let privado = this.props.priv;
         return (
 
-            <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "18rem", marginBottom: "10px" }}>
+            <MDBCard className="card-body #455a64 blue-grey darken-1" style={{ width: "20rem", marginBottom: "10px" }}>
                 <MDBCardBody>
                     {/* <button className={styles.button} style={{fontSize:"15px"}} onClick={this.toggle2}>
                         <b>x</b> </button> */}
@@ -95,14 +94,14 @@ class Priv extends Component {
                     < MDBCardText >
                         <div className={styles.emojis}>
                             <ul>
-                                <li className="list-group-item list-group-item-info" style={{ marginRight: "10px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{this.props.inv.nombre}: {privado.mensaje}</li>
+                                <li className="list-group-item list-group-item-info" style={{ marginRight: "15px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{this.props.inv.nombre}: {privado.mensaje}</li>
                                 {this.props.respuestasPriv[privado.id] ? this.props.respuestasPriv[privado.id].map(m =>
 
                                     this.props.inv.nombre == m.nombre ?
 
-                                        <li className="list-group-item list-group-item-info" style={{ marginRight: "10px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{m.nombre}: {m.mensaje}</li>
+                                        <li className="list-group-item list-group-item-info" style={{ marginRight: "15px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{m.nombre}: {m.mensaje}</li>
                                         :
-                                        <li className="list-group-item list-group-item-danger" style={{ marginLeft: "10px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{m.nombre}: {m.mensaje}</li>
+                                        <li className="list-group-item list-group-item-danger" style={{ marginLeft: "15px", borderRadius: " 5px 5px 5px 5px", marginBottom: "3px" }}>{m.nombre}: {m.mensaje}</li>
 
                                 ) : null
                                 }
