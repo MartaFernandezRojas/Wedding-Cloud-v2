@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBCard, MDBCol } from 'mdbreact';
-import { Invitado } from '@Components';
+import { Invitado,ConnectINV } from '@Components';
 import styles from './cardInvitadoMesa.css'
 
 /////////COMPONENTE///////////////
@@ -54,7 +54,7 @@ export class CardInvitadoMesa extends Component {
             <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa</p>
             {this.state.invitados.map(m => {
               if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.id!=m.id) {
-                return <Invitado style={{ width: "5px" }} key={m.id} invitado={m} />
+                return <ConnectINV style={{ width: "5px" }} key={m.id} invitado={m} />
               } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98) && escrito == false) {
                 escrito = true
                 return (<p>Aun no tienes mesa asignada</p>)

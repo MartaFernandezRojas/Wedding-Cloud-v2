@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import styles from './mensajeria.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
-import { Footer, NavbarInvitados, ConnectMensajeriaResp, Invitado } from '@Components';
+import { Footer, NavbarInvitados, ConnectMensajeriaResp, Invitado, ConnectINV } from '@Components';
 import { mensInv, Inv, postMens } from '@Models'
 
 ///////////// Component ////////////////
@@ -101,9 +101,9 @@ class MensajeriaInv extends Component {
                                             console.log(m)
                                             if (m.id != this.state.inv.id) {
                                                 if (m.rol == 1) {
-                                                    return <Invitado key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' ' }} />
+                                                    return <ConnectINV key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' ' }} />
                                                 } else {
-                                                    return <Invitado key={m.id} invitado={m} />
+                                                    return <ConnectINV key={m.id} invitado={m} />
                                                 }
                                             }
                                         })}
