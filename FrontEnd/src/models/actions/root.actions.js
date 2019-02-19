@@ -153,7 +153,15 @@ export const getRespPriv = m => dispatch => {
 export const deleteInv = inv => dispatch => {
   axios.post('http://localhost:3000/invitados/delete', inv)
     .then(response => {
+      console.log(inv)
       dispatch(deleteInvi({ id: inv.id }))
+      axios.post('http://localhost:3000/mensajes/getMensajes', { idb: inv.idb })
+      .then(response => {
+        dispatch(mensajeInvitado(response.data))
+      })
+      .catch(err => {
+        console.log(err)
+      })
     })
     .catch(err => {
       console.log(err)
