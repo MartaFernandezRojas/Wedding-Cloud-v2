@@ -1,6 +1,7 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styles from './mensajeriaAdmin.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBCollapse } from 'mdbreact';
@@ -58,6 +59,7 @@ class MensajeriaInv extends Component {
     }
 
     render() {
+        const redirect = this.state.inv.rol==0?<Redirect from="/gestionInvitados" to="/FormularioConfirmacion"/>:null
         return (
             <div>
                 <ConnectNavbar />
@@ -114,6 +116,7 @@ class MensajeriaInv extends Component {
                         </div>
                     </div>
                 </div>
+                {redirect}
             </div>
 
         );

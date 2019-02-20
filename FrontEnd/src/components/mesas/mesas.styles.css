@@ -14,6 +14,7 @@ p{
     background-image:url('../../assets/img/madera.jpg');
     /* background-color: rgb(106, 200, 243); */
     min-height: 350px;
+    max-width: 250px;
     min-width: 130px;
     border-radius: 200px;
     display: flex;
@@ -26,7 +27,7 @@ p{
 
 .circlePres{  
     background-image:url('../../assets/img/madera.jpg');
-    min-height: 300px;
+    min-height:250px;
     width: 500px;
     min-width:300px ;
     border-radius: 40px;
@@ -56,12 +57,11 @@ h5{
    border: 1px rgb(165, 162, 162) solid;
 }
 .lista li{
-    width: 140px;
+    width: 130px;
     height:40px ;
     align-content: center;
     list-style: none;
     margin-bottom: 5px;
-   
 }
 
 .etiquetas{
@@ -96,6 +96,24 @@ h5{
     margin-top:-8px;
     margin-left: -19px;
 }
+
+@media (max-width: 1600px) {
+    .circle{  
+        background-image:url('../../assets/img/madera.jpg');
+        /* background-color: rgb(106, 200, 243); */
+        min-height: 350px;
+        width: 100px;
+        border-radius: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 1px rgb(165, 162, 162) solid;
+    }
+    
+   
+  }
 
 @media only screen and (max-width: 600px) {
     .circlePres{  

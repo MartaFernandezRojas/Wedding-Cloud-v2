@@ -1,6 +1,7 @@
 .titulo{
    color:white;
    font-size:25px;
+   padding:5px;
 }
 
 .mensaje{
@@ -9,8 +10,8 @@
 }
 
 .img{
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     border-radius: 100%;
 }
 

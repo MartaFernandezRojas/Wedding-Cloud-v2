@@ -11,23 +11,21 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 import { style } from 'react-toastify';
 ///////////// Component ////////////////
 export class PaginaInicio extends Component {
-
     render() {
         return (
             <div>
                 <NavbarInicio />
                 <div className="container-fluid">
-
                     <div className={style2.wrapper}>
                         <section className={style2.bloque1}>
-                        <p className={style2.letrero} style={{color:"white", fontSize:"40px", marginTop:"30px", marginLeft:"60px"}}>Weddding Cloud</p>
+                        <p className={style2.letrero} style={{color:"white", fontSize:"40px", marginTop:"30px", marginLeft:"60px"}}>Wedding Cloud</p>
                         <p style={{color:"white",fontSize:"30px", marginTop:"20px", marginLeft:"75px"}}>Deja a tu invitados en la nube</p>
                         </section>
                         <section className={style2.bloque2}>
                             <div className="row">
                                 <div className="col l12">
                           
-                                    <h2>Servicios de Weddding Cloud</h2>
+                                    <h2>Servicios de Wedding Cloud</h2>
                                 </div>
                             </div>
                             <div className={style2.informacion}>
@@ -65,21 +63,16 @@ export class PaginaInicio extends Component {
                                             </MDBMask>
                                         </MDBView>
                                     </div>
-                                   
                                 </div>
-                                
                             </div>
                         </section>
                         <section className={style2.bloque3}>
                         <p className={style2.title}>Crea tu boda</p>
                             <Boda />
-                           
                         </section>
                         <section className={style2.bloque4}>
                         <Footer/>
-                           
                         </section>
-                       
                     </div>
                 </div>
                

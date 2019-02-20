@@ -1,7 +1,7 @@
 //Import libraries
 import React, { PureComponent } from 'react';
 import axios from 'axios';
-
+import { Redirect } from 'react-router-dom';
 import { ConnectNavbar } from '../navbar/navbar.component';
 import styles from './mesas.styles.css';
 import { Draggable, Droppable } from 'react-drag-and-drop'
@@ -20,7 +20,8 @@ export class Mesas extends PureComponent {
         mesa: 0,
         id: null,
         novio1: '',
-        novio2: ''
+        novio2: '',
+        invi:{}
 
     };
 
@@ -31,6 +32,7 @@ export class Mesas extends PureComponent {
     start = () => {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
         this.state.nombre = invitado.nombre;
+        this.setState({invi:invitado })
 
         axios.get('http://localhost:3000/invitados/get', { params: { idb: invitado.id_boda } })
             .then(response => {
@@ -75,7 +77,9 @@ export class Mesas extends PureComponent {
     }
     render() {
         var cont1 = 0;
+         const redirect = this.state.invi.rol==0?<Redirect from="/mesas" to="/FormularioConfirmacion"/>:null
         return (
+      
             <div className={styles.fondo}>
                 <ConnectNavbar />
                 <div className="container-fluid">
@@ -90,7 +94,7 @@ export class Mesas extends PureComponent {
                                 <div className={styles.circlePres}><div><ul className={styles.listaPres}>
                                     <h3 style={{ fontSize: "15px" }}>PRESIDENCIAL</h3>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null'&& e.id_alergia != 'No') {
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -118,7 +122,7 @@ export class Mesas extends PureComponent {
                                     {this.state.invitados.map((e, index) => {
 
 
-                                        if (e.mesa == 98 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 98 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null'&& e.id_alergia != 'No') {
 
                                             return (
 
@@ -142,7 +146,7 @@ export class Mesas extends PureComponent {
                             <p>Limbo</p>
                             <ul className={styles.lista}>
                                 {this.state.invitados.map((e, index) => {
-                                    if (e.mesa == 0 && e.confirmacion == "Confirmado" && e.id_alergia != 'null' && (e.parte == "null" || e.familia == "null")) {
+                                    if (e.mesa == 0 && e.confirmacion == "Confirmado" && e.id_alergia != 'null' && (e.parte == "null" || e.familia == "null") && e.id_alergia != 'No') {
                                         return (
                                             <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
                                         )
@@ -163,7 +167,7 @@ export class Mesas extends PureComponent {
                                 <div className={styles.circle}>  <h3>1</h3><div><ul className={styles.lista}>
 
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 1 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 1 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
                                             cont1++;
                                             return (
 
@@ -177,7 +181,6 @@ export class Mesas extends PureComponent {
                                         }
                                         <h1>cont1</h1>
                                     })}
-
                                 </ul>
                                 </div>
                                 </div>
@@ -187,7 +190,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 5)}>
                                 <div className={styles.circle}><h3>5</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 5 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 5 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -210,7 +213,7 @@ export class Mesas extends PureComponent {
 
 
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 9 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 9 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -235,7 +238,7 @@ export class Mesas extends PureComponent {
                                 <div className={styles.circle}><h3>2</h3><div><ul className={styles.lista}>
                                     <div className="col l6">
                                         {this.state.invitados.map((e, index) => {
-                                            if (e.mesa == 2 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                            if (e.mesa == 2 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                                 return (
 
@@ -257,7 +260,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 6)}>
                                 <div className={styles.circle}><h3>6</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 6 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 6 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -278,7 +281,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 10)}>
                                 <div className={styles.circle}><h3>10</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 10 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 10 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -301,7 +304,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 3)}>
                                 <div className={styles.circle}><h3>3</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 3 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 3 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -323,7 +326,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 7)}>
                                 <div className={styles.circle}><h3>7</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 7 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 7 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -344,7 +347,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 11)}>
                                 <div className={styles.circle}><h3>11</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 11 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 11 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -367,7 +370,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 4)}>
                                 <div className={styles.circle}><h3>4</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 4 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 4 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -389,7 +392,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 8)}>
                                 <div className={styles.circle}><h3>8</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 8 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 8 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
 
@@ -410,7 +413,7 @@ export class Mesas extends PureComponent {
                                 onDrop={this.onDrop.bind(this, 12)}>
                                 <div className={styles.circle}><h3>12</h3><div><ul className={styles.lista}>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 12 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                        if (e.mesa == 12 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                             return (
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -438,7 +441,7 @@ export class Mesas extends PureComponent {
 
 
 
-                                                if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                                if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                                     return (
                                                         <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -456,7 +459,7 @@ export class Mesas extends PureComponent {
                                     <p>Familia {this.state.novio2}</p>
                                     <ul className={styles.lista}>
                                         {this.state.familiaNovia.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                                 return (
 
@@ -474,7 +477,7 @@ export class Mesas extends PureComponent {
                                     <p>Amigos de {this.state.novio1}</p>
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovio.map((e, index) => {
-                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -492,7 +495,7 @@ export class Mesas extends PureComponent {
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovia.map((e, index) => {
 
-                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
+                                            if (e.mesa == 0 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
 
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -509,6 +512,7 @@ export class Mesas extends PureComponent {
                         </div>
                     </div>
                 </div>
+                {redirect}
             </div>
         )
     }

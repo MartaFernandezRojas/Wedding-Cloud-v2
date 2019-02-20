@@ -113,6 +113,10 @@ export class FormularioConfirmacion extends Component {
                     </div>
                     <p style={{ fontSize: "18px", color: "white" }}>Alergia o intolerancia</p>
                     <div className="form-check">
+                        <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'No'} value='No' onChange={this.handleChange} />
+                        <label className={styles2.label} style={{ color: "white" }} for="Si puedo" defaultChecked>No</label>
+                      </div>
+                    <div className="form-check">
                       <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'Celiaco'} value='Celiaco' onChange={this.handleChange} />
                       <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Celiaco</label>
                     </div>

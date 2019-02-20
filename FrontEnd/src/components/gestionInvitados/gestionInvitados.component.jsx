@@ -1,6 +1,7 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import { MDBDataTable } from 'mdbreact';
 import styles from './gestionInvitados.styles.css';
 import { ConnectNavbar } from '@Components'
@@ -12,6 +13,7 @@ import { style } from 'react-toastify';
 export class GestionInvitados extends Component {
 
   state = {
+    invi:{},
     nombre: '',
     invitados: [],
     dataPie: {
@@ -44,6 +46,7 @@ export class GestionInvitados extends Component {
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     this.state.nombre = invitado.nombre;
+    this.setState({invi:invitado})
     axios.get('http://localhost:3000/invitados/get', { params: { idb: invitado.id_boda } })
       .then(response => {
         this.setState({ invitados: response.data })
@@ -52,7 +55,7 @@ export class GestionInvitados extends Component {
   }
   
   render() {
-
+  
     const data = {
       columns: [
         {
@@ -130,6 +133,7 @@ export class GestionInvitados extends Component {
       ],
       rows: this.state.invitados,
     }
+    const redirect = this.state.invi.rol==0?<Redirect from="/gestionInvitados" to="/FormularioConfirmacion"/>:null
     return (
       <div className={styles.fondo}>
         <ConnectNavbar />
@@ -147,11 +151,13 @@ export class GestionInvitados extends Component {
                   bordered
                   hover
                   data={data}
+                  
                 />
               </ul>
             </div>
           </div>
         </div>
+        {redirect}
       </div>
     )
   }

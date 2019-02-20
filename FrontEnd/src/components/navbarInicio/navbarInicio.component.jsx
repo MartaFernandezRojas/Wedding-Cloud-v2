@@ -25,7 +25,7 @@ export class NavbarInicio extends Component {
             <div className={Style.navbar}>
             <MDBNavbar className="navbar-fixed z-depth-1-half" dark expand="md">
                 <MDBNavbarBrand>
-                <img src={cloud} style={{width:"8%"}}/>
+                <img src={cloud} style={{width:"40px"}}/>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar > 

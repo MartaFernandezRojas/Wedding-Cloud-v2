@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+import { Redirect } from 'react-router-dom';
 //Import Stilos
 import styles2 from './formConfirmacionAdmin.styles.css';
 import styles from '../../routes/router/router.styles.css';
@@ -26,6 +26,7 @@ export class FormularioConfirmacionAdmin extends Component {
       novio1: '',
       novio2: '',
       modal: false,
+      invi:{}
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -64,6 +65,7 @@ export class FormularioConfirmacionAdmin extends Component {
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     this.setState(invitado);
+    this.setState({invi:invitado})
     axios.get('http://localhost:3000/invitados/getMofificar', { params: { idb: invitado.id_boda, id: invitado.id } })
       .then(response => {
         this.setState(response.data[0])
@@ -75,6 +77,7 @@ export class FormularioConfirmacionAdmin extends Component {
       })
   }
   render() {
+    const redirect = this.state.invi.rol==0?<Redirect from="/gestionInvitados" to="/FormularioConfirmacion"/>:null
     return (
       <div>
         <div className={styles2.fondo}>
@@ -106,6 +109,10 @@ export class FormularioConfirmacionAdmin extends Component {
                         <label className={styles2.label} style={{ color: "white" }} for="Si puedo">No</label>
                       </div>
                       <p style={{ fontSize: "18px", color: "white" }}>Alergia o intolerancia</p>
+                      <div className="form-check">
+                        <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'No'} value='No' onChange={this.handleChange} />
+                        <label className={styles2.label} style={{ color: "white" }} for="Si puedo" defaultChecked>No</label>
+                      </div>
                       <div className="form-check">
                         <input className="form-check-input validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'Celiaco'} value='Celiaco' onChange={this.handleChange} />
                         <label className={styles2.label} style={{ color: "white" }} for="Si puedo">Celiaco</label>
@@ -141,7 +148,7 @@ export class FormularioConfirmacionAdmin extends Component {
                         <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'No Fiesta'} value='No Fiesta' onChange={this.handleChange} />
                         <label className={styles2.label} style={{ color: "white" }} for="Si puedo">No, me reservo para la fiesta</label>
                       </div>
-                      <div>
+                      {/* <div>
                         <p style={{ fontSize: "18px", color: "white" }}>Dejanos tu comentarios...</p>
 
                         <div className="input-group">
@@ -152,7 +159,7 @@ export class FormularioConfirmacionAdmin extends Component {
                           </div>
                           <textarea className="form-control" id="comentarios" value={this.state.comentarios} placeholder="Música, emciones, dudas...." onChange={this.handleChange} rows="4"></textarea>
                         </div>
-                      </div>
+                      </div> */}
                       <MDBBtn color="blue-grey" className="waves-effect waves-light btn" type='button' onClick={() => {
                         this.insertUser();
                       }
@@ -178,6 +185,7 @@ export class FormularioConfirmacionAdmin extends Component {
               </div>
             </div>
           </div>
+          {redirect}
         </div ></div>
     );
   }
