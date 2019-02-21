@@ -90,7 +90,7 @@ class Invitado extends Component {
                                     <MDBContainer>
                                         <MDBModal isOpen={this.state.modal2} toggle={this.toggle2}>
                                             <MDBModalBody>
-                                                ¿Estas seguro que quieres borrar el mensaje?
+                                                ¿Estas seguro que quieres borrar el usuario?
                                         </MDBModalBody>
                                             <MDBModalFooter>
                                                 <MDBBtn color="secondary" onClick={this.toggle2}>Cerrar</MDBBtn>
