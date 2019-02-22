@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { ConnectNavbar } from '../navbar/navbar.component';
 import styles from './mesas.styles.css';
 import { Draggable, Droppable } from 'react-drag-and-drop'
-
+import { MDBCard, MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from "mdbreact";
 
 ///////////// Component ////////////////
 
@@ -21,7 +21,8 @@ export class Mesas extends PureComponent {
         id: null,
         novio1: '',
         novio2: '',
-        invi:{}
+        invi: {},
+        modal2: false
 
     };
 
@@ -32,7 +33,7 @@ export class Mesas extends PureComponent {
     start = () => {
         var invitado = JSON.parse(localStorage.getItem("invitado"));
         this.state.nombre = invitado.nombre;
-        this.setState({invi:invitado })
+        this.setState({ invi: invitado })
 
         axios.get('http://localhost:3000/invitados/get', { params: { idb: invitado.id_boda } })
             .then(response => {
@@ -60,8 +61,6 @@ export class Mesas extends PureComponent {
                     })
             })
     }
-
-
     onDrop(mesa, idUser) {
         let user = {
             id: idUser.invitado,
@@ -75,17 +74,24 @@ export class Mesas extends PureComponent {
         invitado.mesa = user.mesa;
         localStorage.setItem('invitado', JSON.stringify(invitado));
     }
+    alergia() {
+        console.log('hola')
+    }
+    toggle2 = () => {
+        this.setState({
+            modal2: !this.state.modal2
+        });
+    }
     render() {
         var cont1 = 0;
-         const redirect = this.state.invi.rol==0?<Redirect from="/mesas" to="/FormularioConfirmacion"/>:null
+        const redirect = this.state.invi.rol == 0 ? <Redirect from="/mesas" to="/FormularioConfirmacion" /> : null
         return (
-      
+
             <div className={styles.fondo}>
                 <ConnectNavbar />
                 <div className="container-fluid">
                     <h1 style={{ fontSize: "20px", color: "grey" }}>Planificador de mesas de {this.state.nombre}</h1>
                     <div className="row">
-
                         <div className="col l6 s12">
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
@@ -94,7 +100,7 @@ export class Mesas extends PureComponent {
                                 <div className={styles.circlePres}><div><ul className={styles.listaPres}>
                                     <h3 style={{ fontSize: "15px" }}>PRESIDENCIAL</h3>
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null'&& e.id_alergia != 'No') {
+                                        if (e.mesa == 99 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -111,7 +117,6 @@ export class Mesas extends PureComponent {
                                 </div>
                                 </div>
                             </Droppable>
-
                         </div>
                         <div className="col l6 s12">
                             <Droppable
@@ -120,10 +125,7 @@ export class Mesas extends PureComponent {
                                 <div className={styles.desasignados}><div><ul className={styles.listaPres}>
                                     <h3 style={{ fontSize: "15px" }}>Limbo</h3>
                                     {this.state.invitados.map((e, index) => {
-
-
-                                        if (e.mesa == 98 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null'&& e.id_alergia != 'No') {
-
+                                        if (e.mesa == 98 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
                                             return (
 
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
@@ -134,7 +136,6 @@ export class Mesas extends PureComponent {
                                                 <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-secondary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
-
                                         <h1>cont1</h1>
                                     })}
                                 </ul>
@@ -239,22 +240,22 @@ export class Mesas extends PureComponent {
                                     <div className="col l6">
                                         {this.state.invitados.map((e, index) => {
                                             if (e.mesa == 2 && e.id_alergia != 'null' && e.confirmacion != "Ausente" && e.confirmacion != 'null' && e.id_alergia != 'No') {
-
                                                 return (
-
-                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger" ><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             } else if (e.mesa == 2 && e.confirmacion != "Ausente" && e.confirmacion != 'null') {
                                                 return (
                                                     <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p><img className={styles.foto} src={`http://localhost:3000/${e.url}`} /> {e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
+
                                         })}
                                     </div>
                                 </ul>
                                 </div>
                                 </div>
                             </Droppable>
+
                             <Droppable
                                 types={['invitado']} // <= allowed drop types
                                 onDrop={this.onDrop.bind(this, 6)}>

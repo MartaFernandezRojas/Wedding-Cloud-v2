@@ -82,7 +82,7 @@ class Invitado extends Component {
 
                         <img src={`http://localhost:3000/${this.props.invitado.url}`} className={styles.ima} /></div><div className="col l6"><h3 className={styles.nombre}>{this.props.invitado.nombre} {this.props.invitado.apellido}</h3><p className={styles.mensaje}>{this.props.invitado.familia} {this.props.invitado.parte}</p></div>
 
-                        {this.state.inv.rol == 1?
+                        {this.state.inv.rol === 1 && this.props.panelAdmin === true?
                                 <div>
                                     <a onClick={this.toggle2}>
                                         <b style={{color:"white"}}>X</b>

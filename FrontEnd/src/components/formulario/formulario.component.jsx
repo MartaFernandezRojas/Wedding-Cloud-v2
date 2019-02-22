@@ -73,8 +73,8 @@ export class Formulario extends Component {
           <input className="form-control" id="nombre" type="text" name="nombre" placeholder="Nombre" value={this.state.nombre} onChange={this.handleChange} />
           <label form="apellido">Apellido:</label>
           <input className="form-control" id="apellido" type="text" name="apellido" placeholder="Apellido" value={this.state.apellido} onChange={this.handleChange} />
-          <label form="email">Email:</label>
-          <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+          <label form="email">Email o Usuario:</label>
+          <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email " value={this.state.email} onChange={this.handleChange} />
           <label form="password">Passsword:</label>
           <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
           <input type='button' style={{ marginTop: "1rem" }} onClick={() => {

@@ -57,7 +57,6 @@ class MensajeriaInv extends Component {
         })
 
     }
-
     render() {
         const redirect = this.state.inv.rol==0?<Redirect from="/gestionInvitados" to="/FormularioConfirmacion"/>:null
         return (
@@ -100,13 +99,12 @@ class MensajeriaInv extends Component {
                                 <div className="col l4 s12">
                                 <h5 style={{ fontSize: "15px" }}>Invitados</h5>
                                     <div className={styles.emojis}>
-                                      
                                         {this.props.invitados.map(m => {
                                             if (m.id != this.state.inv.id) {
                                                 if (m.rol == 1) {
-                                                    return <ConnectINV key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' la Boda' }} />
+                                                    return <ConnectINV key={m.id} invitado={{ ...m, familia: 'Novi@', parte: ' la Boda' }} panelAdmin={true} />
                                                 } else {
-                                                    return <ConnectINV key={m.id} invitado={m} />
+                                                    return <ConnectINV key={m.id} invitado={m} panelAdmin={true}/>
                                                 }
                                             }
                                         })}
@@ -118,7 +116,6 @@ class MensajeriaInv extends Component {
                 </div>
                 {redirect}
             </div>
-
         );
     }
 }

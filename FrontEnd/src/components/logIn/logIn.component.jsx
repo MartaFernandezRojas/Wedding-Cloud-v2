@@ -69,7 +69,7 @@ export class LogIn extends Component {
             <div>
                 <h5 className={stylesform.titulo}>Log In</h5>
                 <form >
-                    <label form="email">Email:</label>
+                    <label form="email">Email o Usuario:</label>
                     <input className="form-control validate" id="emailregistro" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                     <label form="password">Passsword:</label>
                     <input className="form-control" id="passwordregistro" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />

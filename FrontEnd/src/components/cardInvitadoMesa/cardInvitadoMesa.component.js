@@ -54,7 +54,7 @@ export class CardInvitadoMesa extends Component {
             <p style={{ fontSize: "20px", color: "white" }}>Personas asignadas tu mesa</p>
             {this.state.invitados.map(m => {
               if (invitado.props.mesa != 0 && invitado.props.mesa != 98 && m.confirmacion == "Confirmado" && invitado.props.id!=m.id) {
-                return <ConnectINV style={{ width: "5px" }} key={m.id} invitado={m} />
+                return <ConnectINV style={{ width: "5px" }} key={m.id} invitado={m} panelAdmin={false} />
               } else if ((invitado.props.mesa == 0 || invitado.props.mesa == 98) && escrito == false) {
                 escrito = true
                 return (<p>Aun no tienes mesa asignada</p>)
