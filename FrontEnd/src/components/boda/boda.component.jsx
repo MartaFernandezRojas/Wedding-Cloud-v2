@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './boda.css';
 import { style } from 'react-toastify';
-
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 ///////////// Component ////////////////
 export class Boda extends Component {
@@ -24,7 +24,8 @@ export class Boda extends Component {
             redirect: false,
             redirect2: false,
             novio1: '',
-            novio2: ''
+            novio2: '',
+            modal: false
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -34,6 +35,11 @@ export class Boda extends Component {
             [event.target.id]: event.target.value
         });
 
+    }
+    toggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        });
     }
 
     //METODO PARA CREAR LA BODA
@@ -66,6 +72,9 @@ export class Boda extends Component {
                                     this.setState({ redirect: true })
                                 });
                         } else {
+                            this.setState({
+                                modal: !this.state.modal
+                            });
                             console.log('Error');
                         }
                     });
@@ -92,6 +101,17 @@ export class Boda extends Component {
                         this.crear();
                     }
                     } className={styles.button} value='Crear' />
+                    <MDBContainer className={stylesform.modals}>
+                        <MDBModal isOpen={this.state.modal}>
+                            <MDBModalHeader >Error al crear la boda</MDBModalHeader>
+                            <MDBModalBody>
+                                Revisatus datos
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                            </MDBModalFooter>
+                        </MDBModal>
+                    </MDBContainer>
                 </form>
                 {redireccion}
             </div>

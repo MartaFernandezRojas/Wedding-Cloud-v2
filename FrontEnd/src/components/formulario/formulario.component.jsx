@@ -6,7 +6,7 @@ import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.compon
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './formulario.styles.css';
 import { style } from 'react-toastify';
-
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 ///////////// Component ////////////////
 export class Formulario extends Component {
@@ -20,9 +20,16 @@ export class Formulario extends Component {
       password: '',
       rol: 0,
       redirect: false,
-      redirect2: false
+      redirect2: false,
+      modal: false
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   handleChange(event) {
@@ -44,7 +51,6 @@ export class Formulario extends Component {
           }
           axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-              console.log('hola')
               if (response.status === 200) {
                 if (response.data.rol == 0) {
                   localStorage.setItem('invitado', JSON.stringify(response.data));
@@ -54,6 +60,7 @@ export class Formulario extends Component {
                   localStorage.setItem('invitado', JSON.stringify(response.data));
                   this.setState({ redirect2: true })
                 }
+              
               }
 
             })
@@ -81,6 +88,17 @@ export class Formulario extends Component {
             this.insertUser();
           }
           } className={styles.button} value='Confirmar' />
+          <MDBContainer className={stylesform.modals}>
+            <MDBModal isOpen={this.state.modal}>
+              <MDBModalHeader >Error al crear la boda</MDBModalHeader>
+              <MDBModalBody>
+                Revisatus datos
+                            </MDBModalBody>
+              <MDBModalFooter>
+                <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+              </MDBModalFooter>
+            </MDBModal>
+          </MDBContainer>
         </form>
         {redireccion}
         {redireccion2}

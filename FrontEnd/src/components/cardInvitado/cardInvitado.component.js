@@ -20,11 +20,9 @@ export class CardInvitado extends Component {
 
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
-    console.log(invitado);
     this.setState({
       invitado
     })
-
     axios.get('http://localhost:3000/invitados/invitadoMesa', { params: { idb: invitado.id_boda, m: invitado.mesa } })
       .then(response => {
         this.setState({ invitados: response.data })
